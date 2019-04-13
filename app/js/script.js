@@ -1,10 +1,10 @@
 function cl(volume){
-    console.log(volume)
-};
+    console.log(volume);
+}
 function isInt(volume){
     return (volume === (volume ^0));
 
-};
+}
 
 
 var COLOR_GREEN = '#F00';
@@ -56,3 +56,7 @@ var str = 'Dublin';
 cl(~str.indexOf('blin'));// if(~__.indexOf)  --  if find;
 cl(isInt(4.5));
 cl((4.5^0) === 4.5);
+var res_promt = prompt('enter volume', 'your volume');
+cl(res_promt);
+var bolean_res = confirm("message");
+cl(bolean_res);
