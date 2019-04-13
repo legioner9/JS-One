@@ -58,3 +58,5 @@ cl(isInt(4.5));
 cl((4.5^0) === 4.5);
 var res_promt = prompt('enter volume', 'your volume');
 cl(res_promt);
+var bolean_res = confirm("message");
+cl(bolean_res);
