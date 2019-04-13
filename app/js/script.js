@@ -1,1 +1,1 @@
-aler   
+alert('ttttttttttttttttttt');
