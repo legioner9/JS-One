@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.26.3",
     "del": "^4.0.0",
+    "eslint": "^5.16.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-cache": "^1.1.1",

@@ -1,10 +1,10 @@
 function cl(volume){
-    console.log(volume)
-};
+    console.log(volume);
+}
 function isInt(volume){
     return (volume === (volume ^0));
 
-};
+}
 
 
 var COLOR_GREEN = '#F00';
