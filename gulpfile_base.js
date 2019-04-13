@@ -69,12 +69,12 @@ gulp.task('serv' , function () {
 gulp.task('less_1_if_stream_combiner2',function(){
 
     return stream_combiner2(
-        gulp.src('app/less/*.less',{base:'app'}), // Как задать переменную из комапндной строки?
+        gulp.src('frontend/styles/*.less',{base:'frontend'}), // Как задать переменную из комапндной строки?
         newer('public'),
         debug({title: 'newer :'}),
         gulpIf(isDevelopment,sourcemaps.init()),
         less(),
-        concat('css/all.css'),
+        concat('styles/all.css'),
         gulpIf(isDevelopment,sourcemaps.write()),
         gulp.dest('public'),
         browser_sync.reload({stream: true})
