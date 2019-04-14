@@ -20,7 +20,7 @@ admin = name ;
 // null
 // undefined
 // obj 
-var user ={name:'Petya'};
+// var user ={name:'Petya'};
 // cl(typeof user);
 // string to string only (+) :  1 + '2' -- '12'
 // 2 - '1' -- 1
