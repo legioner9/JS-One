@@ -50,13 +50,49 @@ var user ={name:'Petya'};
 // cl(ei & ASS_ADMIN);  ноль и нет доступа
 // cl(ri & ASS_ADMIN); не ноль и хорошо
 // ОКРУГЛЕНИЕ
-cl(45*10.1^0);
-// ~n = -(n+1); проверка на -1
-var str = 'Dublin';
-cl(~str.indexOf('blin'));// if(~__.indexOf)  --  if find;
-cl(isInt(4.5));
-cl((4.5^0) === 4.5);
-var res_promt = prompt('enter volume', 'your volume');
-cl(res_promt);
-var bolean_res = confirm("message");
-cl(bolean_res);
+// cl(45*10.1^0);
+// // ~n = -(n+1); проверка на -1
+// var str = 'Dublin';
+// cl(~str.indexOf('blin'));// if(~__.indexOf)  --  if find;
+// cl(isInt(4.5));
+// cl((4.5^0) === 4.5);
+// var res_promt = prompt('enter volume', 'your volume');
+// cl(res_promt);
+// var bolean_res = confirm("message");
+// cl(bolean_res);
+// var qest = prompt('what is my name&', 'Vasya?');
+// if(qest==='Toly'){
+//     cl('YEES!!!');
+// }else if(qest===null){
+//     cl('end of enter(((');
+// }else cl('WHF?');
+// cl(0&&1);
+// cl(1||1);
+// cl(!!'string');
+// cl(alert('f'));
+// cl(alert(1)&&alert(2));
+// cl(alert(1)||alert(2));
+// for(var i=0;i<3;i++){
+//     cl(i);
+// }
+// Prompt number summ this
+// outer_name:for(var j=0;j<5;j++){
+    
+//     sum =0;
+// var z=1;
+// while(z){
+//     var value = +prompt('enter number',"number");
+//     if(!value) break outer_name;
+//     alert('you enter ' + value);
+    
+//     sum +=value;
+// }
+// cl('sum = '+ sum);
+// break;
+//  }
+// cl('sum = '+ sum);
+// EVEN number njt ODD
+// for(var i=0;i<12;i++){
+//     if(i%2!==0) continue;
+//     cl(i);
+// }
