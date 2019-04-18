@@ -4,5 +4,6 @@
 	public
 node_modules
 public
+dist
 .idea
 package-lock.json
