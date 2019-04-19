@@ -8,7 +8,7 @@ function sum(...numbers){
     return sum;
 }
 
-function avg(...numbers){
+export default function avg(...numbers){
     return sum(...numbers)/numbers.length;
 }
 
