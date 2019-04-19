@@ -125,13 +125,13 @@ admin = name ;
 //     default:
 //         break;
 // }
-// function pown(x,n){
-//     var pownn = x;
-//     for (var i = 1 ; i < n ; i++) {
-//         pownn *=x;
-//     }
-//     return pownn;
-// }
+function pow(x,n){
+    var pownn = x;
+    for (var i = 1 ; i < n ; i++) {
+        pownn *=x;
+    }
+    return pownn;
+}
 // var stepo = pown;
 // cl(stepo(2,4));
 
@@ -156,5 +156,63 @@ admin = name ;
 // }
 
 // ask('777',f_yes,f_no);
-var sum = new Function('a,b', ' return a+b; ');
-cl(sum(2,6));
+// var sum = new Function('a,b', ' return a+b; ');
+// cl(sum(2,6));
+// function pw(x,n){
+//     if(n!=1){
+//         return x*pw(x,n-1);
+//     } else {
+//         return x;
+//     }
+// }
+// cl(pw(2,5));
+
+// function sumTo(n){
+//     if(n==1) return 1;
+//     else return n+sumTo(n-1);
+    
+// }
+
+// function sumTo(n){
+//     su = 0;
+//     for(var i = 1 ; i < n+1 ; i++){
+//         su += i;
+//     }
+//     return su;
+// }
+
+// function fact(n){
+//     if(n == 1) return 1;
+//     else return n*fact(n-1);
+// }
+
+// function fib(n){
+//     f1 = 0;
+//     f2 = 1;
+//     if(n==0) return 1;
+//     else{
+        
+//         for(var i=0; i<n ; i++){
+//             s2 = f1+f2;
+//             s1 = f2;
+
+//             f1 = s1;
+//             f2 = s2;
+//         }
+//         return f2;
+//     }
+// }
+// cl(fib(3));
+
+// var f = function go_(){
+//     alert (go_);
+// };
+// f();
+
+cl(pow(2,3));
+
+describe("pow" , function(){
+    it("N pow") , function(){
+        assert.equal(pow(2,3),8);
+    };
+});
