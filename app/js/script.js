@@ -210,9 +210,3 @@ function pow(x,n){
 // f();
 
 cl(pow(2,3));
-
-describe("pow" , function(){
-    it("N pow") , function(){
-        assert.equal(pow(2,3),8);
-    };
-});

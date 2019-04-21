@@ -30,19 +30,34 @@ function isInt(volume){
 // console.dir(document.head);
 // console.dirxml(document);
 
-function showPrime(n){
-    for(var i=2 ; i<n ; i++){
-        if(!isPrime(i)) continue;
-        col(i);
-    }
-}
+// function showPrime(n){
+//     for(var i=2 ; i<n ; i++){
+//         if(!isPrime(i)) continue;
+//         col(i);
+//     }
+// }
 
-function isPrime(n){
-    for (var i=2 ; i<n ; i++){
-        if ( n%i == 0) return false;
-    }
-    return true;
-}
+// function isPrime(n){
+//     for (var i=2 ; i<n ; i++){
+//         if ( n%i == 0) return false;
+//     }
+//     return true;
+// }
 
 // showPrime(12);
-col(isPrime(4));
+// col(isPrime(4));
+
+/**
+ * Возвращает простые чила до n в консоль
+ * @param  {} n
+ */
+// function showPrime(n){
+//     Next: for(var i=2 ; i<=n ; i++ ){
+//         /*if [i] is prime => col(i) continue Next;*/
+//         for(var j=2 ; j<i ; j++){
+//             if( i%j == 0 ) continue Next;
+//         }
+//         col(i);
+//     }
+// }
+// showPrime(20);

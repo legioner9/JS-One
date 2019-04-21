@@ -5,16 +5,16 @@
   <meta charset="utf-8">
 
   <!-- подключаем стили Mocha, для отображения результатов -->
-  <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
   <!-- подключаем библиотеку Mocha -->
-  <script src="https://unpkg.com/mocha/mocha.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
   <!-- настраиваем Mocha: предстоит BDD-тестирование -->
   <script>
     mocha.setup('bdd');
   </script>
 
   <!-- подключаем chai -->
-  <script src="https://unpkg.com/chai/chai.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
   <!-- в chai есть много всего, выносим assert в глобальную область -->
   <script>
     var assert = chai.assert;
@@ -23,15 +23,8 @@
 
 <body>
 
-  <script>
-function pow(x,n){
-    var pownn = x;
-    for (var i = 1 ; i < n ; i++) {
-        pownn *=x;
-    }
-    return pownn;
-}
-  </script>
+  <!-- в этом скрипте находятся функции -->
+  <script src="script.js"></script>
 
   <!-- в этом скрипте находятся спеки -->
   <script src="test.js"></script>
