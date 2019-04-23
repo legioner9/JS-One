@@ -256,3 +256,15 @@ function bitEncripting(a , any){
     var b = a ^ any;
     b ^ any === a;
 }
+
+/**
+ * Return volume of property object
+ * @param  {} obj
+ */
+function volOfProp(obj){
+    count = 0 ;
+    for (var key in obj){
+        count++;
+    }
+    return count;
+}

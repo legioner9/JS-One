@@ -130,3 +130,74 @@ function isInt(volume){
 // col(a = 3^5);
 // col(a^5);
 
+// var ob = new Object();
+// var ob_1 = {
+//     prop_3 : 'property 3'
+// };
+// ob_1.prop_1 = 'property 1';
+// ob_1.prop_2 = 'prooerty 2';
+// ob_1.meth_1 = function run(){
+
+// };
+// col(ob_1['prop_1']);
+// col(ob_1);
+// delete ob_1.prop_2;
+// col(ob_1);
+// if('prop_' in ob_1){
+//     col('property is present');
+// } else {
+//     col('property is\'t\n present');
+// }
+
+user = {
+    name :'',
+    surname :'',
+    age :''
+
+};
+user.name = 'Vasya';
+user.surname = 'Petrov';
+col(user);
+user.name = 'Yura';
+delete user.surname;
+col(user);
+for (var key in user){
+    col('KEY: ' + key + ' VALUE: ' + user[key]);
+}
+
+function volOfProp(obj){
+    count = 0 ;
+    for (var key in obj){
+        count++;
+    }
+    return count;
+}
+col(volOfProp(user));
+
+function isEmpty(obj){
+    return volOfProp(obj)?false:true;
+}
+var user_1 = {};
+col(isEmpty(user_1));
+
+var salaries = {
+    "Вася": 100,
+    "Петя": 300,
+    "Даша": 250
+  };
+
+function sumSalar(obj){
+    sum = 0;
+    if(isEmpty(obj)){
+        col('Is EMPTY');
+    }
+    else{
+        for(var key in obj){
+        sum +=obj[key];
+        }
+    return sum;
+    }
+}
+salaries = {};
+col(sumSalar(salaries));
+
