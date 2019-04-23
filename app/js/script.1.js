@@ -61,3 +61,72 @@ function isInt(volume){
 //     }
 // }
 // showPrime(20);
+
+/*
+\b	Backspace
+\f	Form feed
+\n	New line
+\r	Carriage return
+\t	Tab */
+
+// col('rtaerc'.length);
+// col('frvcwqe'.charAt(2));
+// col('vdfvse'[1]);
+// if(~'rycqweqw'.indexOf('fc')) {col('Bingoo');}
+//     else col('O noo');
+// col('rycqweqw'.indexOf('yc', 4));
+
+ var str = 'rfr0000frfrf' , serch = 'fr';
+// var pos = 0 , z = 1 , arrPos = [];
+// while(z){
+//     foundPos = str.indexOf(targ , pos);
+//     if(foundPos == -1) break;
+//     col(foundPos);
+//     pos = foundPos +1;
+// }
+// var pos = -1;
+// while((pos = str.indexOf(targ , pos+1)) !== -1){
+//     col(pos);
+// }
+/**
+ * Выдает подстроку от и до не включая
+ * @param  {} 0
+ * @param  {} 2
+ */
+// 'sacvae'.substring(0,2);
+
+/**
+ * Выдает подстроку от и до конца
+ * @param  {} 'sacvae'.substring(2
+ */
+// col('sacvae'.substring(2));
+
+// function allPos(str , serch){
+//     var pos = -1;
+//     while(( pos = str.indexOf(serch , pos+1)) !== -1 ){
+//         col(pos);
+//     }
+// }
+// allPos(str , serch);
+
+// col(parseInt('100',3));
+// var n = 8;
+// nt = n.toString(2);
+// col(typeof nt);
+// col(~'cadfcf'.indexOf('co'));
+// col(String.fromCharCode(1072));
+
+// var str_ ='';
+// for (var i = 1; i<2000 ; i++){
+//     str_ +=i +' '+ String.fromCharCode(i) + '\n';
+// }
+// col(str_);
+
+
+// var bol,a = 2,b = 4,c = 8,d = 16;
+// bol = a | b | c | d;
+// col(bol & a);
+
+// col(a = 3^5);
+// col(a^5);
+

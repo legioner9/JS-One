@@ -34,7 +34,7 @@ var  gulp                 = require ('gulp'),
 
     // const  isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV =='development';
 
-let  isDevelopment = false; // Development (without maps )
+var  isDevelopment = false; // Development (without maps )
  //let  isDevelopment = true; // Public ( with maps )
 
 gulp.task('clean' , function () {
@@ -132,7 +132,7 @@ gulp.task('assets' , function () {
 gulp.task('build' , gulp.series('clean' , gulp.parallel('less_1_dev_or_pub_Two_if','assets')));
 
 gulp.task('less_1_dev_or_pub_One',function(){
-   let papeline = gulp.src('frontend/styles/*.less',{base:'frontend'});
+   var papeline = gulp.src('frontend/styles/*.less',{base:'frontend'});
     if(isDevelopment){
         papeline = papeline.pipe(sourcemaps.init());
     }
@@ -141,7 +141,7 @@ gulp.task('less_1_dev_or_pub_One',function(){
         console.log({
             sourceMap : file.sourceMap,
             relative : file.relative
-        })
+        });
     });
 
     papeline = papeline
@@ -186,7 +186,7 @@ gulp.task('less',function () {
         console.log({
             sourceMap : file.sourceMap,
             relative : file.relative
-        })
+        });
     })
 
     .pipe(less())
@@ -195,7 +195,7 @@ gulp.task('less',function () {
         console.log({
             // relative : file.relative,
             sourceMap : file.sourceMap
-        })
+        });
     })
 
     .pipe(concat('styles/all.css'))
@@ -204,7 +204,7 @@ gulp.task('less',function () {
         console.log({
             // relative : file.relative,
             sourceMap : file.sourceMap
-        })
+        });
     })
 
     .pipe(sourcemaps.write())
@@ -226,13 +226,13 @@ gulp.task('paths_files',function () {
             basename : file.basename,
             stem : file.stem,
             extname : file.extname
-        })
+        });
     })
     .pipe(gulp.dest(function (file) {
         return file.extname == '.js' ? 'dest/js' :
             file.extname == '.css'  ? 'dest/css' :
                 file.extname == '.html'  ? 'dest/html' :
-                    'dest'
+                    'dest';
 
     }));
 });
