@@ -149,55 +149,80 @@ function isInt(volume){
 //     col('property is\'t\n present');
 // }
 
-user = {
-    name :'',
-    surname :'',
-    age :''
+// user = {
+//     name :'',
+//     surname :'',
+//     age :''
 
-};
-user.name = 'Vasya';
-user.surname = 'Petrov';
-col(user);
-user.name = 'Yura';
-delete user.surname;
-col(user);
-for (var key in user){
-    col('KEY: ' + key + ' VALUE: ' + user[key]);
-}
+// };
+// user.name = 'Vasya';
+// user.surname = 'Petrov';
+// col(user);
+// user.name = 'Yura';
+// delete user.surname;
+// col(user);
+// for (var key in user){
+//     col('KEY: ' + key + ' VALUE: ' + user[key]);
+// }
 
-function volOfProp(obj){
-    count = 0 ;
-    for (var key in obj){
-        count++;
-    }
-    return count;
-}
-col(volOfProp(user));
+// function volOfProp(obj){
+//     count = 0 ;
+//     for (var key in obj){
+//         count++;
+//     }
+//     return count;
+// }
+// col(volOfProp(user));
 
-function isEmpty(obj){
-    return volOfProp(obj)?false:true;
-}
-var user_1 = {};
-col(isEmpty(user_1));
+// function isEmpty(obj){
+//     return volOfProp(obj)?false:true;
+// }
+// var user_1 = {};
+// col(isEmpty(user_1));
 
-var salaries = {
-    "Вася": 100,
-    "Петя": 300,
-    "Даша": 250
-  };
+// var salaries = {
+//     "Вася": 100,
+//     "Петя": 300,
+//     "Даша": 'tyu'
+//   };
 
-function sumSalar(obj){
-    sum = 0;
-    if(isEmpty(obj)){
-        col('Is EMPTY');
-    }
-    else{
-        for(var key in obj){
-        sum +=obj[key];
-        }
-    return sum;
-    }
-}
-salaries = {};
-col(sumSalar(salaries));
+// function sumSalar(obj){
+//     sum = 0;
+//     if(isEmpty(obj)){
+//         col('Is EMPTY');
+//     }
+//     else{
+//         for(var key in obj){
+//         sum +=obj[key];
+//         }
+//     return sum;
+//     }
+// }
+// // salaries = {};
+// col(sumSalar(salaries));
 
+// var n = 87;
+// function isNumeric(n) {
+//     return !isNaN(parseFloat(n)) && isFinite(n);
+//   }
+//   col(isNumeric(n));
+
+// function multyplayNumProp(obj){
+//     for (var key in obj){
+//         if (isNumeric(obj[key])) {
+//             col(obj[key]);
+//             obj[key] = obj[key] *2;
+//             col(obj[key]);
+//         }
+//     }
+ 
+// }
+// multyplayNumProp(salaries);
+// col(salaries);
+
+var fruits = ["Яблоко", "Апельсин", "Слива"];
+col(fruits);
+col(fruits.pop());
+col(fruits);
+fruits.push('Tyckva');
+col(fruits);

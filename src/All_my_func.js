@@ -268,3 +268,32 @@ function volOfProp(obj){
     }
     return count;
 }
+
+/**
+ * Return true if n is string contane float or !infinit+_- and !NaN
+ * @param  {} n
+ */
+function isNumeric(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+
+  
+/**
+ * Return last array item and removes it
+ * @param  {} arr_any
+ */
+function arrayPop(arr_any){arr_any.pop();}
+
+/**
+ * arr_any.push(item_any) ==== arr_any(arr_any.length) = item_any
+ * @param  {} arr_any
+ * @param  {} item_any
+ */
+function arrayPush(arr_any , item_any){arr_any.push(item_any);}
+
+/**
+ * Return first array item and removes it
+ * @param  {} arr_any
+ */
+function arrayShift(arr_any){arr_any.shift();}
+
