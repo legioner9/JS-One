@@ -1,4 +1,4 @@
-function cl(volume){
+function col(volume){
     console.log(volume);
 }
 function isInt(volume){
@@ -12,4 +12,6 @@ col(fruits);
 col(fruits.pop());
 col(fruits);
 fruits.push('Tyckva');
+col(fruits);
+fruits.unshift('aavcfvf','vqwevev');
 col(fruits);
