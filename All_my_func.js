@@ -304,3 +304,62 @@ function arrayShift(arr_any){arr_any.shift();}
  */
 function arrayUnshift(arr_any , item_any){arr_any.unshift(item_any);}
 
+/**
+ * Returns random integer from min to max
+ * @param  {} min
+ * @param  {} max
+ */
+function randMinMax(min , max){var rand = min + Math.floor(Math.random() * (max + 1 - min));
+        return rand;
+}
+
+/**
+ * Returns elements starting with index in qantity
+ * range and removes them
+ * @param  {} arr_any
+ * @param  {} index
+ * @param  {} range
+ */
+function arraySplice(arr_any , index , range){arr_any.splice(index,range);}
+
+
+/**
+ * Copies arr_init in arr_res and return them
+ * @param  {} arr_init
+ * @param  {} arr_res
+ */
+function arrCopy(arr_init , arr_res){
+    for (var i = 0 ; i < arr_init.length ; i++){
+        arr_res[i] = arr_init[i];
+    }
+    return result = {
+        'result' : 'arrCopy(arr_init , arr_res)',
+        'arr_init' : arr_init,
+        'arr_res' : arr_res
+    };
+}
+
+/**
+ * Remove all (item)'s in arr_any an
+ * @param  {} arr_any
+ * @param  {} item
+ */
+function arrayDelItem(arr_any , item){
+    var arr_init = [];
+    arrCopy(arr_any , arr_init);
+    index = -1;
+    count = 0;
+    while((index = arr_any.indexOf(item , index+1)) !== -1){
+        arr_any.splice(index,1);
+        index--;
+        count++;
+    }
+    return result = {
+        'result' : 'arrayDelItem(arr_any , item)',
+        'arr_init' : arr_init,
+        'item' : item,
+        'arr_res' : arr_any,
+        'count' : count
+    };
+}
+
