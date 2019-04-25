@@ -88,3 +88,19 @@ function filterRange(arr, a, b){
     };
 }
 
+function NAME_func(param, dev){
+    dev = dev || false;
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'NAME_func(param, dev)'
+
+        };
+    }
+    else
+    {
+        return ;
+    }
+}
+
