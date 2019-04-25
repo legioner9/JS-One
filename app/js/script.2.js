@@ -177,9 +177,9 @@ function arrInsArr(arr_init ,index_ins, arr_ins, dev){
     }
 }
 
-ar_1 = [1,2,3,4,5,6,9];
+// ar_1 = [1,2,3,4,5,6,9];
 // col(ar_1.slice(2,4));
-col(arrSlise(ar_1, 2, 4, true));
+// col(arrSlise(ar_1, 2, 4, true));
 
 function arrSlise(arr_init, index_init , index_last , dev){
     dev = dev || false;
@@ -200,3 +200,40 @@ function arrSlise(arr_init, index_init , index_last , dev){
         return arr_res;
     }
 }
+
+arr_init = [3, 2, 9, 4, 7 ,8];
+
+f_sortingN2 = function f_sortN2(a, b){
+    // col( a + " <> " + b );
+    if((a%2==0) && (b%2==0)) return 0;
+    if((a%2==0) && !(b%2==0)) return 1;
+    if(!(a%2==0) && (b%2==0)) return -1;
+    if(!(a%2==0) && !(b%2==0)) return 0;
+    // col(a%2 && b%2) ;
+    // col(a%2 && !b%2);
+    // col(!a%2 && b%2) ;
+    // col(!a%2 && !b%2);
+};
+// col(arr_res = arr_init.sort(f_sorting));
+
+function arrSortByFunc(arr_init, func_sorting, dev){
+    dev = dev || false;
+    arr_res = arrCopy(arr_init);
+    var arr_res = arr_res.sort(func_sorting);
+    
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'arrSortByFunc(param, dev)',
+        'arr_init' : arr_init,
+        'func_sorting' : func_sorting,
+        'arr_res' : arr_res
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
+
+col(arrSortByFunc(arr_init , f_sortingN2 , true));

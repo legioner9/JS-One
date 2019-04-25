@@ -456,3 +456,48 @@ function arrSlise(arr_init, index_init , index_last , dev){
         return arr_res;
     }
 }
+
+/**
+ * Sorting function even num element on
+ * the rigth
+ * @param  {} a
+ * @param  {} b
+ */
+function f_sortN2(a, b){
+    // col( a + " <> " + b );
+    if((a%2==0) && (b%2==0)) return 0;
+    if((a%2==0) && !(b%2==0)) return 1;
+    if(!(a%2==0) && (b%2==0)) return -1;
+    if(!(a%2==0) && !(b%2==0)) return 0;
+    // col(a%2 && b%2) ;
+    // col(a%2 && !b%2);
+    // col(!a%2 && b%2) ;
+    // col(!a%2 && !b%2);
+}
+
+/**
+ * Array arr_init sorting by function
+ * func_sorting (a,b)
+ * @param  {} arr_init
+ * @param  {} func_sorting
+ * @param  {} dev
+ */
+function arrSortByFunc(arr_init, func_sorting, dev){
+    dev = dev || false;
+    arr_res = arrCopy(arr_init);
+    var arr_res = arr_res.sort(func_sorting);
+    
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'arrSortByFunc(param, dev)',
+        'arr_init' : arr_init,
+        'func_sorting' : func_sorting,
+        'arr_res' : arr_res
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
