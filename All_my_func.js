@@ -344,7 +344,8 @@ function arrCopy(arr_init , arr_res){
  * @param  {} arr_any
  * @param  {} item
  */
-function arrayDelItem(arr_any , item){
+function arrayDelItem(arr_any , item , dev){
+    dev = dev || false;
     var arr_init = [];
     arrCopy(arr_any , arr_init);
     index = -1;
@@ -354,12 +355,19 @@ function arrayDelItem(arr_any , item){
         index--;
         count++;
     }
-    return result = {
+    if(dev)
+    {return result = {
+        'dev' : dev,
         'result' : 'arrayDelItem(arr_any , item)',
         'arr_init' : arr_init,
         'item' : item,
         'arr_res' : arr_any,
-        'count' : count
-    };
+        'count' : count};
+    }
+    else
+    {
+        return arr_any;
+    }
+
 }
 

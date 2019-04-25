@@ -22,9 +22,9 @@ function isInt(volume){
 // col(fruits);
 ar = [1, 2 , 3, 1 , 5 , 1];
 col(ar);
-res = arrayDelItem(ar , 2);
+res = arrayDelItem(ar , 2 , 1);
 col(res);
-col(ar);
+// col(ar);
 
 
 function arrCopy(arr_init , arr_res){
@@ -38,7 +38,8 @@ function arrCopy(arr_init , arr_res){
 }
 
 
-function arrayDelItem(arr_any , item){
+function arrayDelItem(arr_any , item , dev){
+    dev = dev || false;
     var arr_init = [];
     arrCopy(arr_any , arr_init);
     index = -1;
@@ -48,19 +49,26 @@ function arrayDelItem(arr_any , item){
         index--;
         count++;
     }
-    return result = {
+    if(dev)
+    {return result = {
+        'dev' : dev,
         'result' : 'arrayDelItem(arr_any , item)',
         'arr_init' : arr_init,
         'item' : item,
         'arr_res' : arr_any,
-        'count' : count
-    };
+        'count' : count};
+    }
+    else
+    {
+        return arr_any;
+    }
+
 }
 
-ar_1 = [2,4,7,9,1,5,10,-3,0];
-col(ar_1);
-arr_result = filterRange(ar_1 , 2 , 9);
-col(arr_result);
+// ar_1 = [2,4,7,9,1,5,10,-3,0];
+// col(ar_1);
+// arr_result = filterRange(ar_1 , 2 , 9);
+// col(arr_result);
 
 function filterRange(arr, a, b){
     ar_res = [];
@@ -72,6 +80,7 @@ function filterRange(arr, a, b){
         }
     }
     return result = {
+        'result' : 'filterRange(arr, a, b)',
         'arr_init' : arr,
         'min' : a,
         'max' : b,
