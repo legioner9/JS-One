@@ -326,18 +326,20 @@ function arraySplice(arr_any , index , range){arr_any.splice(index,range);}
 /**
  * Copies arr_init in arr_res and return them
  * @param  {} arr_init
- * @param  {} arr_res
  */
-function arrCopy(arr_init , arr_res){
+function arrCopy(arr_init , dev){
+    dev = dev || false;
+    var arr_res = [];
     for (var i = 0 ; i < arr_init.length ; i++){
         arr_res[i] = arr_init[i];
     }
-    return result = {
-        'result' : 'arrCopy(arr_init , arr_res)',
+    if(dev){return result = {
         'arr_init' : arr_init,
         'arr_res' : arr_res
-    };
+        };
+    }return arr_res;
 }
+
 
 /**
  * Remove all (item)'s in arr_any an
@@ -371,5 +373,86 @@ function arrayDelItem(arr_any , item , dev){
 
 }
 
+/**
+ * Transfom str_any to arrary arr_res with separator (', ')
+ * @param  {} str_any
+ * @param  {} dev
+ */
+function strSplit(str_any, dev){
+    dev = dev || false;
 
+    // str_any = 'wevf, erwe, qwewrcf';
+    arr_res = str_any.split(', ');
 
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'NAME_func(param, dev)',
+        'str_any' : str_any,
+        'arr_res' : arr_res
+
+        };
+    }
+    else
+    {
+        return  arr_res;
+    }
+}
+
+/**
+ * Insert arr_ins into arr_init from index_ins
+ * @param  {} arr_init
+ * @param  {} index_ins
+ * @param  {} arr_ins
+ * @param  {} dev
+ */
+function arrInsArr(arr_init ,index_ins, arr_ins, dev){
+    arr_res = arrCopy (arr_init, false);
+    dev = dev || false;
+    for (var i = 0 ; i < arr_ins.length ; i++){
+        arr_res.splice(index_ins+i,0,arr_ins[i] );
+    }
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' :  'arrInsArr(arr_init ,arr_ins, dev)',
+        'arr_init' : arr_init,
+        'arr_ins' : arr_ins,
+        'index_ins' : index_ins,
+        'arr_res' : arr_res
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
+
+/**
+ * Isolates in arr_init (arr_result) from index_init
+ * to index_last NOT INCLUDING it !
+ * @param  {} arr_init
+ * @param  {} index_init
+ * @param  {} index_last
+ * @param  {} dev
+ */
+function arrSlise(arr_init, index_init , index_last , dev){
+    dev = dev || false;
+    var arr_res = arr_init.slice(index_init , index_last);
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'arrSlise(arr_init, index_init , index_last , dev)',
+        'arr_init' : arr_init,
+        'arr_res' : arr_res,
+        'index_init' : index_init,
+        'index_last' : index_last
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}

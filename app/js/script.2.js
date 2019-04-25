@@ -20,21 +20,24 @@ function isInt(volume){
 // col(fruits);
 // col(fruits.splice(2,1));
 // col(fruits);
-ar = [1, 2 , 3, 1 , 5 , 1];
-col(ar);
-res = arrayDelItem(ar , 2 , 1);
-col(res);
+// ar = [1, 2 , 3, 1 , 5 , 1];
+// col(ar);
+// res = arrayDelItem(ar , 2 , 1);
+// col(res);
 // col(ar);
 
 
-function arrCopy(arr_init , arr_res){
+function arrCopy(arr_init , dev){
+    dev = dev || false;
+    var arr_res = [];
     for (var i = 0 ; i < arr_init.length ; i++){
         arr_res[i] = arr_init[i];
     }
-    return result = {
+    if(dev){return result = {
         'arr_init' : arr_init,
         'arr_res' : arr_res
-    };
+        };
+    }return arr_res;
 }
 
 
@@ -88,6 +91,112 @@ function filterRange(arr, a, b){
     };
 }
 
+// var str = 'vdfsv, fvfde, wvever, evwfwv, vwvedw';
+// col(str.split(', '));
 
+function strSplit(str_any, dev){
+    dev = dev || false;
 
+    // str_any = 'wevf, erwe, qwewrcf';
+    arr_res = str_any.split(', ');
 
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'NAME_func(param, dev)',
+        'str_any' : str_any,
+        'arr_res' : arr_res
+
+        };
+    }
+    else
+    {
+        return  arr_res;
+    }
+}
+
+// str_any = 'wevf, erwe, qwewrcf';
+// col(arr = strSplit(str_any , false));
+// col(str = arr.join('-'));
+
+// var arr = [1, 2, 3];
+// col(str = arr.join('-'));
+// col(arrJoin(arr, false));
+
+// col(arrJoin(arr_any , 1));
+
+function arrJoin(arr_any, dev){
+    dev = dev || false;
+
+    str_res = arr_any.join(';');
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'NAME_func(param, dev)',
+        'arr_any' : arr_any ,
+        'str_res' : str_res
+        
+
+        };
+    }
+    else
+    {
+        return str_res;
+    }
+}
+
+ar_0 = [1,2,3,4];
+ar_ins = [8,9];
+// col(ar)
+// col(str_ins = ar_ins.join(','));
+// ar_res = ar_0.splice(2 , 0 ,str_ins);
+// col(ar_0);
+col(arrInsArr(ar_0, 2, ar_ins , true));
+
+function arrInsArr(arr_init ,index_ins, arr_ins, dev){
+    arr_res = arrCopy (arr_init, false);
+    dev = dev || false;
+    for (var i = 0 ; i < arr_ins.length ; i++){
+        arr_res.splice(index_ins+i,0,arr_ins[i] );
+    }
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' :  'arrInsArr(arr_init ,arr_ins, dev)',
+        'arr_init' : arr_init,
+        'arr_ins' : arr_ins,
+        'index_ins' : index_ins,
+        'arr_res' : arr_res
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
+
+ar_1 = [1,2,3,4,5,6,9];
+// col(ar_1.slice(2,4));
+col(arrSlise(ar_1, 2, 4, true));
+
+function arrSlise(arr_init, index_init , index_last , dev){
+    dev = dev || false;
+    var arr_res = arr_init.slice(index_init , index_last);
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'arrSlise(arr_init, index_init , index_last , dev)',
+        'arr_init' : arr_init,
+        'arr_res' : arr_res,
+        'index_init' : index_init,
+        'index_last' : index_last
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
