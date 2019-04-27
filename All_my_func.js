@@ -132,6 +132,14 @@ str.substr(a,b);
 str.indexOf(serch , pos);
 
 /**
+ * Возвращает позицию вхождения подстроки serch
+ * при поиске с позиции pos к началу
+ * @param  {} serch
+ * @param  {} pos
+ */
+str.lastIndexOf(serch , pos);
+
+/**
  * Return a singl-chara
  * @param  {} a
  */
@@ -476,6 +484,7 @@ function f_sortN2(a, b){
 }
 
 /**
+ * CLASS
  * Array arr_init sorting by function
  * func_sorting (a,b)
  * @param  {} arr_init
@@ -486,18 +495,219 @@ function arrSortByFunc(arr_init, func_sorting, dev){
     dev = dev || false;
     arr_res = arrCopy(arr_init);
     var arr_res = arr_res.sort(func_sorting);
-    
     if(dev)
     {return result = {
         'dev' : dev,
         'result' : 'arrSortByFunc(param, dev)',
         'arr_init' : arr_init,
-        'func_sorting' : func_sorting,
+        'func_sorting' : 'func_sorting',
         'arr_res' : arr_res
         };
     }
     else
     {
         return arr_res;
+    }
+}
+
+/**
+ * CLASS
+ * @param  {} a
+ * @param  {} b
+ */
+function f_sort_(a , b){
+    // col(a + '<>' + b);
+
+    return 0 , 1 ,-1 ;
+}
+
+/**
+ * FICH
+ * Sort by rise
+ * @param  {} a
+ * @param  {} b
+ */
+function f_sortAB(a , b){
+    // col(a + '<>' + b);
+    return a-b;
+    // return 0 , 1 ,-1 ;
+}
+
+/**
+ * FICH
+ * Splice from end
+ * @param  {} arr_any
+ * @param  {} index_from_end
+ */
+function arrSpliceFromEnd(arr_any, index_from_end){
+    return arr_any.splice(-1*index_from_end , any);
+}
+/**
+ * FICH
+ * Full copy by slice()
+ * @param  {} arr_init
+ * @param  {} arr_copy
+ */
+function arrSliseCopy(arr_init , arr_copy){
+	arr_copy = arr_init.slice();
+}
+
+/**
+ *Serch promt by Eranjsfen
+ * @param  {} n
+ * @param  {} dev
+ */
+function serchPromtByEratosfen(n, dev){
+
+    dev = dev || false;
+    arr_res = [];
+    
+    for (var i = 2 ; i <= n  ; i++){
+        arr_res[i] = true;
+    }
+
+    var p = 2;
+    for ( i = 2 ; i <= n  ; i++){
+        if((i*2) <= n) arr_res[2*i] = false;
+    }
+
+    do{
+        for ( i = p+1 ; i <= n  ; i++){
+            if(arr_res[i]) {
+                p = i;break;
+            }
+        }
+
+        for ( i = p ; i <= n  ; i++){
+            if((i*p) <= n) arr_res[p*i] = false;
+            else break;
+        }
+
+    } while (p*p<=n );
+        var arr_res_num = [];
+        var k = 0;
+        for ( i = 2 ; i <= arr_res.length  ; i++){
+            if(arr_res[i]) {
+                arr_res_num[k] = i;
+                k++;
+            }
+        }
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'serchPromtByEratosfen(n, dev)',
+        'arr_res' : arr_res,
+        'arr_res_num' : arr_res_num,
+        'n' : n
+        };
+    }
+    else
+    {
+        return arr_res_num;
+    }
+}
+
+/**
+ * Concat array 
+ * @param  {} arr_init
+ * @param  {} arr_to_add
+ */
+function arrConcat(arr_init, arr_to_add){
+    arr_res = arr_init.concat(arr_to_add);
+}
+
+/**
+ * Create array of all keys from obj_any
+ * @param  {} obj_any
+ */
+function objectMethKeys(obj_any){
+    Object.keys(obj_any);
+}
+
+/**
+ * Copy obj_init by for key
+ * @param  {} obj_init
+ * @param  {} dev
+ */
+function copyObjToKey(obj_init, dev){
+    dev = dev || false;
+    var obj_res = {};
+    for (var key in obj_init){
+        obj_res[key] = obj_init[key];
+    }
+    if(dev)
+    {return result = {
+        'dev' : dev ,
+        'result' : 'copyObjToKey(obj_init, dev)',
+        'obj_init' : obj_init ,
+        'obj_res' : obj_res
+        };
+    }
+    else
+    {
+        return obj_res;
+    }
+}
+
+/**
+ * Copy obj_init by fssign
+ * @param  {} obj_init
+ * @param  {} dev
+ */
+function copyObjToAssign(obj_init, dev){
+    dev = dev || false;
+    var obj_res = Object.assign({} , obj_init);
+    if(dev)
+    {return result = {
+        'dev' : dev ,
+        'result' : 'copyObjToAssign(obj_init, dev)',
+        'obj_init' : obj_init ,
+        'obj_res' : obj_res
+        };
+    }
+    else
+    {
+        return obj_res;
+    }
+}
+/**
+ * Trane split <=> join in the task
+ * add word in property when this string
+ * var obj_any = {
+ *  className : 'open menu'
+ * };
+ * @param  {} obj_any
+ * @param  {} className
+ * @param  {} add_cls
+ * @param  {} dev
+ */
+function addClasses(obj_any, className, add_cls, dev){
+    dev = dev || false;
+
+    var obj_res = copyObjToAssign(obj_any);
+
+    var arr_init = obj_any.className ? obj_any.className.split(' ') : [] ;
+    for(var key in arr_init){
+        if(arr_init[key] == add_cls) return;
+    }
+        col(arr_init);
+        arr_init.push(add_cls);
+        col(arr_res);
+            obj_res.className = arr_init.join(' ');
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'addClasses(obj_any, className, add_cls, dev)',
+        'obj_any' : obj_any ,
+        'arr_init' : arr_init ,
+        'add_cls' : add_cls,
+        'obj_res' : obj_res
+        };
+    }
+    else
+    {
+        return obj_res;
     }
 }

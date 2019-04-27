@@ -297,3 +297,230 @@ function arrayPush(arr_any , item_any){arr_any.push(item_any);}
  */
 function arrayShift(arr_any){arr_any.shift();}
 
+/**
+ * arr_any.unshift(item_any) ==== arr_any[0] = item_any
+ * @param  {} arr_any
+ * @param  {} item_any
+ */
+function arrayUnshift(arr_any , item_any){arr_any.unshift(item_any);}
+
+/**
+ * Returns random integer from min to max
+ * @param  {} min
+ * @param  {} max
+ */
+function randMinMax(min , max){var rand = min + Math.floor(Math.random() * (max + 1 - min));
+        return rand;
+}
+
+/**
+ * Returns elements starting with index in qantity
+ * range and removes them
+ * @param  {} arr_any
+ * @param  {} index
+ * @param  {} range
+ */
+function arraySplice(arr_any , index , range){arr_any.splice(index,range);}
+
+
+/**
+ * Copies arr_init in arr_res and return them
+ * @param  {} arr_init
+ */
+function arrCopy(arr_init , dev){
+    dev = dev || false;
+    var arr_res = [];
+    for (var i = 0 ; i < arr_init.length ; i++){
+        arr_res[i] = arr_init[i];
+    }
+    if(dev){return result = {
+        'arr_init' : arr_init,
+        'arr_res' : arr_res
+        };
+    }return arr_res;
+}
+
+
+/**
+ * Remove all (item)'s in arr_any an
+ * @param  {} arr_any
+ * @param  {} item
+ */
+function arrayDelItem(arr_any , item , dev){
+    dev = dev || false;
+    var arr_init = [];
+    arrCopy(arr_any , arr_init);
+    index = -1;
+    count = 0;
+    while((index = arr_any.indexOf(item , index+1)) !== -1){
+        arr_any.splice(index,1);
+        index--;
+        count++;
+    }
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'arrayDelItem(arr_any , item)',
+        'arr_init' : arr_init,
+        'item' : item,
+        'arr_res' : arr_any,
+        'count' : count};
+    }
+    else
+    {
+        return arr_any;
+    }
+
+}
+
+/**
+ * Transfom str_any to arrary arr_res with separator (', ')
+ * @param  {} str_any
+ * @param  {} dev
+ */
+function strSplit(str_any, dev){
+    dev = dev || false;
+
+    // str_any = 'wevf, erwe, qwewrcf';
+    arr_res = str_any.split(', ');
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'NAME_func(param, dev)',
+        'str_any' : str_any,
+        'arr_res' : arr_res
+
+        };
+    }
+    else
+    {
+        return  arr_res;
+    }
+}
+
+/**
+ * Insert arr_ins into arr_init from index_ins
+ * @param  {} arr_init
+ * @param  {} index_ins
+ * @param  {} arr_ins
+ * @param  {} dev
+ */
+function arrInsArr(arr_init ,index_ins, arr_ins, dev){
+    arr_res = arrCopy (arr_init, false);
+    dev = dev || false;
+    for (var i = 0 ; i < arr_ins.length ; i++){
+        arr_res.splice(index_ins+i,0,arr_ins[i] );
+    }
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' :  'arrInsArr(arr_init ,arr_ins, dev)',
+        'arr_init' : arr_init,
+        'arr_ins' : arr_ins,
+        'index_ins' : index_ins,
+        'arr_res' : arr_res
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
+
+/**
+ * Isolates in arr_init (arr_result) from index_init
+ * to index_last NOT INCLUDING it !
+ * @param  {} arr_init
+ * @param  {} index_init
+ * @param  {} index_last
+ * @param  {} dev
+ */
+function arrSlise(arr_init, index_init , index_last , dev){
+    dev = dev || false;
+    var arr_res = arr_init.slice(index_init , index_last);
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'arrSlise(arr_init, index_init , index_last , dev)',
+        'arr_init' : arr_init,
+        'arr_res' : arr_res,
+        'index_init' : index_init,
+        'index_last' : index_last
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
+
+/**
+ * Sorting function even num element on
+ * the rigth
+ * @param  {} a
+ * @param  {} b
+ */
+function f_sortN2(a, b){
+    // col( a + " <> " + b );
+    if((a%2==0) && (b%2==0)) return 0;
+    if((a%2==0) && !(b%2==0)) return 1;
+    if(!(a%2==0) && (b%2==0)) return -1;
+    if(!(a%2==0) && !(b%2==0)) return 0;
+    // col(a%2 && b%2) ;
+    // col(a%2 && !b%2);
+    // col(!a%2 && b%2) ;
+    // col(!a%2 && !b%2);
+}
+
+/**
+ * CLASS
+ * Array arr_init sorting by function
+ * func_sorting (a,b)
+ * @param  {} arr_init
+ * @param  {} func_sorting
+ * @param  {} dev
+ */
+function arrSortByFunc(arr_init, func_sorting, dev){
+    dev = dev || false;
+    arr_res = arrCopy(arr_init);
+    var arr_res = arr_res.sort(func_sorting);
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'arrSortByFunc(param, dev)',
+        'arr_init' : arr_init,
+        'func_sorting' : 'func_sorting',
+        'arr_res' : arr_res
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
+
+/**
+ * CLASS
+ * @param  {} a
+ * @param  {} b
+ */
+function f_sort_(a , b){
+    // col(a + '<>' + b);
+
+    return 0 , 1 ,-1 ;
+}
+
+/**
+ * FICH
+ * Sort by rise
+ * @param  {} a
+ * @param  {} b
+ */
+function f_sortAB(a , b){
+    // col(a + '<>' + b);
+    return a-b;
+    // return 0 , 1 ,-1 ;
+}

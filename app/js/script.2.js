@@ -216,17 +216,57 @@ f_sortingN2 = function f_sortN2(a, b){
 };
 // col(arr_res = arr_init.sort(f_sorting));
 
+// function arrSortByFunc(arr_init, func_sorting, dev){
+//     dev = dev || false;
+//     arr_res = arrCopy(arr_init);
+//     var arr_res = arr_res.sort(func_sorting);
+    
+//     if(dev)
+//     {return result = {
+//         'dev' : dev,
+//         'result' : 'arrSortByFunc(param, dev)',
+//         'arr_init' : arr_init,
+//         'func_sorting' : func_sorting,
+//         'arr_res' : arr_res
+//         };
+//     }
+//     else
+//     {
+//         return arr_res;
+//     }
+// }
+
+// col(arrSortByFunc(arr_init , f_sortingN2 , true));
+
+/**
+ * CLASS
+ * @param  {} a
+ * @param  {} b
+ */
+function f_sortAB(a , b){
+    // col(a + '<>' + b);
+    return a-b;
+    // return 0 , 1 ,-1 ;
+}
+
+/**
+ * CLASS
+ * Array arr_init sorting by function
+ * func_sorting (a,b)
+ * @param  {} arr_init
+ * @param  {} func_sorting
+ * @param  {} dev
+ */
 function arrSortByFunc(arr_init, func_sorting, dev){
     dev = dev || false;
     arr_res = arrCopy(arr_init);
     var arr_res = arr_res.sort(func_sorting);
-    
     if(dev)
     {return result = {
         'dev' : dev,
         'result' : 'arrSortByFunc(param, dev)',
         'arr_init' : arr_init,
-        'func_sorting' : func_sorting,
+        'func_sorting' : 'func_sorting',
         'arr_res' : arr_res
         };
     }
@@ -236,4 +276,155 @@ function arrSortByFunc(arr_init, func_sorting, dev){
     }
 }
 
-col(arrSortByFunc(arr_init , f_sortingN2 , true));
+// ar = [1,4,2,6];
+// col(arrSortByFunc(ar , f_sortAB, true));
+// ar_2 = ar.slice();
+// col(ar_2);
+// col(arr_res);
+
+function serchPromtByEratosfen(n, dev){
+
+    dev = dev || false;
+    arr_res = [];
+    
+    for (var i = 2 ; i <= n  ; i++){
+        arr_res[i] = true;
+    }
+
+    var p = 2;
+    for ( i = 2 ; i <= n  ; i++){
+        if((i*2) <= n) arr_res[2*i] = false;
+    }
+
+    do{
+        for ( i = p+1 ; i <= n  ; i++){
+            if(arr_res[i]) {
+                p = i;break;
+            }
+        }
+
+        for ( i = p ; i <= n  ; i++){
+            if((i*p) <= n) arr_res[p*i] = false;
+            else break;
+        }
+
+    } while (p*p<=n );
+        var arr_res_num = [];
+        var k = 0;
+        for ( i = 2 ; i <= arr_res.length  ; i++){
+            if(arr_res[i]) {
+                arr_res_num[k] = i;
+                k++;
+            }
+        }
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'serchPromtByEratosfen(n, dev)',
+        'arr_res' : arr_res,
+        'arr_res_num' : arr_res_num,
+        'n' : n
+
+        };
+    }
+    else
+    {
+        return arr_res_num;
+    }
+}
+
+// col(serchPromtByEratosfen(20, true));
+// ari = [8,6];
+// ari_1 = [99,33];
+// col([1,2,3,4].concat(ari,ari_1));
+// col(Object.keys([1,2,3,4].concat(ari,ari_1)));
+
+var obj = {
+    className : 'open menu'
+};
+var add_cls = 'menu1';
+var className ;
+
+
+
+col(addClasses(obj, className, add_cls, true));
+
+function addClasses(obj_any, className, add_cls, dev){
+    dev = dev || false;
+
+    var obj_res = copyObjToAssign(obj_any);
+
+    var arr_init = obj_any.className ? obj_any.className.split(' ') : [] ;
+    for(var key in arr_init){
+        if(arr_init[key] == add_cls) return;
+    }
+        col(arr_init);
+        arr_init.push(add_cls);
+        col(arr_res);
+            obj_res.className = arr_init.join(' ');
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'addClasses(obj_any, className, add_cls, dev)',
+        'obj_any' : obj_any ,
+        'arr_init' : arr_init ,
+        'add_cls' : add_cls,
+        'obj_res' : obj_res
+        };
+    }
+    else
+    {
+        return obj_res;
+    }
+}
+
+// function copyInitObjToKey(obj_init, dev){
+//     dev = dev || false;
+//     var obj_res = {};
+//     for (var key in obj_init){
+//         obj_res[key] = obj_init[key];
+//     }
+//     if(dev)
+//     {return result = {
+//         'dev' : dev ,
+//         'result' : 'copyInitObjToKey(obj_init, dev)',
+//         'obj_init' : obj_init ,
+//         'obj_res' : obj_res
+//         };
+//     }
+//     else
+//     {
+//         return obj_res;
+//     }
+// }
+ob = {
+    ert : 5,
+    ertg : 'werv' ,
+    set : [1 , '677wer']
+};
+// var ob_2 = copyInitObjTo(ob, false);
+// ob_2 = Object.assign({} ,ob);
+// ob_2 = copyObjToAssign(ob, false);
+// col(ob == ob_2);
+// ob = {};
+// col(ob);
+// col(ob_2);
+
+function copyObjToAssign(obj_init, dev){
+    dev = dev || false;
+    var obj_res = Object.assign({} , obj_init);
+    if(dev)
+    {return result = {
+        'dev' : dev ,
+        'result' : 'copyObjToAssign(obj_init, dev)',
+        'obj_init' : obj_init ,
+        'obj_res' : obj_res
+        };
+    }
+    else
+    {
+        return obj_res;
+    }
+}
