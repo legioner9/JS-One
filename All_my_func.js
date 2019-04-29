@@ -317,7 +317,8 @@ function arrayUnshift(arr_any , item_any){arr_any.unshift(item_any);}
  * @param  {} min
  * @param  {} max
  */
-function randMinMax(min , max){var rand = min + Math.floor(Math.random() * (max + 1 - min));
+function randMinMax(min , max){
+    var rand = min + Math.floor(Math.random() * (max + 1 - min));
         return rand;
 }
 
@@ -395,7 +396,7 @@ function strSplit(str_any, dev){
     if(dev)
     {return result = {
         'dev' : dev,
-        'result' : 'NAME_func(param, dev)',
+        'result' : 'strSplit(str_any, dev)',
         'str_any' : str_any,
         'arr_res' : arr_res
 
@@ -445,14 +446,14 @@ function arrInsArr(arr_init ,index_ins, arr_ins, dev){
  * @param  {} index_last
  * @param  {} dev
  */
-function arrSlise(arr_init, index_init , index_last , dev){
+function arrSlice(arr_init, index_init , index_last , dev){
     dev = dev || false;
     var arr_res = arr_init.slice(index_init , index_last);
 
     if(dev)
     {return result = {
         'dev' : dev,
-        'result' : 'arrSlise(arr_init, index_init , index_last , dev)',
+        'result' : 'arrSlice(arr_init, index_init , index_last , dev)',
         'arr_init' : arr_init,
         'arr_res' : arr_res,
         'index_init' : index_init,
@@ -674,6 +675,7 @@ function copyObjToAssign(obj_init, dev){
 /**
  * Trane split <=> join in the task
  * add word in property when this string
+ * add_cls = 'menu_2'
  * var obj_any = {
  *  className : 'open menu'
  * };
@@ -711,3 +713,112 @@ function addClasses(obj_any, className, add_cls, dev){
         return obj_res;
     }
 }
+
+/**
+ * Transformation 'qwed-ceq-vgrw'
+ * to qwedCeqVgrw
+ * @param  {} str_init
+ * @param  {} dev
+ */
+function strCamelize(str_init, dev){
+    dev = dev || false;
+
+    var arr = str_init.split('');
+
+    for (var i = 0 ; i < arr.length  ; i++){
+        if (arr[i] == '-'){
+            var item = arr[i+1];
+            arr.splice(i , 2 , item.toUpperCase());
+        }
+        str_res = arr.join('');
+    }
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'strCamelize(arr_init, dev)',
+        'str_init' : str_init,
+        'str_res' : str_res
+        };
+    }
+    else
+    {
+        return str_res;
+    }
+}
+
+/**
+ * Transformation 'qwed-ceq-vgrw'
+ * to qwedCeqVgrw
+ * @param  {} str_init
+ * @param  {} dev
+ */
+function strCamelize2(str_init, dev){
+    dev = dev || false;
+
+    var arr = str_init.split('-');
+
+    for (var i = 0 ; i < arr.length  ; i++){
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        }
+        str_res = arr.join('');
+
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'strCamelize2(arr_init, dev)',
+        'str_init' : str_init,
+        'str_res' : str_res
+        };
+    }
+    else
+    {
+        return str_res;
+    }
+}
+
+/**
+ * Trane split <=> join in the task
+ * remove_cls word in property when this string
+ * remove_cls = 'menu'
+ * var obj_any = {
+ *  className : 'open menu'
+ * };
+ * @param  {} obj_any
+ * @param  {} className
+ * @param  {} remove_cls
+ * @param  {} dev
+ */
+function removeClasses(obj_any, className, remove_cls, dev){
+    dev = dev || false;
+
+    var obj_res = copyObjToAssign(obj_any);
+
+    var arr_init = obj_any.className ? obj_any.className.split(' ') : [] ;
+    for(var i = 0 ; i < arr_init.length ; i++){
+        if(arr_init[i] == remove_cls) {
+            arr_init.splice(i , 1);
+            i-- ;
+        }
+    }
+
+        obj_res.className = arr_init.join(' ');
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'removeClasses(obj_any, className, add_cls, dev)',
+        'obj_any' : obj_any ,
+        'arr_init' : arr_init ,
+        'remove_cls' : remove_cls,
+        'obj_res' : obj_res
+        };
+    }
+    else
+    {
+        return obj_res;
+    }
+}
+
+
