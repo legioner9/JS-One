@@ -474,19 +474,54 @@ arr_res = [];
 // });
 // col(arr_res);
 
-function funcName(arr_init, dev){
+arr_res = [];
+arr = [1,2,3,4,5]
+
+function getSum(arr_init, dev){
     dev = dev || false;
+
+    if(!arr.length) return;
+
+    total_sum = arr_init.reduce((function(sum , item ){
+        arr_res.push(sum);
+        // col(arr_res);
+        return sum+item;
+        // define (arr_res = [];) before (ar.filter)
+        // alternate ad (arr_res = arr_init;)
+        // redifine (arr_res = [];) before (ar.filter)
+    
+        results = {
+    
+            'result' : 'function(item , i , arr_init)',
+            'arr_init' : arr_init,
+            'arr_res' : arr_res
+            };
+    
+        return ;
+    
+    }))
+
+    arr_res.push(total_sum);
 
     if(dev)
     {return result = {
         'dev' : dev,
-        'result' : 'funcName(arr_init, dev)',
+        'result' : 'getSum(arr_init, dev)',
         'arr_init' : arr_init,
         'arr_res' : arr_res
         };
     }
     else
     {
-        return ;
+        return arr_res;
     }
 }
+
+// col(getSum(arr, true));
+
+function sayHi(){
+    for (var i = 0 ; i < arguments.length ; i++){
+        col(arguments[i] + ' ' + 'Hi)))');
+    }
+}
+sayHi('roly' , 'pussy');

@@ -32,9 +32,43 @@
 // Правый сдвиг, переносящий знак	a >> b	Сдвигает двоичное представление a на b битов вправо, отбрасывая сдвигаемые биты.
 // Правый сдвиг с заполнением нулями	a >>> b	Сдвигает двоичное представление a на b битов вправо, отбрасывая сдвигаемые биты и добавляя нули слева.
 
+// Методы массивов:
 
+// splice() !
+// join из массива в строку
+// split из строки в массив
+// alert( new Array(4).join("ля") ); // ляляля
 
+// push/pop, shift/unshift, splice – для добавления и удаления элементов.
+// join/split – для преобразования строки в массив и обратно.
+// slice – копирует участок массива.
+// sort – для сортировки массива. Если не передать функцию сравнения – сортирует элементы как строки.
+// reverse – меняет порядок элементов на обратный.
+// concat – объединяет массивы.
+// indexOf/lastIndexOf – возвращают позицию элемента в массиве (не поддерживается в IE8-).
+// Дополнительно:
 
+// Object.keys(obj) возвращает массив свойств объекта.
+
+// str.toUpperCase();
+
+// str.toLowerCase();
+
+// arr.forEach(callback(item , i , arr_init)); All item
+
+// arr.filter(callback(item , i , arr_init)); If true
+
+// var names = ['HTML', 'CSS', 'JavaScript'];
+
+// var nameLengths = names.map(function(name) {
+//   return name.length;
+// });
+
+// получили массив с длинами
+// alert( nameLengths ); // 4,3,10
+
+// Метод «arr.every(callback[, thisArg])» возвращает true, если вызов callback вернёт true для каждого элемента arr.
+// Метод «arr.some(callback[, thisArg])» возвращает true, если вызов callback вернёт true для какого-нибудь элемента arr.
 
 /**
  * Return integer as float without part after dot
@@ -69,7 +103,7 @@ function sumTo(n){
     return su;
 }
 /**
- * Возвращает последовательно числа 
+ * Возвращает последовательно числа
  * Фиббоначи от 0 до n-1
  * @param  {} n
  */
@@ -78,11 +112,11 @@ function fib(n){
         f2 = 1;
         if(n==0) return 1;
         else{
-            
+
             for(var i=0; i<n ; i++){
                 s2 = f1+f2;
                 s1 = f2;
-    
+
                 f1 = s1;
                 f2 = s2;
             }
@@ -821,4 +855,156 @@ function removeClasses(obj_any, className, remove_cls, dev){
     }
 }
 
+/**
+ * FICH
+ * Recursiv function for print
+ * all property of linear list
+ *
+ *obj_list = {
+ *  value : 1,
+ *  next : {
+ *      value : 2,
+ *      next : {
+ *          value : 3,
+ *          next : null
+ *          }
+ *      }
+ *  };
+ * @param  {} list
+ */
+function printList2(list){
+    col(list.value);
+    if(list.next){
+        printList2(list.next);
+    }
+}
+/**
+ * Altrnativ for recusiv linear list
+ * obj_list = {
+ *  value : 1,
+ *  next : {
+ *      value : 2,
+ *      next : {
+ *          value : 3,
+ *          next : null
+ *          }
+ *      }
+ *  };
+ * @param  {} list
+ */
+function printList(list){
+    var tmp = list;
+    while(tmp){
+        col(tmp.value);
+        tmp = tmp.next;
+
+    }
+}
+
+/**
+ * @param  {} arr_init
+ * @param  {} dev
+ */
+function arrCleanAnagramm(arr_init, dev){
+    dev = dev || false;
+
+    var obj_res = {};
+
+    for (var i = 0 ; i < arr.length ; i++){
+        var key = arr[i].toLowerCase().split('').sort().join('');
+        obj_res[key] = arr[i];
+    }
+    var j = 0;
+    var arr_res = [];
+    for (var key in obj_res){
+        arr_res[j] = obj_res[key];
+        j++;
+    }
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'aclean(arr_init, dev)',
+        'arr_init' : arr_init,
+        'arr_res' : arr_res
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
+
+/**
+ * Remove duplicate items from arr_init
+ * @param  {} arr_init
+ * @param  {} dev
+ */
+function arrUniqueItem(arr_init , dev){
+    dev = dev || false;
+
+        var obj_res = {};
+    for (var i = 0 ; i < arr_init.length ; i++){
+        obj_res[arr_init[i]]= arr_init[i];
+        }
+    arr_res = [];
+    for (key in obj_res) arr_res.push(obj_res[key]);
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'unique(strings, dev)',
+        'arr_init' : strings,
+        'arr_res' : arr_res
+        };
+    }
+    else
+    {
+        return arr_res;
+    }
+}
+
+/**
+ * Function to sort all
+ * @param  {} function(item
+ * @param  {} i
+ * @param  {} arr_init
+ */
+arr.forEach(function(item , i , arr_init ){
+    dev = dev || false;
+
+    arr_res = arr_init;
+
+    results = {
+        'dev' : dev ,
+        'result' : 'function(item , i , arr_init)',
+        'arr_init' : arr_init,
+        'arr_res' : arr_res
+        };
+
+});
+
+/**
+ * Functiot to last result
+ * @param  {} function(prev_return_fun
+ * @param  {} item
+ * @param  {} i
+ * @param  {} arr_init
+ */
+last_return_fun = arr_s.reduce((function(prev_return_fun , item , i , arr_init){
+
+    // define (arr_res = [];) before (ar.filter)
+    // alternate ad (arr_res = arr_init;)
+    // redifine (arr_res = [];) before (ar.filter)
+
+    results = {
+
+        'result' : 'function(item , i , arr_init)',
+        'arr_init' : arr_init,
+        'arr_res' : arr_res
+        };
+
+    return ;
+
+}), init_value);
 
