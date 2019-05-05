@@ -70,6 +70,35 @@
 // Метод «arr.every(callback[, thisArg])» возвращает true, если вызов callback вернёт true для каждого элемента arr.
 // Метод «arr.some(callback[, thisArg])» возвращает true, если вызов callback вернёт true для какого-нибудь элемента arr.
 
+// getFullYear()
+// Получить год (из 4 цифр)
+// getMonth()
+// Получить месяц, от 0 до 11.
+// getDate()
+// Получить число месяца, от 1 до 31.
+// getHours(), getMinutes(), getSeconds(), getMilliseconds()
+// Получить соответствующие компоненты.
+// Дополнительно можно получить день недели:
+
+// getDay()
+// Получить номер дня в неделе. Неделя в JavaScript начинается с воскресенья, так что результат будет числом от 0(воскресенье) до 6(суббота).
+// getTime()
+// Возвращает число миллисекунд, прошедших с 1 января 1970 года GMT+0, то есть того же вида, который используется в конструкторе new Date(milliseconds).
+
+// getTimezoneOffset()
+// Возвращает разницу между местным и UTC-временем, в минутах.
+// Следующие методы позволяют устанавливать компоненты даты и времени:
+
+// setFullYear(year [, month, date])
+// setMonth(month [, date])
+// setDate(date)
+// setHours(hour [, min, sec, ms])
+// setMinutes(min [, sec, ms])
+// setSeconds(sec [, ms])
+// setMilliseconds(ms)
+// setTime(milliseconds) (устанавливает всю дату по миллисекундам с 01.01.1970 UTC)
+
+
 /**
  * Return integer as float without part after dot
  * @param  {} float
@@ -686,7 +715,7 @@ function copyObjToKey(obj_init, dev){
 }
 
 /**
- * Copy obj_init by fssign
+ * Copy obj_init by assign
  * @param  {} obj_init
  * @param  {} dev
  */
@@ -1008,3 +1037,78 @@ last_return_fun = arr_s.reduce((function(prev_return_fun , item , i , arr_init){
 
 }), init_value);
 
+/**
+ * @param  {} obj_init
+ * @param  {} dev
+ */
+function objCopyPropFromSrc(obj_init, dev){
+    dev = arguments[(arguments.length - 1)] || false;
+    obj_init = arguments[0];
+    obj_res = {};
+
+    for (var i = 0 ; i < arguments.length-1 ; i++){
+        // var obj_curr = arguments[i];
+        var obj_curr = arguments.callee.arguments[i];
+        col(obj_res);
+        for (var key in obj_curr) {
+            obj_res[key] = obj_curr[key];
+        }
+    }
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'funcName(arr_init, dev)',
+        'obj_init' : obj_init,
+        'obj_res' : obj_res
+        };
+    }
+    else
+    {
+        return obj_res;
+    }
+}
+
+/**
+ * @param  {} obj_arg
+ * @param  {} dev
+ */
+function objFuncObjArg(obj_arg, dev){
+    dev = dev || false;
+
+    // col(obj_arg.prop_1);
+    // col(obj_arg.prop_2);
+    // col(obj_arg.prop_3);
+
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'objFuncObjArg(obj_arg, dev)',
+        'obj_arg' : obj_arg,
+        // 'arr_res' : arr_res
+        };
+    }
+    else
+    {
+        return ;
+    }
+}
+
+/**
+ * @param  {} arr_init
+ */
+function sumArg(arr_init){
+    // dev = dev || true;
+    res = 0;
+    for (var i = 0 ; i < arguments.length ; i++){
+        res += arguments[i];
+    }
+
+    return result = {
+
+        'result' : 'sumArg(arr_init)',
+        'arr_init' : res,
+        // 'arr_res' : arr_res
+        };
+
+    }
