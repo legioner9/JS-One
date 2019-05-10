@@ -2,8 +2,6 @@
 	excludesfile = ~/.gitexcludes
 	node_modules
 	public
-node_modules
-public
 dist
 coverage
 .idea
@@ -13,3 +11,11 @@ test
 docs
 package-lock.json
 gist
+app/fonts/
+app/img/
+app/php/
+gulp-tasks/
+*.[oa]
+*~
+local_history.*
+MyOne

@@ -54,7 +54,7 @@
 
 // str.toLowerCase();
 
-// arr.forEach(callback(item , i , arr_init)); All item
+// arr.forEach(callback(item , i , arr_innii)); All item
 
 // arr.filter(callback(item , i , arr_init)); If true
 
@@ -1100,7 +1100,8 @@ function objFuncObjArg(obj_arg, dev){
 function sumArg(arr_init){
     // dev = dev || true;
     res = 0;
-    for (var i = 0 ; i < arguments.length ; i++){
+    let res;
+    for (let i = 0; i < arguments.length; i++) {
         res += arguments[i];
     }
 
