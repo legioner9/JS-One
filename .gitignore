@@ -1,7 +1,6 @@
 [core]
-	excludesfile = ~/.gitexcludes
-	node_modules
-	public
+node_modules
+public
 dist
 coverage
 .idea
@@ -15,7 +14,7 @@ app/fonts/
 app/img/
 app/php/
 gulp-tasks/
-*.[oa]
-*~
 local_history.*
 MyOne
+app/js/Test.php
+js-one.*
