@@ -217,6 +217,7 @@ str.length;
  * @param  {} str
  * @param  {} serch
  */
+
 function allPos(str , serch){
     var pos = -1;
     while(( pos = str.indexOf(serch , pos+1)) !== -1 ){
@@ -1019,7 +1020,7 @@ arr.forEach(function(item , i , arr_init ){
  * @param  {} item
  * @param  {} i
  * @param  {} arr_init
- */
+ */0
 last_return_fun = arr_s.reduce((function(prev_return_fun , item , i , arr_init){
 
     // define (arr_res = [];) before (ar.filter)
