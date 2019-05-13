@@ -128,7 +128,7 @@ var date_options = {
     second: 'numeric'
   };
 
-  var d = new Date;
+var d = new Date, res_time;
 //   col(+d);
 // col(Date(+d));
 // col(Date((d.setDate(d.getDate() + 1))));
@@ -153,6 +153,7 @@ for (var i = 0 ; i < 10000 ; i++){
  * @returns {{result: string, dev: (*|boolean), res_time: (number|*)}}
  * @constructor
  */
+
 function TimingArrIn(arr_ini, dev){
     dev = dev || false;
 let curr_time = Date.now();
@@ -160,24 +161,26 @@ for (var key in arr_ini){
     arr_ini[key] = arr_ini[key] + 1;
 }
 res_time = Date.now() - curr_time;
-    if(dev)
-    {return result = {
-        'dev' : dev,
-        'result' : 'TimingArrIn(arr_ini, dev)',
-        'res_time' : res_time
+    if (dev) {
+
+        return result = {
+            'dev': dev,
+            'result': 'TimingArrIn(arr_ini, dev)',
+            'res_time': res_time
         };
-    }
-    else {return ;}}
+    } else {
+        return;
+    }}
 
 /**
  *
  * @param arr_ini
- * @param dev
- * @returns {{result: string, dev: (* | boolean), res_time: (number | *)}}
+ * @param dev_1
+ * @returns {{result: string, dev_1: (* | boolean), res_time: (number | *)}}
  * @constructor
  */
-function TimingArrLength(arr_ini, dev){
-    dev = dev || false;
+function TimingArrLength(arr_ini, dev_1){
+    dev_1 = dev_1 || false;
 
 curr_time = Date.now();
 
@@ -185,10 +188,10 @@ for (var i = 0 ; i < arr_ini.length ; i++){
     arr_ini[i] = arr_ini[i] + 1;
 }
 res_time = Date.now() - curr_time;
-    if(dev)
+    if(dev_1)
     {return result = {
-        'dev' : dev,
-        'result' : 'TimingArrIn(arr_ini, dev)',
+        'dev_1' : dev_1,
+        'result' : 'TimingArrIn(arr_ini, dev_1)',
         'res_time' : res_time
         };
     }
