@@ -7,7 +7,12 @@ function col(volume){
 }
 
 
-
+/**
+ *
+ * @param obj_init
+ * @param dev
+ * @returns {{}|*|{result: string, dev: any | boolean, obj_res: ({}|*), obj_init: *}}
+ */
 function objCopyPropFromSrc(obj_init, dev) {
     dev = arguments[(arguments.length - 1)] || false;
     obj_init = arguments[0];
@@ -190,8 +195,8 @@ for (var i = 0 ; i < arr_ini.length ; i++){
 res_time = Date.now() - curr_time;
     if(dev_1)
     {return result = {
-        'dev_1' : dev_1,
         'result' : 'TimingArrIn(arr_ini, dev_1)',
+        'dev_1' : dev_1,
         'res_time' : res_time
         };
     }
@@ -202,9 +207,10 @@ res_time = Date.now() - curr_time;
 }
 
 col(TimingArrIn(arr_10000 , true));
+
 col(TimingArrLength(arr_10000 , true));
 
-var options = {
+var options_toLocaleString = {
     era: 'long',
     year: 'numeric',
     month: 'long',
@@ -215,5 +221,61 @@ var options = {
     minute: 'numeric',
     second: 'numeric'
   };
-col((new Date( Date.now())).toLocaleString("ru", options));
-// col(ddd.toDateString());
+
+
+col(((new Date( )).toLocaleString("ru", options_toLocaleString)));
+
+// col(dd.toDateString("ru", options));
+d = new  Date();/*TODO:U*/
+// TODO: 16.05.2019  
+// col(d);
+// col(Date.parse(d));
+// col((new Date(d.setHours(d.getHours()+3))).toLocaleString("ru", options));
+//
+// console.time('q');
+// var s = [];
+// for (let i = 0; i < 10000; i++) {
+//     s[i] = i;
+// }
+// var s = [];
+// console.timeEnd('q');
+//
+// col(Date.now().toLocaleString("ru", options));
+
+var date = new Date(2012, 1, 20, 3, 12);
+col(date.toLocaleString("ru", options_toLocaleString));
+var date1 = new Date(2019,11,6);
+// col(date.getDay());
+
+var param_1 =  new  Date();
+col(getWeekDay(param_1 , false));
+
+function getWeekDay(param, dev){
+    dev = dev || false;
+
+    week =
+        ['воскресенье',
+            'понедельник',
+            'вторник' ,
+            'среда' ,
+            'четверг' ,
+            'пятница' ,
+            'суббота'
+    ]
+    result_week = week[param.getDay()]
+    if(dev)
+    {return result = {
+        'dev' : dev,
+        'result' : 'getWeekDay(param, dev)' ,
+        'result_week' : result_week
+        };
+    }
+    else
+    {
+        return result_week ;
+    }
+}
+
+col(date.getFullYear());
+var date2 = new Date(date1 - date);
+real_year =( date2).getFullYear()-1970;

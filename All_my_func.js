@@ -1114,3 +1114,70 @@ function sumArg(arr_init){
         };
 
     }
+
+
+/**
+ * FICH
+ * date.toLocaleString("ru", options_toLocaleString)
+ * @type {{month: string, hour: string, era: string, year: string, timezone: string, weekday: string, day: string, minute: string, second: string}}
+ */
+var options_toLocaleString = {
+    era: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'long',
+    timezone: 'UTC',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+};
+
+
+/**
+ * FICH
+ * console.time
+ */
+console.time('q');
+console.timeEnd('q');
+
+
+
+/**
+ * FICH
+ * @returns {function(): function(): number}
+ * col(fx()()());
+ */
+var x = 1;
+function fx() {
+    var y = 2;
+    return  function fy() {
+        var z = 3;
+        return function fz() {
+            return x + y + z;
+        }
+    }
+}
+
+
+/**
+ * FICH
+ * @returns {function(): number}
+ * Counter with methods
+ */
+function  makeCountter() {
+    var cur_count = 1;
+    function count() {
+        return cur_count++;
+    }
+    count.Set = function(value) {
+        cur_count = value
+    }
+    count.Reset = function Resets() {
+        cur_count = 1;
+    }
+    count.Real = function Reals() {
+        return  cur_count;
+    }
+    return count;
+}

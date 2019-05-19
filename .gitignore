@@ -18,3 +18,6 @@ local_history.*
 MyOne
 app/js/Test.php
 js-one.*
+uml
+.nyc_output
+patches
