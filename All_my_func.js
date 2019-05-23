@@ -1164,6 +1164,11 @@ function fx() {
  * FICH
  * @returns {function(): number}
  * Counter with methods
+ * var mc_1 = makeCountter();
+ mc_1.Reset();
+ mc_1.Set(4);
+ col(mc_1());
+ col(mc_1.Real());
  */
 function  makeCountter() {
     var cur_count = 1;
@@ -1180,4 +1185,37 @@ function  makeCountter() {
         return  cur_count;
     }
     return count;
+}
+
+/**
+ * FICH
+ *#closures
+ * filterFuncS
+ * @param arr_init
+ * @param func
+ * @returns {Array}
+ */
+function filterFuncS(arr_init , func) {
+    var arr_res = [];
+    for (var i = 0; i <arr_init.length ; i++) {
+        var item = arr_init[i];
+        if (func(item)) {
+            arr_res.push(item);
+        }
+    }
+    return arr_res;
+}
+
+/**
+ * FICH
+ * func for filterFuncS - #closures
+ * @param a
+ * @param b
+ * @returns {function(*): boolean}
+ */
+function inBetweenS(a ,b) {
+    var s = 8;
+    return  function I(init) {
+        return a < init && init < b;
+    };
 }
