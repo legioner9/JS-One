@@ -123,3 +123,25 @@
     }
 
 })();
+
+/**
+ * FICH
+ * #chaining #this
+ * @type {{show: (function(): Ladd), step: number, up: (function(): Ladd), down: (function(): Ladd)}}
+ * Ladd.up().up().up().down().show();
+ */
+var Ladd = {
+    step : 0,
+    up : function (){
+        this.step++;
+        return this;
+    },
+    down : function (){
+        this.step--;
+        return this;
+    },
+    show : function () {
+        col(this.step);
+        return this
+    }
+}

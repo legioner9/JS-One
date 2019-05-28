@@ -1333,3 +1333,45 @@ function makeArmy_5() {
 
     return shooters;
 }
+
+/**
+ * FICH
+ * #chaining #this
+ * @type {{show: (function(): Ladd), step: number, up: (function(): Ladd), down: (function(): Ladd)}}
+ * Ladd.up().up().up().down().show();
+ */
+var Ladd = {
+    step : 0,
+    up : function (){
+        this.step++;
+        return this;
+    },
+    down : function (){
+        this.step--;
+        return this;
+    },
+    show : function () {
+        col(this.step);
+        return this
+    }
+}
+
+
+/**
+ * FICH
+ * #clousure #callchain
+ * col(sumS(1)(2)(3));
+ * @param a
+ * @returns {function(*): function(*)}
+ */
+function sumS(a) {
+    var agr = a ;
+    function A(b) {
+        agr +=b;
+        return A;
+    }
+    A.toString = function () {
+        return agr;
+    }
+    return A;
+}

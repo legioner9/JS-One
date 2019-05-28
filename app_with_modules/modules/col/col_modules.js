@@ -5,6 +5,9 @@
     function col(volume) {
         console.log(volume);
     }
+    col.rus = function(){
+        col('rus');
+    }
     window.col = col;
 }());
 // Z();
