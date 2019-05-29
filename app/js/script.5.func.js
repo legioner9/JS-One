@@ -2,9 +2,9 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 
-function col(volume){
-    console.log(volume);
-}
+// function col(volume){
+//     console.log(volume);
+// }
 
 // function checkAge(age) {
 //     if (age > 18) {
@@ -337,4 +337,55 @@ function sumS(a) {
      }
      return A;
 }
-col(sumS(1)(2)(3));
+// col(sumS(1)(2)(3));
+
+function Animal(name) {
+    this.name = name;
+    this.canWalk = true;
+}
+
+// var animal = new Animal("ёжик");
+// Animal("joss");
+function UserS(name, surname) {
+    this.str = 'Hi !'
+    this.sayS = function () {
+        col(this.str + name +surname);
+    }
+}
+// us_1 = new UserS('names', 'surnames');
+// // us_1.str = 'Deyr! '
+// // us_1.sayS();
+
+function CalcS() {
+    // this.a;
+    // this.b;
+    this.read = function () {
+        this.a = +prompt( 'a = ' , 0)
+        this.b = +prompt( 'b = ' , 0)
+    }
+    this.sum = function () {
+        var s = this.a + this.b;
+        col('a+b = ' + s)
+    } ,
+    this.mul = function () {
+        var m = this.a * this.b;
+        col('a*b =' + m)
+    }
+}
+
+// cal_1 = new CalcS();
+// cal_1.read();
+// cal_1.sum();
+// cal_1.mul();
+ 
+function Accumulator(ini) {
+    this.value = ini;
+    this.read = function () {
+        var delt = +prompt('add' , 0);
+        this.value += delt;
+    }
+}
+var accumulator = new Accumulator(1); // начальное значение 1
+accumulator.read(); // прибавит ввод prompt к текущему значению
+accumulator.read(); // прибавит ввод prompt к текущему значению
+col( accumulator.value ); // выведет текущее значение
