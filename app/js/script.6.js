@@ -285,9 +285,86 @@ function applyAll_0() {
     return iniFunc.apply(null, arr_arg);
 }
 
-col(applyAll(Math.min, 1, 2, 10));
+// col(applyAll_1(Math.min, 1, 2, 10));
 
 function applyAll_1(func_ini) {
-    return func_ini.apply(null , [].slice.call(arguments, 1));
+    return func_ini.apply(null, [].slice.call(arguments, 1));
 }
 
+var us_11 = {
+    name: 'Stesha',
+    sayAny: function () {
+        return col('Yio  ' + this.name)
+    }
+}
+
+// var s = setTimeout(function() {us_11.sayAny} , 1000);
+
+function Du() {
+    return us_11.sayAny();
+}
+
+// Du();
+// us_11.sayAny();
+
+function mybind(func_ini, context) {
+    return function U() {
+        return func_ini.apply(context, arguments);
+    }
+}
+
+function mybind_2(func_ini, context) {
+    col(arguments);
+    func_ini.apply(context, arguments);
+
+}
+
+function Coll(a, b) {
+    col(this);
+    col(a + b);
+}
+
+// var ret_1 = mybind_1(Coll, 'Susrsr');
+// var ret_2 = mybind_2(Coll, 'Susrsr');
+// ret_1(2, 5);
+//
+// ret_2(3, 7);
+
+
+// function A1(a) {
+//     var vol1 = 'wery';
+//     col(arguments);
+//     return function A2(b) {
+//         col(arguments);
+//
+//         var vol2 = 43;
+//         return function A3(c) {
+//             col(arguments);
+//             col(b + c);
+//             return col(vol1 + vol2);
+//         }
+//     }
+// }
+//
+// A1(3)(4)(5);
+
+function  gon() {
+    col(this);
+}
+// gon.bind('rt')();
+
+user_pr = {
+    a : 12,
+    fu_1 : function () {
+        col(this.a);
+    }
+}
+
+for (var prop in user_pr) {
+    if( typeof user_pr[prop] == "function"){
+        user_pr[prop] = user_pr[prop].bind(user_pr)
+    }
+}
+
+user_pr.a = 77;
+user_pr.fu_1();

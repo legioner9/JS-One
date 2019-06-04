@@ -1592,3 +1592,28 @@ function sumArg_3() {
 function applyAll_1(func_ini) {
     return func_ini.apply(null, [].slice.call(arguments, 1));
 }
+
+/**
+ * FICH
+ * #mybind
+ * @param func_ini
+ * @param context
+ * @returns {function(): *}
+ */
+function mybind(func_ini, context) {
+    return function U() {
+        return func_ini.apply(context, arguments);
+    }
+}
+
+/**
+ * FICH
+ * #bind
+ * bindAllProp
+ */
+for (var prop in user_pr) {
+    if( typeof user_pr[prop] == "function"){
+        user_pr[prop] = user_pr[prop].bind(user_pr)
+    }
+}
+
