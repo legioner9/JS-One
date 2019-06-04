@@ -1612,8 +1612,21 @@ function mybind(func_ini, context) {
  * bindAllProp
  */
 for (var prop in user_pr) {
-    if( typeof user_pr[prop] == "function"){
+    if (typeof user_pr[prop] == "function") {
         user_pr[prop] = user_pr[prop].bind(user_pr)
     }
 }
 
+/**
+ * FICH
+ * #ask
+ * @param admin_qestion
+ * @param true_ansver
+ * @param yes
+ * @param no
+ */
+function askQuestionYesNo(admin_qestion, true_ansver, yes, no) {
+    var user_anver = prompt(admin_qestion, '');
+    if (user_anver == true_ansver) yes();
+    else no();
+}

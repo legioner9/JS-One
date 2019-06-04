@@ -307,9 +307,11 @@ function Du() {
 // Du();
 // us_11.sayAny();
 
-function mybind(func_ini, context) {
-    return function U() {
-        return func_ini.apply(context, arguments);
+function T() {
+    return function mybind_3(func_ini, context) {
+        return function U() {
+            return func_ini.apply(context, arguments);
+        }
     }
 }
 
@@ -348,23 +350,186 @@ function Coll(a, b) {
 //
 // A1(3)(4)(5);
 
-function  gon() {
+function gon() {
     col(this);
 }
+
 // gon.bind('rt')();
 
 user_pr = {
-    a : 12,
-    fu_1 : function () {
+    a: 12,
+    fu_1: function () {
         col(this.a);
     }
 }
 
 for (var prop in user_pr) {
-    if( typeof user_pr[prop] == "function"){
+    if (typeof user_pr[prop] == "function") {
         user_pr[prop] = user_pr[prop].bind(user_pr)
     }
 }
 
-user_pr.a = 77;
-user_pr.fu_1();
+// user_pr.a = 77;
+// user_pr.fu_1();
+
+function miu(a, b) {
+    return a - b;
+}
+
+var miu10 = miu.bind(null, 10);
+
+// col(miu10(2));
+
+function askQuestionYesNo(admin_qestion, true_ansver, yes, no) {
+    var user_anver = prompt(admin_qestion, 'yes?');
+    if (user_anver == true_ansver) yes();
+    else no();
+}
+
+admin = 'Free bird?';
+true_ansv = 'yes';
+
+function yess() {
+    col(':)');
+}
+
+function noo() {
+    col(':(');
+}
+
+// askQuestionYesNo(admin , true_ansv , yess , noo );
+
+function f() {
+    col(this);
+}
+
+var p = 345;
+var user = {
+    u: 'hello',
+    g: f.bind('cacadc', null)
+}
+
+// user.g();
+// col('cacadc');
+
+function f() {
+    col(this.name);
+}
+
+// f = f.bind( {name: 'Grisha'} ).bind( {name: 'Pasha'} );
+
+// var g = mybind(f, {name: 'Grisha'});
+// var z = mybind(mybind(f, {name: 'Grisha'}), {name: 'Pasha'});
+// z();
+
+// function sayHi() {
+//     col( this.name );
+// }
+// sayHi.test = 5;
+// col( sayHi.test ); // 5
+//
+// var bound = sayHi.bind({
+//     name: "Вася"
+// });
+
+// col( bound.test ); // что выведет? почему?
+
+"use strict";
+
+function ask(question, answer, ok, fail) {
+    var result = prompt(question, '');
+    if (result.toLowerCase() == answer.toLowerCase()) ok();
+    else fail();
+}
+
+// var user = {
+//     login: 'Василий',
+//     password: '12345',
+//
+//     loginOk: function() {
+//         col( this.login + ' вошёл в сайт' );
+//     },
+//
+//     loginFail: function() {
+//         col( this.login + ': ошибка входа' );
+//     },
+//
+//     checkPassword: function() {
+//         ask("Ваш пароль?", this.password, this.loginOk.bind(this), this.loginFail.bind(this));
+//     }
+// };
+//
+// user.checkPassword();
+
+function ask(question, answer, ok, fail) {
+    var result = prompt(question, '');
+    if (result.toLowerCase() == answer.toLowerCase()) ok();
+    else fail();
+}
+
+var user = {
+    login: 'Василий',
+    password: '12345',
+
+    // метод для вызова из ask
+    loginDone: function (result) {
+        alert(this.login + (result ? ' вошёл в сайт' : ' ошибка входа'));
+    },
+
+    checkPassword: function () {
+
+        ask("Ваш пароль?", this.password,
+            this.loginDone.bind(this, true),
+
+            this.loginDone.bind(this, false)
+        );
+    }
+};
+
+var vasya = user;
+user = null;
+
+// vasya.checkPassword();
+
+function my_bind(func_ini, context) {
+    return function () {
+        return func_ini.apply(context, arguments)
+    }
+}
+
+
+// var fu_a = function (d) {
+//       return col((this.a + this.b)*d);
+//   }
+
+
+function Ury(a, b) {
+    this.a = a;
+    this.b = b;
+    this.fu_a = function U(d) {
+        return col((this.a + this.b) * d);
+    }
+}
+
+var mu_4_8 = new Ury(4, 8);
+// mu_4_8.fu_a(2);
+
+var timers = {};// obj for timer
+
+
+
+function sS(a, b) {
+    return a + b;
+}
+
+var rec = my_dec_TimsDuring(fu , true);
+col(rec(30));
+
+
+function fu(n) {
+    return (n > 2) ? (fu(n - 1) + fu(n - 2)) : 1;
+}
+// var fibonD = timsDercor(fibon, 'during_fibon');
+// fibonD(4);
+// col(timers);
+// col(timers.during_fibon);
