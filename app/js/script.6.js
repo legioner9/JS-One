@@ -412,15 +412,16 @@ var user = {
 // user.g();
 // col('cacadc');
 
-function f() {
+function f_name() {
     col(this.name);
 }
 
 // f = f.bind( {name: 'Grisha'} ).bind( {name: 'Pasha'} );
 
-// var g = mybind(f, {name: 'Grisha'});
-// var z = mybind(mybind(f, {name: 'Grisha'}), {name: 'Pasha'});
-// z();
+var g = my_dec_Bind(f, {name: 'Grisha'});
+g();
+var z = my_dec_Bind(my_dec_Bind(f_name, {name: 'Grisha'}), {name: 'Pasha'});
+z();
 
 // function sayHi() {
 //     col( this.name );
@@ -522,8 +523,25 @@ function sS(a, b) {
     return a + b;
 }
 
+function my_dec_TimsDuring(func_ini, dev) {
+    dev = dev || false;
+    return function () {
+        var start_time = performance.now();
+        var result = func_ini.apply(this, arguments);
+        var during = performance.now() - start_time;
+        col(func_ini);
+        var arg = [].slice.call(arguments);
+        if (!dev) return result;
+        else return {
+            'result': result,
+            'arguments': arg,
+            'during': during
+        };
+    }
+}
+
 var rec = my_dec_TimsDuring(fu , true);
-col(rec(30));
+col(rec(4));
 
 
 function fu(n) {
