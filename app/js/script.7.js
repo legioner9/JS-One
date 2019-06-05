@@ -13,35 +13,14 @@ function f_name() {
 // var z = my_dec_Bind(my_dec_Bind(f_name, {name: 'Grisha'}), {name: 'Pasha'});
 // z();
 
-function checkNum(ini) {
-    return typeof ini == 'number';
-}
-
-function my_dec_CheckArg(fun_ini, arr_FuncCheckArg, dev) {
-    dev = dev || false;
-    return function U() {
-        for (var i = 0; i < arguments.length; i++) {
-            if (!arr_FuncCheckArg[i](arguments[i])) {
-                col(i + ' ' + arguments[i] + ' argument is not correct ! \n');
-                var j = false;
-            } else j = true;
-        }
-        if (!dev) {
-            if (j) return fun_ini.apply(this, arguments);
-            else return;
-        } else {
-            col(fun_ini);
-            col(arr_FuncCheckArg);
-            return col({
-                'aguments': arguments
-            })
-        }
-    }
-}
 
 function sS(a, b) {
     return a + b;
 }
 
-var ssS = my_dec_CheckArg(sS, [checkNum, checkNum]);
-ssS(6, 'yt');
+var ssS;
+ssS = my_dec_CheckArg(sS, [my_ch_checkNum, my_ch_checkNum],1);
+ssS('rtyrc', 4);
+col(res_my_dec_CheckArg);
+
+

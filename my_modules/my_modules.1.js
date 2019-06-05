@@ -35,16 +35,18 @@
         dev = dev || false;
         return function () {
             var start_time = performance.now();
-            var result = func_ini.apply(this, arguments);
+            var func_ini = func_ini.apply(this, arguments);
             var during = performance.now() - start_time;
             col(func_ini);
-            var arg = [].slice.call(arguments);
-            if (!dev) return result;
-            else return {
+            result_dec = {
                 'result': result,
                 'arguments': arg,
                 'during': during
-            };
+            }
+            func_ini.my_dec_TimsDuring = result_dec;
+            var arg = [].slice.call(arguments);
+            if (!dev) return func_ini;
+            else return result_dec;
         }
     }
 
@@ -61,25 +63,39 @@
      *}
      *
      * var ssS = my_dec_CheckArg(sS, [checkNum, checkNum]);
-     *
+     *col(res_my_dec_CheckArg[sS])
      *ssS(6, 'yt');
      * @param fun_ini
      * @param arr_FuncCheckArg
      * @param dev
      * @returns {U}
+     *
      */
+
     function my_dec_CheckArg(fun_ini, arr_FuncCheckArg, dev) {
-        dev = dev || false;
+        var dev = dev || false;
+        var arr_log_check = [];
         return function U() {
             for (var i = 0; i < arguments.length; i++) {
                 if (!arr_FuncCheckArg[i](arguments[i])) {
-                    col(i + ' ' + arguments[i] + ' argument is not correct ! \n');
+                    var curr_mes = (i + ' ' + arguments[i] + ' argument is not correct ! \n');
+                    col(curr_mes);
+                    arr_log_check.push(curr_mes);
                     var j = false;
                 } else j = true;
             }
+            result_dec = {
+                'arguments': arguments,
+                'log_check': arr_log_check,
+            }
+
+            res_my_dec_CheckArg[fun_ini] = result_dec;
             if (!dev) {
                 if (j) return fun_ini.apply(this, arguments);
-                else return;
+                else {
+                    col('error of arguments');
+                    return fun_ini.apply(this, arguments);
+                }
             } else {
                 col(fun_ini);
                 col(arr_FuncCheckArg);
@@ -89,6 +105,8 @@
             }
         }
     }
+
+    var res_my_dec_CheckArg = {};
 
     /**
      *
@@ -109,6 +127,7 @@
     }
 
     window.col = col;
+    window.res_my_dec_CheckArg = res_my_dec_CheckArg;
     window.my_ch_checkStr = my_ch_checkStr;
     window.my_ch_checkNum = my_ch_checkNum;
     window.my_dec_CheckArg = my_dec_CheckArg;
