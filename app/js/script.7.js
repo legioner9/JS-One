@@ -19,8 +19,12 @@ function sS(a, b) {
 }
 
 var ssS;
-ssS = my_dec_CheckArg(sS, [my_ch_checkNum, my_ch_checkNum],1);
+ssS = my_dec_CheckArg(sS, [my_ch_checkNum, my_ch_checkNum]);
 ssS('rtyrc', 4);
+col(res_my_dec_CheckArg);
+ssS(10, 4);
+col(res_my_dec_CheckArg);
+ssS(18, 7);
 col(res_my_dec_CheckArg);
 
 

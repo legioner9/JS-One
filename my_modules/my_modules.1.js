@@ -84,12 +84,38 @@
                     var j = false;
                 } else j = true;
             }
-            result_dec = {
-                'arguments': arguments,
-                'log_check': arr_log_check,
+
+            var arg = [].slice.call(arguments);
+
+            var add = [
+                arg,
+                fun_ini,
+                arr_log_check,
+                fun_ini.apply(this, arguments)
+           ];
+            var add = {
+               'arg' :arg,
+                'fun_ini' : fun_ini,
+                'arr_log_check' : arr_log_check,
+                'result' : fun_ini.apply(this, arguments)
             }
 
-            res_my_dec_CheckArg[fun_ini] = result_dec;
+
+            res_my_dec_CheckArg[fun_ini] = add;
+            // res_my_dec_CheckArg[fun_ini].arg = lr;
+            // col(res_my_dec_CheckArg[fun_ini].arg);
+            //
+            // var find_arg = res_my_dec_CheckArg[fun_ini].arg
+            //
+            // var cach_result = res_my_dec_CheckArg[fun_ini].lr.result;
+            // if (!res_my_dec_CheckArg[fun_ini].arg) {
+            //     var cur_res = res_my_dec_CheckArg[fun_ini].lr.result;
+            //     col('no cach');
+            // } else {
+            //     cur_res = cach_result;
+            // }
+
+            // else cur_res =
             if (!dev) {
                 if (j) return fun_ini.apply(this, arguments);
                 else {
@@ -105,8 +131,8 @@
             }
         }
     }
-
-    var res_my_dec_CheckArg = {};
+    var res_my_dec_CheckArg ={}
+    var res_my_dec_Cach_v1 = [];
 
     /**
      *
