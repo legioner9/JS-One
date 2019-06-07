@@ -20,10 +20,12 @@
      * @returns {function(): *}
      */
     function my_dec_Bind(func_ini, context) {
-        return function U() {
+        return function B() {
             return func_ini.apply(context, arguments);
         }
     }
+
+    var res_my_dec_TimsDuring = {};
 
     /**
      *During run of function ( dev - param show )
@@ -33,23 +35,27 @@
      */
     function my_dec_TimsDuring(func_ini, dev) {
         dev = dev || false;
-        return function () {
+        return function TD() {
             var start_time = performance.now();
-            var func_ini = func_ini.apply(this, arguments);
+            var func_res = func_ini.apply(this, arguments);
             var during = performance.now() - start_time;
-            col(func_ini);
-            result_dec = {
-                'result': result,
+            var arg = [].slice.call(arguments);
+            var result_dec = {
+                'result': func_res,
                 'arguments': arg,
                 'during': during
             }
-            func_ini.my_dec_TimsDuring = result_dec;
-            var arg = [].slice.call(arguments);
-            if (!dev) return func_ini;
-            else return result_dec;
+            res_my_dec_TimsDuring[func_ini] = result_dec;
+            if (!dev) return func_res;
+            else {
+                col(res_my_dec_TimsDuring);
+                return func_res;
+            }
         }
     }
 
+
+    var res_my_dec_CheckArg = {}
 
     /**
      * Checking Arg
@@ -75,7 +81,7 @@
     function my_dec_CheckArg(fun_ini, arr_FuncCheckArg, dev) {
         var dev = dev || false;
         var arr_log_check = [];
-        return function U() {
+        return function CA() {
             for (var i = 0; i < arguments.length; i++) {
                 if (!arr_FuncCheckArg[i](arguments[i])) {
                     var curr_mes = (i + ' ' + arguments[i] + ' argument is not correct ! \n');
@@ -84,72 +90,52 @@
                     var j = false;
                 } else j = true;
             }
-
+            var fun_res = fun_ini.apply(this, arguments);
             var arg = [].slice.call(arguments);
-
             var add = [
                 arg,
                 fun_ini,
-                fun_ini.apply(this, arguments)
+                arr_log_check,
+                fun_res
             ];
-            var add = {
-                'arg': arg,
-                'fun_ini': fun_ini,
-                'arr_log_check': arr_log_check,
-                'result': fun_ini.apply(this, arguments)
-            }
-
-
             res_my_dec_CheckArg[fun_ini] = add;
-            // res_my_dec_CheckArg[fun_ini].arg = lr;
-            // col(res_my_dec_CheckArg[fun_ini].arg);
-            //
-            // var find_arg = res_my_dec_CheckArg[fun_ini].arg
-            //
-            // var cach_result = res_my_dec_CheckArg[fun_ini].lr.result;
-            // if (!res_my_dec_CheckArg[fun_ini].arg) {
-            //     var cur_res = res_my_dec_CheckArg[fun_ini].lr.result;
-            //     col('no cach');
-            // } else {
-            //     cur_res = cach_result;
-            // }
-
-            // else cur_res =
             if (!dev) {
-                if (j) return fun_ini.apply(this, arguments);
+                if (j) return fun_res;
                 else {
                     col('error of arguments');
-                    return fun_ini.apply(this, arguments);
+                    return fun_res;
                 }
             } else {
-                col(fun_ini);
                 col(arr_FuncCheckArg);
-                return col({
+                col({
                     'aguments': arguments
                 })
+                return fun_res;
             }
         }
     }
 
-    var res_my_dec_CheckArg = {}
 
+    var res_my_dec_Cach_v1 = [];
 
     /**
-     *
+     *Cach v1
      * @param param
      * @param dev
      * @returns {{result: string, dev: (*|boolean)}}
      * @constructor
      */
+
     function my_dec_Cach_v1(fun_ini, dev) {
         dev = dev || false;
-        return function U() {
+        return function Cv1() {
             var arg = [].slice.call(arguments);
             for (let i = 0; i < res_my_dec_Cach_v1.length; i++) {
-                if (res_my_dec_Cach_v1[i][1] == arg &&
-                    res_my_dec_Cach_v1[i][2] == fun_ini) {
-                    return res_my_dec_Cach_v1[i][3]
+                if (res_my_dec_Cach_v1[i][0] == arg &&
+                    res_my_dec_Cach_v1[i][1] == fun_ini) {
                 }
+                col('call from cach \n' + res_my_dec_Cach_v1)
+                return res_my_dec_Cach_v1[i][2]
             }
             var fun_res = fun_ini.apply(this, arguments);
             var add = [
@@ -161,21 +147,47 @@
             return fun_res;
         }
 
-        if (dev) {
-            return result = {
-                'dev': dev,
-                'result': 'NAME_func(param, dev)'
-
-            };
-        } else {
-            return;
-        }
+        // if (dev) {
+        //     return result = {
+        //         'dev': dev,
+        //         'result': 'NAME_func(param, dev)'
+        //
+        //     };
+        // } else {
+        //     return;
+        // }
     }
 
-    var res_my_dec_Cach_v1 = [];
+    var res_my_dec_getObjClass = [];
 
     /**
-     *
+     * my_dec_getObjClass
+     * @param obj
+     * @returns {*}
+     */
+    function my_dec_getObjClass(obj_ini) {
+        var obj_res = {}.toString.call(obj_ini).slice(8, -1);
+
+        res_my_dec_getObjClass.push
+        ({
+            obj: obj_ini,
+            objClass: obj_res
+        });
+        return obj_ini;
+    }
+
+    /**
+     * ___getObjClass
+     * @param obj_ini
+     * @returns {string}
+     * @private
+     */
+    function ___getObjClass(obj_ini) {
+        return {}.toString.call(obj_ini).slice(8, -1);
+    }
+
+    /**
+     *checkNum
      * @param ini
      * @returns {boolean}
      */
@@ -184,7 +196,7 @@
     }
 
     /**
-     *
+     *checkStr
      * @param ini
      * @returns {boolean}
      */
@@ -194,12 +206,17 @@
 
     window.col = col;
     window.res_my_dec_CheckArg = res_my_dec_CheckArg;
-    window.my_dec_Cach_v1 = my_dec_Cach_v1;
+    window.res_my_dec_Cach_v1 = res_my_dec_Cach_v1;
+    window.res_my_dec_TimsDuring = res_my_dec_TimsDuring;
     window.my_ch_checkStr = my_ch_checkStr;
     window.my_ch_checkNum = my_ch_checkNum;
     window.my_dec_CheckArg = my_dec_CheckArg;
     window.my_dec_Bind = my_dec_Bind;
     window.my_dec_TimsDuring = my_dec_TimsDuring;
+    window.my_dec_Cach_v1 = my_dec_Cach_v1;
+    window.my_dec_getObjClass = my_dec_getObjClass;
+    window.___getObjClass = ___getObjClass;
+    window.res_my_dec_getObjClass = res_my_dec_getObjClass;
 
 }());
 // Z();

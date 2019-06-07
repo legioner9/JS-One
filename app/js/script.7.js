@@ -18,13 +18,20 @@ function sS(a, b) {
     return a + b;
 }
 
-var ssS;
-ssS = my_dec_CheckArg(sS, [my_ch_checkNum, my_ch_checkNum]);
-ssS('rtyrc', 4);
-col(res_my_dec_CheckArg);
-ssS(10, 4);
-col(res_my_dec_CheckArg);
-ssS(18, 7);
-col(res_my_dec_CheckArg);
 
+sS = my_dec_CheckArg(sS, [my_ch_checkNum, my_ch_checkNum]);
+sS = my_dec_Cach_v1(sS);
+sS = my_dec_TimsDuring(sS)
+// col(sS('rtyrc', 4));
+// col(res_my_dec_Cach_v1);
+// col(res_my_dec_TimsDuring);
+// col(sS('rtyrc', 4));
+// col(res_my_dec_Cach_v1);
+// col(res_my_dec_TimsDuring);
+// col(res_my_dec_TimsDuring);
+// col(res_my_dec_Cach_v1);
 
+col({}.toString.call(123)); // [object Number]
+
+my_dec_getObjClass("sdc");
+col(___getObjClass(1234))
