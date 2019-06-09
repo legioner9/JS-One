@@ -72,7 +72,7 @@ function formDate(ini_format_date) {
 var p = {
     r: 'rrr',
     date: new Date(),
-    toJSON : function () {
+    toJSON: function () {
 
 
     }
@@ -84,8 +84,6 @@ var pp = {
 // var stringify = JSON.stringify(pp);
 // col(stringify);
 // col(JSON.parse(stringify));
-
-
 
 
 // col(stringify);
@@ -118,11 +116,11 @@ var pp = {
 //
 
 
-
 //Эта функция запускает таймер
 function start() {
     window.timerId = window.setInterval(timer, 1000);
 }
+
 //Эта функция останавливает таймер
 function stop() {
     window.clearInterval(window.timerId);
@@ -131,6 +129,35 @@ function stop() {
 //Эта функция меняет value для инпута
 function timer() {
     var elem = document.getElementById('test');
-    elem.value = parseInt(elem.value)+1;
+    elem.value = parseInt(elem.value) + 1;
 }
+
+// var tr = setInterval(function () {
+//     i++;
+//     col(i);
+//     if (i > 20) clearInterval(tr);
+// }, 100)
+
+function printNum() {
+    var i = 1;
+    var tr = setInterval(function () {
+        col(i);
+        // if (i == 20) clearInterval(tr);
+        // i++;
+    }, 1000);
+}
+
+// printNum();
+
+function printNumbersInterval() {
+    var i = 1;
+    var timerId = setInterval(function() {
+        console.log(i);
+        if (i == 20) clearInterval(timerId);
+        i++;
+    }, 100);
+}
+
+// вызов
+printNumbersInterval();
 
