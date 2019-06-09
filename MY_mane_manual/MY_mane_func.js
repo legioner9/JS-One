@@ -1641,3 +1641,16 @@ function askQuestionYesNo(admin_qestion, true_ansver, yes, no) {
 ( typeof undefined ); // 'undefined'
 ( typeof null );      // 'object' (ошибка в языке)
 ( typeof alert );    // 'function'
+
+
+var i = 1;
+/**
+ * setTimeout
+ * #recurse #setTimeout
+ * @type {number}
+ */
+var to = setTimeout(function run() {
+    i++;
+    col(i+ '\n');
+    setTimeout(run , 100*i);
+}, 100);
