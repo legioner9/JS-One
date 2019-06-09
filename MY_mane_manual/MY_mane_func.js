@@ -1630,3 +1630,14 @@ function askQuestionYesNo(admin_qestion, true_ansver, yes, no) {
     if (user_anver == true_ansver) yes();
     else no();
 }
+
+
+/**
+ * # typeof
+ */
+( typeof 1 );         // 'number'
+( typeof true );      // 'boolean'
+( typeof "Текст" );   // 'string'
+( typeof undefined ); // 'undefined'
+( typeof null );      // 'object' (ошибка в языке)
+( typeof alert );    // 'function'

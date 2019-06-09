@@ -183,7 +183,7 @@
      * @private
      */
     function ___getObjClass(obj_ini) {
-        return {}.toString.call(obj_ini).slice(8, -1);
+        return {}.toString.call(obj_ini).slice(8, -1).toLowerCase();
     }
 
     /**
@@ -204,8 +204,27 @@
         return typeof ini == 'string';
     }
 
+    /**
+     * FICH
+     * date.toLocaleString("ru", options_toLocaleString)
+     * @type {{month: string, hour: string, era: string, year: string, timezone: string, weekday: string, day: string, minute: string, second: string}}
+     */
+    var ___options_toLocaleString = {
+        era: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        weekday: 'long',
+        timezone: 'UTC',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+    };
+
+
     window.col = col;
     window.res_my_dec_CheckArg = res_my_dec_CheckArg;
+    window.___options_toLocaleString = ___options_toLocaleString;
     window.res_my_dec_Cach_v1 = res_my_dec_Cach_v1;
     window.res_my_dec_TimsDuring = res_my_dec_TimsDuring;
     window.my_ch_checkStr = my_ch_checkStr;
