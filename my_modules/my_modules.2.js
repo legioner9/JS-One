@@ -221,6 +221,18 @@
         second: 'numeric'
     };
 
+    /**
+     *
+     * @param n
+     * @returns {number|*}
+     * @constructor
+     */
+    _fib = function nunN(n) {
+        if (n > 2) {
+            return nunN(n - 1) + nunN(n - 2)
+        } else return 1;
+    }
+
 
     window.col = col;
     window.res_my_dec_CheckArg = res_my_dec_CheckArg;
@@ -236,6 +248,7 @@
     window.my_dec_getObjClass = my_dec_getObjClass;
     window.___getObjClass = ___getObjClass;
     window.res_my_dec_getObjClass = res_my_dec_getObjClass;
+    window.Math._fib = _fib;
 
 }());
 // Z();

@@ -106,14 +106,14 @@ var pp = {
 // }
 
 
-// var i = 1;
-//
-// var to = setTimeout(function run() {
+var i = 1;
+
+var to = setTimeout(function run() {
 //     i++;
-//     col(i+ '\n');
-//     setTimeout(run , 100*i);
-// }, 100);
-//
+    col(i+ '\n');
+    setTimeout(run , 100*i);
+}, 100);
+
 
 
 //Эта функция запускает таймер
@@ -142,8 +142,8 @@ function printNum() {
     var i = 1;
     var tr = setInterval(function () {
         col(i);
-        // if (i == 20) clearInterval(tr);
-        // i++;
+        if (i == 20) clearInterval(tr);
+        i++;
     }, 1000);
 }
 
@@ -159,5 +159,5 @@ function printNumbersInterval() {
 }
 
 // вызов
-printNumbersInterval();
+// printNumbersInterval();
 
