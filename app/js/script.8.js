@@ -32,51 +32,44 @@ var i;
 //     } else return 1;
 // }
 
+
 var t1, t2;
 
+
 function hardWork() {
-    col(Math._fib(20));
+    Math._fib(10);
     for (i = 0; i < 1000; i++) hardWork[i % 2] = i;
-    t1 = Date.now()
+    t1 = performance.now()
     col(' time 1 ' + t1)
 }
 
-col('***');
 hardWork();
-col('**');
-setTimeout(function () {
-    t2 = Date.now()
+
+var fun_reserch = setTimeout(function () {
+    t2 = performance.now()
     col(' time 2 ' + t2);
     col(i);
-}, 100);
+}, 10);
 
 col('*');
-var y = function ___wateRes(res, delay, max_num_delay) {
-    for (var i = 0; i < max_num_delay; i++) {
-        col(res);
-        col(Date.now());
-        col(!res);
-        if (!res) {
-             var run = setTimeout(function () {
 
-            }, delay);
+// (my_dec_TimsDuring(Math._fib ))(25);
+
+
+
+
+    for (var i = 0 ; i <10 ; i++) {
+        Math._fib(35);
+        col(i);
+        col('t2 = ' + t2);
+        col(!(!t2));
+        if (!(!t2)) {
+            col('success , i = ' + i);
+             t2 - t1;
         }
     }
-}
-setTimeout('', 10000);
-// debugger;
-y(t2, 10000, 3);
-col('diff ==' + (t2 - t1));
 
-// function trr(intrv){
-//     setTimeout('' , intrv)
-// }
-// var ttt = my_dec_TimsDuring(trr, 1);
-// ttt(150);
-// // col(t2 - t1);
+col('Not success , i = ' + i)
 
-// var t1 = performance.now();
-// // var t2;
-// setTimeout(function () {
-//     window.t2 = performance.now()
-// }, 100);
+
+

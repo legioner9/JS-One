@@ -234,6 +234,7 @@
     }
 
 
+
     window.col = col;
     window.res_my_dec_CheckArg = res_my_dec_CheckArg;
     window.___options_toLocaleString = ___options_toLocaleString;
@@ -249,6 +250,7 @@
     window.___getObjClass = ___getObjClass;
     window.res_my_dec_getObjClass = res_my_dec_getObjClass;
     window.Math._fib = _fib;
+
 
 }());
 // Z();
