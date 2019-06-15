@@ -233,6 +233,44 @@
         } else return 1;
     }
 
+    var res_my_dec_setTimeout = {};
+
+
+    /**
+     *
+     * @param ini_fun
+     * @param id
+     * @param delay
+     * @returns {Function}
+     */
+    function my_dec_setTimeout(ini_fun, id, delay) {
+        return function () {
+            var context = this;
+            var arg = arguments;
+            res_my_dec_setTimeout[id] = setTimeout(function () {
+                ini_fun.apply(context, arg);
+            }, delay);
+        }
+    }
+
+    var res_my_dec_setInterval = {};
+
+    /**
+     *
+     * @param ini_fun
+     * @param id
+     * @param delay
+     * @returns {Function}
+     */
+    function my_dec_setInterval(ini_fun, id, delay) {
+        return function () {
+            let context = this;
+            let arg = arguments;
+            res_my_dec_setInterval[id] = setInterval(function () {
+                ini_fun.apply(context, arg);
+            }, delay);
+        }
+    }
 
 
     window.col = col;
@@ -247,8 +285,12 @@
     window.my_dec_TimsDuring = my_dec_TimsDuring;
     window.my_dec_Cach_v1 = my_dec_Cach_v1;
     window.my_dec_getObjClass = my_dec_getObjClass;
+    window.my_dec_setTimeout = my_dec_setTimeout;
+    window.my_dec_setInterval = my_dec_setInterval;
     window.___getObjClass = ___getObjClass;
     window.res_my_dec_getObjClass = res_my_dec_getObjClass;
+    window.res_my_dec_setTimeout = res_my_dec_setTimeout;
+    window.res_my_dec_setInterval = res_my_dec_setInterval;
     window.Math._fib = _fib;
 
 
