@@ -276,25 +276,44 @@
     /**
      *
      * @param cause
+     * @param id
      */
-    function my_Parse_Error(cause) {
+    function my_Parse_Error(cause, id) {
+        id = id || ' id = undefine value '
         this.message = cause.message;
         this.name = cause.name;
         this.cause = cause;
+        this.id = id;
         this.time = new Date();
         this.stack = cause.stack;
-        res_my_Parse_Error[this.time] = {
-            message : this.message,
-            name : this.name,
-            stack : this.stack,
-            cause : this.cause
+        res_my_Parse_Error[this.id] = {
+            message: this.message,
+            name: this.name,
+            stack: this.stack,
+            cause: this.cause,
+            time: this.time
         }
     }
+
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+        var string = msg.toLowerCase();
+        var substring = "script error";
+        if (string.indexOf(substring) > -1){
+            col('error not exist' )
+        }else {
+            var res = {
+                time : new Date(),
+                msg: msg,
+                url: url,
+                lineNo: lineNo,
+                columnNo: columnNo,
+                error: error
+            };
+            onerror.res = res;
+            col(res);}
+    };
+
     window.col = col;
-    window.res_my_dec_CheckArg = res_my_dec_CheckArg;
-    window.___options_toLocaleString = ___options_toLocaleString;
-    window.res_my_dec_Cach_v1 = res_my_dec_Cach_v1;
-    window.res_my_dec_TimsDuring = res_my_dec_TimsDuring;
     window.my_ch_checkStr = my_ch_checkStr;
     window.my_ch_checkNum = my_ch_checkNum;
     window.my_dec_CheckArg = my_dec_CheckArg;
@@ -305,11 +324,16 @@
     window.my_dec_setTimeout = my_dec_setTimeout;
     window.my_dec_setInterval = my_dec_setInterval;
     window.my_Parse_Error = my_Parse_Error;
-    window.___getObjClass = ___getObjClass;
+
+    window.res_my_dec_CheckArg = res_my_dec_CheckArg;
+    window.res_my_dec_Cach_v1 = res_my_dec_Cach_v1;
+    window.res_my_dec_TimsDuring = res_my_dec_TimsDuring;
     window.res_my_dec_getObjClass = res_my_dec_getObjClass;
     window.res_my_dec_setTimeout = res_my_dec_setTimeout;
     window.res_my_dec_setInterval = res_my_dec_setInterval;
     window.res_my_Parse_Error = res_my_Parse_Error;
+    window.___options_toLocaleString = ___options_toLocaleString;
+    window.___getObjClass = ___getObjClass;
     window.Math._fib = _fib;
 
 
