@@ -272,7 +272,24 @@
         }
     }
 
-
+    let res_my_Parse_Error = {}
+    /**
+     *
+     * @param cause
+     */
+    function my_Parse_Error(cause) {
+        this.message = cause.message;
+        this.name = cause.name;
+        this.cause = cause;
+        this.time = new Date();
+        this.stack = cause.stack;
+        res_my_Parse_Error[this.time] = {
+            message : this.message,
+            name : this.name,
+            stack : this.stack,
+            cause : this.cause
+        }
+    }
     window.col = col;
     window.res_my_dec_CheckArg = res_my_dec_CheckArg;
     window.___options_toLocaleString = ___options_toLocaleString;
@@ -287,10 +304,12 @@
     window.my_dec_getObjClass = my_dec_getObjClass;
     window.my_dec_setTimeout = my_dec_setTimeout;
     window.my_dec_setInterval = my_dec_setInterval;
+    window.my_Parse_Error = my_Parse_Error;
     window.___getObjClass = ___getObjClass;
     window.res_my_dec_getObjClass = res_my_dec_getObjClass;
     window.res_my_dec_setTimeout = res_my_dec_setTimeout;
     window.res_my_dec_setInterval = res_my_dec_setInterval;
+    window.res_my_Parse_Error = res_my_Parse_Error;
     window.Math._fib = _fib;
 
 

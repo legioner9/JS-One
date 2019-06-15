@@ -3,15 +3,22 @@
  */
 var arr_e = [];
 
-function ReadError(ident, cause) {
+function my_Parse_Error(cause) {
     this.message = cause.message;
+    this.name = cause.name;
     this.cause = cause;
-    this.name = 'ReadError';
+    this.time = new Date();
     this.stack = cause.stack;
+    res_my_Parse_Error[this.time] = {
+        message: this.message,
+        name: this.name,
+        stack: this.stack,
+        cause: this.cause
+    }
 }
 
 
-var data = '{ "name": Вася", "age": 30 }';
+var data = '{ "name": "Вася", "age": 30 }';
 
 function sery() {
 
@@ -22,23 +29,24 @@ function sery() {
             throw {message: 'fff'};
         }
     } catch (e) {
+
         if (e.message == 'fff') {
             col('name ' + e.name);
             col('message ' + e.message);
             col('stack ' + e.stack);
             col('cause ' + e);
+            // } else throw e; // пробрасываем
+        } else {
+            throw e;
         }
-       else throw e; // пробрасываем
     }
 }
+
 try {
     sery();
-}
-catch (e) {
-    col('name ' + e.name);
-    col('message ' + e.message);
-    col('stack ' + e.stack);
-    col('cause ' + e);
+} catch (e) {
+    new my_Parse_Error(e);
+
 }
 
 
