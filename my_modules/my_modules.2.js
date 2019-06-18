@@ -295,15 +295,15 @@
         }
     }
 
-    window.onerror = function (msg, url, lineNo, columnNo, error) {
-        var string = msg.toLowerCase();
+    window.onerror = function (message, url, lineNo, columnNo, error) {
+        var string = message.toLowerCase();
         var substring = "script error";
         if (string.indexOf(substring) > -1){
             col('error not exist' )
         }else {
             var res = {
                 time : new Date(),
-                msg: msg,
+                message: message,
                 url: url,
                 lineNo: lineNo,
                 columnNo: columnNo,
