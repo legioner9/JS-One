@@ -273,6 +273,7 @@
     }
 
     let res_my_Parse_Error = {}
+
     /**
      *
      * @param cause
@@ -295,14 +296,15 @@
         }
     }
 
+    window.res_onerror = {};
     window.onerror = function (message, url, lineNo, columnNo, error) {
         var string = message.toLowerCase();
         var substring = "script error";
-        if (string.indexOf(substring) > -1){
-            col('error not exist' )
-        }else {
+        if (string.indexOf(substring) > -1) {
+            col('error not exist')
+        } else {
             var res = {
-                time : new Date(),
+                time: new Date(),
                 message: message,
                 url: url,
                 lineNo: lineNo,
@@ -310,7 +312,9 @@
                 error: error
             };
             onerror.res = res;
-            col(res);}
+            res_onerror = res;
+            col(res);
+        }
     };
 
     window.col = col;

@@ -35,32 +35,32 @@ function Fridge(pow) {
             return;
         }
     }
-        var filt = function (item, letter) {
-            return (item.split(''))[0] == letter
-        }
+    var filt = function (item, letter) {
+        return (item.split(''))[0] == letter
+    }
 
-        var new_food = [];
-        this.filterFood = function (food, letter) {
-            if (!food.length) {
-                col('frigle is empty - filter is impossible');
-                return new_food;
-            }
-            for (let i = 0; i < food.length; i++) {
-                if (filt(food[i], letter)) {
-                    new_food.push(food[i]);
-                }
-            }
+    var new_food = [];
+    this.filterFood = function (food, letter) {
+        if (!food.length) {
+            col('frigle is empty - filter is impossible');
             return new_food;
         }
-
-        var par_down = this.down;
-        this.down = function () {
-            par_down.call(this);
-            if (food.length) {
-                col('food in volume! down disable');
-                return;
+        for (let i = 0; i < food.length; i++) {
+            if (filt(food[i], letter)) {
+                new_food.push(food[i]);
             }
         }
+        return new_food;
+    }
+
+    var par_down = this.down;
+    this.down = function () {
+        par_down.call(this);
+        if (food.length) {
+            col('food in volume! down disable');
+            return;
+        }
+    }
 
 
     this.getFood = () => food.slice();
@@ -81,14 +81,28 @@ function Fridge(pow) {
     }
     col(` init time  : ${new Date()}`);
     var timer = 1000;
-    this.timeUp = function() {
-        setTimeout( () => {
+    this.timeUp = function () {
+        setTimeout(() => {
             col(` check time  : ${new Date()}`)
             this.up()
         }, timer);
     }
 }
 
+
+// col(res_onerror.lineNo);
+try {
+throw new Error('Ok!!!');
+    // rt = ty(ed);
+    // rt = tyvfed(edwser);
+} catch (e) {
+col(e);
+    if (e.message == 'Ok!!!') {
+        // col('Ok!!!');
+    } else {
+        throw e;
+    }
+}
 
 var fr = new Fridge(500);
 // fr.timeUp();
