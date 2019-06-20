@@ -5,14 +5,26 @@
 class Task {
     constructor(title = Task.getDifTitle()) {
         this.title = title;
-        this.done = false;
+        this._done = false;
         Task.count++;
-        col(' Create of task');
+        col(` Create of task "${title}"`);
     }
 
     complete() {
-        this.done = true;
-        col(`task "${this.title}"  is dan`);
+        this._done = true;
+    }
+
+    get done() {
+        return this._done === true ? `Task "${this.title}" is done )) ` :  `Task "${this.title}" is NO done(( `
+    }
+
+    set done(value){
+        if (typeof value === "boolean" && value !== undefined) {
+            this._done = value;
+        } else {
+            col(` your value = ${value} is not boolean! value is false now`)
+            this._done = false;
+        }
     }
 
     static getDifTitle() {
@@ -26,13 +38,15 @@ let task = new Task('Clear in room');
 col(typeof Task);
 col(typeof task);
 col(task instanceof Task);
-col(task.title);
 task.complete();
 col(task.done);
 col(Task.count);
 let task_2 = new Task();
 col(Task.getDifTitle());
 col(Task.count);
+col(task_2.done);
+
+
 
 
 

@@ -20,16 +20,28 @@ function () {
     _classCallCheck(this, Task);
 
     this.title = title;
-    this.done = false;
+    this._done = false;
     Task.count++;
-    col(' Create of task');
+    col(" Create of task \"".concat(title, "\""));
   }
 
   _createClass(Task, [{
     key: "complete",
     value: function complete() {
-      this.done = true;
-      col("task \"".concat(this.title, "\"  is dan"));
+      this._done = true;
+    }
+  }, {
+    key: "done",
+    get: function get() {
+      return this._done === true ? "Task \"".concat(this.title, "\" is done )) ") : "Task \"".concat(this.title, "\" is NO done(( ");
+    },
+    set: function set(value) {
+      if (typeof value === "boolean" && value !== undefined) {
+        this._done = value;
+      } else {
+        col(" your value = ".concat(value, " is not boolean! value is false now"));
+        this._done = false;
+      }
     }
   }], [{
     key: "getDifTitle",
@@ -46,10 +58,10 @@ var task = new Task('Clear in room');
 col(_typeof(Task));
 col(_typeof(task));
 col(task instanceof Task);
-col(task.title);
 task.complete();
 col(task.done);
 col(Task.count);
 var task_2 = new Task();
 col(Task.getDifTitle());
 col(Task.count);
+col(task_2.done);
