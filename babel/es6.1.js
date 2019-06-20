@@ -1,7 +1,7 @@
 "use strict";
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["Hello ", " ", "   ", " egewqer"]);
+  var data = _taggedTemplateLiteral(["Hello ", "   ", "   ", " egewqer"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -56,7 +56,12 @@ var name = 'Fill';
 var toy = 'My toys';
 col(literVolue(_templateObject(), toy, name, toy));
 
-function literVolue(literal, value) {
+function literVolue(literal) {
+  for (var _len = arguments.length, value = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    value[_key - 1] = arguments[_key];
+  }
+
   col(arguments);
-  return literal[0] + value.toUpperCase();
+  var l = literal[0];
+  return literal[0] + value[0].toUpperCase() + value[1];
 }

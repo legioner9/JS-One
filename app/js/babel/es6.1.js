@@ -49,7 +49,8 @@ let toy = 'My toys'
 
 col(literVolue`Hello ${toy}   ${name}   ${toy} egewqer`);
 
-function literVolue(literal , value) {
+function literVolue(literal , ...value) {
     col(arguments);
-    return literal[0] + value.toUpperCase();
+    let l = literal[0];
+    return literal[0] + value[0].toUpperCase() + value[1];
 }
