@@ -55,6 +55,7 @@ tiper.apply(void 0, arg_Tiper);
 var name = 'Fill';
 var toy = 'My toys';
 col(literVolue(_templateObject(), toy, name, toy));
+col("Hello ".concat(toy, "   ").concat(name, "   ").concat(toy, " egewqer"));
 
 function literVolue(literal) {
   for (var _len = arguments.length, value = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {

@@ -48,6 +48,7 @@ let  name ='Fill';
 let toy = 'My toys'
 
 col(literVolue`Hello ${toy}   ${name}   ${toy} egewqer`);
+col(`Hello ${toy}   ${name}   ${toy} egewqer`);
 
 function literVolue(literal , ...value) {
     col(arguments);
