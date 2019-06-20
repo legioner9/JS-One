@@ -3,10 +3,15 @@
  */
 
 var animal = {
-    eats: true
+    eat: function () {
+        this.eats = true;
+    }
 };
 var rabbit = {
     jumps: true
 };
 
 rabbit.__proto__ = animal;
+rabbit.eat();
+col(rabbit.eats);
+

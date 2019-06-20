@@ -21,7 +21,5 @@ const test = {
 
 const anon = test.createAnonFunction('hello', 'world');
 const arrow = test.createArrowFunction('hello', 'world');
-
 anon();
-
 arrow();

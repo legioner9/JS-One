@@ -8,13 +8,15 @@
     "build": "webpack",
     "mocha": "mocha --timeout 10000",
     "lint": "tslint tests/*.ts -t verbose",
-    "docs:build-src": "documentation build src/** -f html -o docs"
+    "docs:build-src": "documentation build src/** -f html -o docs",
+    "go_babel": "babel app/js/babel -d babel -w"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "babel-loader": "^8.0.5",
     "browser-sync": "^2.26.3",
     "del": "^4.0.0",
