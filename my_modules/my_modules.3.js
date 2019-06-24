@@ -8,7 +8,7 @@
      *  console.log(volume)
      * @param volume
      */
-    function col(volume) {
+    window.col = function (volume) {
         console.log(volume);
     }
 
@@ -19,13 +19,13 @@
      * @param context
      * @returns {function(): *}
      */
-    function my_dec_Bind(func_ini, context) {
+    window.my_dec_Bind = function (func_ini, context) {
         return function B() {
             return func_ini.apply(context, arguments);
         }
     }
 
-    var res_my_dec_TimsDuring = {};
+    window.res_my_dec_TimsDuring = {};
 
     /**
      *During run of function ( dev - param show )
@@ -33,7 +33,7 @@
      * @param dev
      * @returns {Function}
      */
-    function my_dec_TimsDuring(func_ini, dev) {
+    window.my_dec_TimsDuring = function (func_ini, dev) {
         dev = dev || false;
         return function TD() {
             var start_time = performance.now();
@@ -54,8 +54,7 @@
         }
     }
 
-
-    var res_my_dec_CheckArg = {}
+    window.res_my_dec_CheckArg = {}
 
     /**
      * Checking Arg
@@ -78,7 +77,7 @@
      *
      */
 
-    function my_dec_CheckArg(fun_ini, arr_FuncCheckArg, dev) {
+    window.my_dec_CheckArg = function (fun_ini, arr_FuncCheckArg, dev) {
         var dev = dev || false;
         var arr_log_check = [];
         return function CA() {
@@ -116,7 +115,7 @@
     }
 
 
-    var res_my_dec_Cach_v1 = [];
+    window.res_my_dec_Cach_v1 = [];
 
     /**
      *Cach v1
@@ -126,7 +125,7 @@
      * @constructor
      */
 
-    function my_dec_Cach_v1(fun_ini, dev) {
+    window.my_dec_Cach_v1 = function (fun_ini, dev) {
         dev = dev || false;
         return function Cv1() {
             var arg = [].slice.call(arguments);
@@ -158,14 +157,14 @@
         // }
     }
 
-    var res_my_dec_getObjClass = [];
+    window.res_my_dec_getObjClass = [];
 
     /**
      * my_dec_getObjClass
      * @param obj
      * @returns {*}
      */
-    function my_dec_getObjClass(obj_ini) {
+    window.my_dec_getObjClass = function (obj_ini) {
         var obj_res = {}.toString.call(obj_ini).slice(8, -1);
 
         res_my_dec_getObjClass.push
@@ -182,7 +181,7 @@
      * @returns {string}
      * @private
      */
-    function ___getObjClass(obj_ini) {
+    window.___getObjClass = function (obj_ini) {
         return {}.toString.call(obj_ini).slice(8, -1).toLowerCase();
     }
 
@@ -200,7 +199,7 @@
      * @param ini
      * @returns {boolean}
      */
-    function my_ch_checkStr(ini) {
+    window.my_ch_checkStr = function (ini) {
         return typeof ini == 'string';
     }
 
@@ -209,7 +208,7 @@
      * date.toLocaleString("ru", options_toLocaleString)
      * @type {{month: string, hour: string, era: string, year: string, timezone: string, weekday: string, day: string, minute: string, second: string}}
      */
-    var ___options_toLocaleString = {
+    window.___options_toLocaleString = {
         era: 'long',
         year: 'numeric',
         month: 'long',
@@ -227,13 +226,13 @@
      * @returns {number|*}
      * @constructor
      */
-    _fib = function nunN(n) {
+    let _fib = function N(n) {
         if (n > 2) {
-            return nunN(n - 1) + nunN(n - 2)
+            return N(n - 1) + N(n - 2)
         } else return 1;
     }
 
-    var res_my_dec_setTimeout = {};
+    window.res_my_dec_setTimeout = {};
 
 
     /**
@@ -243,7 +242,7 @@
      * @param delay
      * @returns {Function}
      */
-    function my_dec_setTimeout(ini_fun, id, delay) {
+    window.my_dec_setTimeout = function (ini_fun, id, delay) {
         return function () {
             var context = this;
             var arg = arguments;
@@ -253,7 +252,7 @@
         }
     }
 
-    var res_my_dec_setInterval = {};
+    window.res_my_dec_setInterval = {};
 
     /**
      *
@@ -262,7 +261,7 @@
      * @param delay
      * @returns {Function}
      */
-    function my_dec_setInterval(ini_fun, id, delay) {
+    window.my_dec_setInterval = function (ini_fun, id, delay) {
         return function () {
             let context = this;
             let arg = arguments;
@@ -272,14 +271,14 @@
         }
     }
 
-    let res_my_Parse_Error = {}
+    window.res_my_Parse_Error = {}
 
     /**
      *
      * @param cause
      * @param id
      */
-    function my_Parse_Error(cause, id) {
+    window.my_Parse_Error = function (cause, id) {
         id = id || ' id = undefine value '
         this.message = cause.message;
         this.name = cause.name;
@@ -339,11 +338,8 @@
     }
 
     /**
-     * Object.prototype.toEveryPropFunc
-     * setTimeout(ms)
-     * @param ms
-     * @returns {Function}
-     * @private
+     * Object.prototype.__my_toEveryPropFunc
+     *
      */
     Object.prototype.__my_toEveryPropFunc = function (f) {
         for (var prop in this) {
@@ -353,28 +349,72 @@
         }
     }
 
+    /**
+     * Object.prototype.__my_OwnPropObject
+     *
+     */
+    Object.prototype.__my_OwnPropObject = function () {
+        let init = {};
+        for (let prop in this) {
+            if (!this.hasOwnProperty(prop)) continue;
+            let value = this[prop];
+            init[prop] = value;
+        }
+        let _this = this;
+        _this.res__my_OwnPropObject = init;
+    }
 
-    window.col = col;
-    window.my_ch_checkStr = my_ch_checkStr;
-    window.my_ch_checkNum = my_ch_checkNum;
-    window.my_dec_CheckArg = my_dec_CheckArg;
-    window.my_dec_Bind = my_dec_Bind;
-    window.my_dec_TimsDuring = my_dec_TimsDuring;
-    window.my_dec_Cach_v1 = my_dec_Cach_v1;
-    window.my_dec_getObjClass = my_dec_getObjClass;
-    window.my_dec_setTimeout = my_dec_setTimeout;
-    window.my_dec_setInterval = my_dec_setInterval;
-    window.my_Parse_Error = my_Parse_Error;
+    /**
+     * Object.prototype.__my_AllPropObject
+     *
+     */
+    Object.prototype.__my_AllPropObject = function () {
+        let init = {};
+        for (let prop in this) {
+            let value = this[prop];
+            init[prop] = value;
+        }
+        let _this = this;
+        _this.res__my_AllPropObject = init;
+    }
 
-    window.res_my_dec_CheckArg = res_my_dec_CheckArg;
-    window.res_my_dec_Cach_v1 = res_my_dec_Cach_v1;
-    window.res_my_dec_TimsDuring = res_my_dec_TimsDuring;
-    window.res_my_dec_getObjClass = res_my_dec_getObjClass;
-    window.res_my_dec_setTimeout = res_my_dec_setTimeout;
-    window.res_my_dec_setInterval = res_my_dec_setInterval;
-    window.res_my_Parse_Error = res_my_Parse_Error;
-    window.___options_toLocaleString = ___options_toLocaleString;
-    window.___getObjClass = ___getObjClass;
+    /**
+     * Object.prototype.__my_ProtoPropObject
+     *
+     */
+    Object.prototype.__my_ProtoPropObject = function () {
+        let init = {};
+        for (let prop in this) {
+            if (this.hasOwnProperty(prop)) continue;
+            let value = this[prop];
+            init[prop] = value;
+        }
+        let _this = this;
+        _this.res__my_ProtoPropObject = init;
+    }
+
+
+    // window.col = col;
+    // window.my_ch_checkStr = my_ch_checkStr;
+    // window.my_ch_checkNum = my_ch_checkNum;
+    // window.my_dec_CheckArg = my_dec_CheckArg;
+    // window.my_dec_Bind = my_dec_Bind;
+    // window.my_dec_TimsDuring = my_dec_TimsDuring;
+    // window.my_dec_Cach_v1 = my_dec_Cach_v1;
+    // window.my_dec_getObjClass = my_dec_getObjClass;
+    // window.my_dec_setTimeout = my_dec_setTimeout;
+    // window.my_dec_setInterval = my_dec_setInterval;
+    // window.my_Parse_Error = my_Parse_Error;
+    //
+    // window.res_my_dec_CheckArg = res_my_dec_CheckArg;
+    // window.res_my_dec_Cach_v1 = res_my_dec_Cach_v1;
+    // window.res_my_dec_TimsDuring = res_my_dec_TimsDuring;
+    // window.res_my_dec_getObjClass = res_my_dec_getObjClass;
+    // window.res_my_dec_setTimeout = res_my_dec_setTimeout;
+    // window.res_my_dec_setInterval = res_my_dec_setInterval;
+    // window.res_my_Parse_Error = res_my_Parse_Error;
+    // window.___options_toLocaleString = ___options_toLocaleString;
+    // window.___getObjClass = ___getObjClass;
     window.Math._fib = _fib;
 
 
