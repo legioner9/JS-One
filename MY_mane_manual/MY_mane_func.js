@@ -289,7 +289,7 @@ parseInt(str, n);
  * Return number n to records of number on the basis bas
  * @param  {} bas
  */
-n.toString(bas);
+n.toString();
 
 /**
  * Substring serch presence check in string

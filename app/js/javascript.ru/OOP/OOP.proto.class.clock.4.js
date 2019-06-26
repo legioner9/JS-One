@@ -2,7 +2,8 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 option = {
-    template: 'h : m : s'
+    template: 'h:m:s',
+    int: 3000
 }
 
 function Clock(options) {
@@ -41,7 +42,7 @@ Clock.prototype.start = function () {
 var clo = new Clock({
     template: 'h:m:s'
 });
-clo.start();
+// clo.start();
 clo.stop();
 
 function My_CLock(option) {
@@ -50,9 +51,13 @@ function My_CLock(option) {
 
 My_CLock.prototype.run = function () {
     this.render();
-    this.tm = setTimeout(() => {
+    this.tm = setInterval(() => {
         this.render();
     }, 1000);
+}
+
+My_CLock.prototype.stop = function () {
+    clearInterval(this.tm);
 }
 
 My_CLock.prototype.render = function () {
@@ -66,9 +71,38 @@ My_CLock.prototype.render = function () {
     var min = cond(time.getMinutes());
     var sec = cond(time.getSeconds());
 
-    col(this._template.replace('h', hour).replace('m' , min).replace('s' , sec))
+    col(this._template.replace('h', hour).replace('m', min).replace('s', sec));
 }
 
 
-debugger;
-let mcl = new My_CLock()
+// debugger;
+let mcl = new My_CLock(option);
+mcl.run();
+mcl.stop();
+
+function My_CLock_ext(options) {
+    My_CLock.apply(this, arguments);
+    this._int = options.int
+}
+
+// debugger;
+col(My_CLock);
+
+My_CLock_ext.prototype = Object.create(My_CLock.prototype);
+My_CLock_ext.prototype.constructor = My_CLock_ext;
+
+My_CLock_ext.prototype.run = function () {
+    this.render();
+    this.tm = setInterval(() => {
+        this.render();
+    }, this._int);
+}
+
+
+My_CLock_ext.prototype.render = function () {
+    My_CLock.prototype.render.apply(this, arguments);
+    col(`interval = ${this._int}`);
+}
+let mcl_ext = new My_CLock_ext(option);
+mcl_ext.run();
+mcl_ext.stop();

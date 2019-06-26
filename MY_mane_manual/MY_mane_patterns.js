@@ -34,3 +34,9 @@ Rabbit.prototype.walk = function () {
     col("прыгает " + this.name);
 };
 
+/* TODO: maskFour ligic mask  */
+function maskFour() {
+    var bol, a = 2, b = 4, c = 8, d = 16;
+    bol = a | b | c | d;
+    col(bol & a);
+}
