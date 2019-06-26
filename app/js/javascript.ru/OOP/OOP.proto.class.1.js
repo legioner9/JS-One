@@ -2,111 +2,53 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 
-function Anymal(name) {
-    this.name = name;
+function Anymal(Class, args) {
+    this.plase = 'earth';
+    this.nameClass = Class;
     this.speed = 0;
 }
 
-let tiger = new Anymal('TIG');
 
-Anymal.tugo = {
-    tugo: false
-}
-
-Anymal.prototype.weght = function (volume) {
-    return this.weght = volume;
-}
-
-tiger.weght(33);
-// col(tiger.weght);
-
-let tiger2 = new Anymal('TIG2');
-
-function _CoffeeMachine(power) {
-    var waterAmount = 0;
-
-    var WATER_HEAT_CAPACITY = 4200;
-
-    function getTimeToBoil() {
-        return waterAmount * WATER_HEAT_CAPACITY * 80 / power;
+function Rabbit(Vid, Class, args) {
+    let _this = this;
+    _this.skin = 'fur';
+    Anymal.apply(this, [Class, args]);
+    this.nameVid = Vid;
+    this.whatSkin = function () {
+        col(this.skin);
+        this.skin = 'iiiiiiiii'
     }
-
-    this.run = function () {
-        setTimeout(function () {
-            col('Кофе готов!');
-        }, getTimeToBoil());
-    };
-
-    this.setWaterAmount = function (amount) {
-        waterAmount = amount;
-    };
-
 }
 
-function CoffeeMachine(power) {
-    this.power = power;
-}
 
-CoffeeMachine.prototype.waterAmount = 0;
-CoffeeMachine.prototype.WATER_HEAT_CAPACITY = 4200;
-CoffeeMachine.prototype.getTimeToBoil = function () {
-    col(this.waterAmount * this.WATER_HEAT_CAPACITY * 80 / this.power);
-    col(performance.now());
-    return this.waterAmount * this.WATER_HEAT_CAPACITY * 80 / this.power;
+Rabbit.prototype.constructor = Rabbit;
+Rabbit.prototype = Object.create(Anymal.prototype);
+
+let ra = new Rabbit('rabby', 'mleco');
+
+Anymal.prototype.go_run = function (to_speed) {
+    this.speed += to_speed;
 };
-CoffeeMachine.prototype.run = function () {
-    setTimeout(() => {
-        col(performance.now());
-        col('Кофе готов!');
-    }, this.getTimeToBoil());
+
+Rabbit.prototype.go_run = function () {
+    Anymal.prototype.go_run.apply(this, arguments);
+    this.jump()
 }
-CoffeeMachine.prototype.setWaterAmount = function (amou) {
-    return this.waterAmount = amou;
+Rabbit.prototype.stop = function () {
+    this.speed = 0;
 }
 
-let _cof = new _CoffeeMachine();
-// let cof = new CoffeeMachine();
+Rabbit.prototype.jump = function () {
+    this.heght = 10;
+    col(`${this.nameVid}  jump to heght ${this.heght} and speed = ${this.speed}`)
+}
 
-var cof = new CoffeeMachine(10000);
-cof.setWaterAmount(50);
-cof.run();
+ra.go_run(10);
+ra.go_run(15);
+ra.stop();
+
 debugger;
-function Hamster() {
+Rabbit.prototype = Anymal.prototype;
+Rabbit.prototype.prom = function () {
 
 }
-function _Hamster() {
-    this.food = [];
-}
-
-Hamster.prototype.food = []; // пустой "живот"
-
-Hamster.prototype.found = function(something) {
-    this.food.push(something);
-};
-_Hamster.prototype.found = function(something) {
-    this.food.push(something);
-};
-col(Hamster.name);
-
-// Создаём двух хомяков и кормим первого
-let speedy = new Hamster();
-let lazy = new Hamster();
-let _speedy = new _Hamster();
-let _lazy = new _Hamster();
-
-speedy.found("яблоко");
-speedy.found("орех");
-col(speedy);
-
-
-_speedy.found("яблоко");
-_speedy.found("орех");
-col(_speedy);
-
-col( speedy.food.length ); // 2
-col( lazy.food.length ); // 2 (!??)
-
-col( _speedy.food.length ); // 2
-col( _lazy.food.length ); // 0
-
-col(_speedy.name);
