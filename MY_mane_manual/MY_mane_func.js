@@ -141,6 +141,7 @@ function sumTo(n) {
  * Фиббоначи от 0 до n-1
  * @param  {} n
  */
+/* TODO:FUNC fib   */
 function fib(n) {
     f1 = 0;
     f2 = 1;

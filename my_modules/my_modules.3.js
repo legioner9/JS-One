@@ -33,6 +33,7 @@
      * @param dev
      * @returns {Function}
      */
+    /* TODO: my_dec_TimsDuring  */
     window.my_dec_TimsDuring = function (func_ini, dev) {
         dev = dev || false;
         return function TD() {
@@ -124,7 +125,7 @@
      * @returns {{result: string, dev: (*|boolean)}}
      * @constructor
      */
-
+    /* TODO: my_dec_Cach_v1  */
     window.my_dec_Cach_v1 = function (fun_ini, dev) {
         dev = dev || false;
         return function Cv1() {
@@ -181,6 +182,7 @@
      * @returns {string}
      * @private
      */
+    /* TODO: getObjClass  */
     window.___getObjClass = function (obj_ini) {
         return {}.toString.call(obj_ini).slice(8, -1).toLowerCase();
     }
@@ -208,6 +210,7 @@
      * date.toLocaleString("ru", options_toLocaleString)
      * @type {{month: string, hour: string, era: string, year: string, timezone: string, weekday: string, day: string, minute: string, second: string}}
      */
+    /* TODO: TIME options_toLocaleString  */
     window.___options_toLocaleString = {
         era: 'long',
         year: 'numeric',
@@ -226,6 +229,7 @@
      * @returns {number|*}
      * @constructor
      */
+    /* TODO: FUNC _fib  */
     let _fib = function N(n) {
         if (n > 2) {
             return N(n - 1) + N(n - 2)
@@ -242,12 +246,11 @@
      * @param delay
      * @returns {Function}
      */
+    /* TODO: my_dec_setTimeout  */
     window.my_dec_setTimeout = function (ini_fun, id, delay) {
         return function () {
-            var context = this;
-            var arg = arguments;
-            res_my_dec_setTimeout[id] = setTimeout(function () {
-                ini_fun.apply(context, arg);
+            res_my_dec_setTimeout[id] = setTimeout(() => {
+                ini_fun.apply(this, arguments);
             }, delay);
         }
     }
@@ -261,12 +264,11 @@
      * @param delay
      * @returns {Function}
      */
+    /* TODO: my_dec_setInterval  */
     window.my_dec_setInterval = function (ini_fun, id, delay) {
         return function () {
-            let context = this;
-            let arg = arguments;
-            res_my_dec_setInterval[id] = setInterval(function () {
-                ini_fun.apply(context, arg);
+            res_my_dec_setInterval[id] = setInterval(() => {
+                ini_fun.apply(this, arguments);
             }, delay);
         }
     }
@@ -278,6 +280,7 @@
      * @param cause
      * @param id
      */
+    /* TODO: my_Parse_Error  */
     window.my_Parse_Error = function (cause, id) {
         id = id || ' id = undefine value '
         this.message = cause.message;
@@ -301,6 +304,7 @@
     /**
      *window.onerror
      */
+    /* TODO: onerror  */
     window.onerror = function (message, url, lineNo, columnNo, error) {
         var string = message.toLowerCase();
         var substring = "script error";
@@ -329,6 +333,7 @@
      * @returns {Function}
      * @private
      */
+    /* TODO: PROTO OBJ __my_ms  */
     Object.prototype.__my_ms = function (ms) {
         var f = this;
         return function () {
@@ -341,6 +346,8 @@
      * Object.prototype.__my_toEveryPropFunc
      *
      */
+    /* TODO: PROTO OBJ __my_toEveryPropFunc  */
+
     Object.prototype.__my_toEveryPropFunc = function (f) {
         for (var prop in this) {
             if (!this.hasOwnProperty(prop)) continue;
@@ -353,6 +360,8 @@
      * Object.prototype.__my_OwnPropObject
      *
      */
+    /* TODO: PROTO OBJ __my_OwnPropObject  */
+
     Object.prototype.__my_OwnPropObject = function () {
         let init = {};
         for (let prop in this) {
@@ -368,6 +377,7 @@
      * Object.prototype.__my_AllPropObject
      *
      */
+    /* TODO: PROTO OBJ __my_AllPropObject  */
     Object.prototype.__my_AllPropObject = function () {
         let init = {};
         for (let prop in this) {
@@ -382,6 +392,7 @@
      * Object.prototype.__my_ProtoPropObject
      *
      */
+    /* TODO: PROTO OBJ __my_ProtoPropObject  */
     Object.prototype.__my_ProtoPropObject = function () {
         let init = {};
         for (let prop in this) {

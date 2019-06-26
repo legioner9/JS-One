@@ -226,8 +226,8 @@ var options_toLocaleString = {
 col(((new Date( )).toLocaleString("ru", options_toLocaleString)));
 
 // col(dd.toDateString("ru", options));
-d = new  Date();/*TODO:U*/
-// TODO: 16.05.2019  
+d = new  Date();
+
 // col(d);
 // col(Date.parse(d));
 // col((new Date(d.setHours(d.getHours()+3))).toLocaleString("ru", options));
