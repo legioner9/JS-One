@@ -53,5 +53,24 @@ Menu.prototype.showResult = function () {
 
 //AnimateMenu
 function AnimateMenu(state) {
-    Menu.apply(this , arguments);
+    Menu.apply(this, arguments);
+}
+
+AnimateMenu.prototype = Object.create(Menu.prototype);
+AnimateMenu.prototype.constructor = AnimateMenu;
+
+AnimateMenu.prototype.STATE_ANIMATE = 2;
+
+AnimateMenu.prototype.resultAnimate = function () {
+    //ANYMATE code
+    return `state is ${this._state} result ANYMATE`;
+}
+AnimateMenu.prototype.resultState = function () {
+    switch (this._state) {
+        case this.STATE_ANIMATE :
+            return this.resultAnimate();
+        default : {
+            return Menu.resultState.apply(this , arguments);
+        }
+    }
 }
