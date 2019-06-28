@@ -1,4 +1,3 @@
-
 function Menu() {
 
     this.count = 0;
@@ -28,28 +27,30 @@ AnimatingMenu.prototype.open = function () {
 
     this.STATE_ANIMATING = true;
 
+    col(new Date());
+    col(` 'open' child is run `);
     this.ts = setTimeout(() => {
-        col(new Date());
-        col(` 'open' child is run `);
 
-        this.open();
+        col(`STATE_CLOSED =  ${this.STATE_CLOSED}`)
+        this.__proto__.__proto__.open();
 
-    }, 1000);
+    }, 2000);
 
 }
 
 AnimatingMenu.prototype.close = function () {
+    this.STATE_CLOSED = false;
 
     this.ts = clearTimeout(this.ts);
 
     col(new Date());
     col(` 'close' child is run `);
 
-    this.close();
+    this.__proto__.__proto__.close();
 
 }
 
-debugger;
+// debugger;
 let ms = new AnimatingMenu();
 ms.open();
 ms.close();
