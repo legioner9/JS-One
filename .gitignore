@@ -1,8 +1,23 @@
 [core]
-	excludesfile = ~/.gitexcludes
-	node_modules
-	public
 node_modules
 public
+dist
+coverage
 .idea
+test
+.nyc_output
+.vscode
+docs
 package-lock.json
+gist
+app/fonts/
+app/img/
+app/php/
+gulp-tasks/
+local_history.*
+MyOne
+app/js/Test.php
+js-one.*
+uml
+.nyc_output
+patches

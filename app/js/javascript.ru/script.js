@@ -96,3 +96,117 @@ admin = name ;
 //     if(i%2!==0) continue;
 //     cl(i);
 // }
+// var key = +prompt('enter key',"number");
+// switch (key) {
+//     case 1:
+//         cl(key);
+//         // eslint-disable-next-line no-fallthrough
+        
+//         case 2:
+//         cl(key);
+//         break;
+
+//     default:cl('e mae');
+//         break;
+// }
+// var key_1 = +prompt('enter key',"number");
+// switch (key_1) {
+//     case 0:
+//         cl(key_1) ;
+//         break;
+//     case 1:       
+//         cl(key_1) ;
+//         break;
+//     case 2: 
+//     case 3:      
+//         cl('2,3') ;
+//         break;
+
+//     default:
+//         break;
+// }
+function pow(x,n){
+    var pownn = x;
+    for (var i = 1 ; i < n ; i++) {
+        pownn *=x;
+    }
+    return pownn;
+}
+// var stepo = pown;
+// cl(stepo(2,4));
+
+// var dics = function(){
+//     cl(2);
+// };
+
+// var age = 99;
+// var sayLi = (age>=18) ? function(){cl('ok');}:function(){cl('not enter');};
+// sayLi();
+
+// function ask(vopr, yes, no) {
+//     if (confirm(vopr)) yes()
+//     else no();
+//   }
+// function f_yes(){
+//     cl('1');
+// }
+
+// function f_no(){
+//     cl('2');
+// }
+
+// ask('777',f_yes,f_no);
+// var sum = new Function('a,b', ' return a+b; ');
+// cl(sum(2,6));
+// function pw(x,n){
+//     if(n!=1){
+//         return x*pw(x,n-1);
+//     } else {
+//         return x;
+//     }
+// }
+// cl(pw(2,5));
+
+// function sumTo(n){
+//     if(n==1) return 1;
+//     else return n+sumTo(n-1);
+    
+// }
+
+// function sumTo(n){
+//     su = 0;
+//     for(var i = 1 ; i < n+1 ; i++){
+//         su += i;
+//     }
+//     return su;
+// }
+
+// function fact(n){
+//     if(n == 1) return 1;
+//     else return n*fact(n-1);
+// }
+
+// function fib(n){
+//     f1 = 0;
+//     f2 = 1;
+//     if(n==0) return 1;
+//     else{
+        
+//         for(var i=0; i<n ; i++){
+//             s2 = f1+f2;
+//             s1 = f2;
+
+//             f1 = s1;
+//             f2 = s2;
+//         }
+//         return f2;
+//     }
+// }
+// cl(fib(3));
+
+// var f = function go_(){
+//     alert (go_);
+// };
+// f();
+
+cl(pow(2,3));

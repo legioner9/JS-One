@@ -1,43 +1,43 @@
-var  gulp                 = require ('gulp'),
-    sass                       = require('gulp-sass'),                     /*.pipe(sass())*/
-    notify                    = require('gulp-notify'),                 /*.pipe(notify('Done! scc apdates'))*/
-    less                         = require('gulp-less'),                    /*.pipe(less())*/
-    debug                   = require('gulp-debug'),              /*.pipe(sourcemaps.init())*/
-    sourcemaps     = require('gulp-sourcemaps'),/*.pipe(debug({title:'Come On!'}))*/
-    concat                   = require('gulp-concat'),             /*.pipe(concat(outputFilename))*/
-    cleanCSS            = require('gulp-clean-css'),      /*.pipe(gulpif(argv.prod, cleanCSS()))*/
-    gulpIf                    = require('gulp-if'),
-    argv                        = require('yargs').argv,                /*.pipe(gulpif(argv.prod, cleanCSS()))*/
-   browser_sync   = require('browser-sync'),        /*.pipe(browser-sync())*/
-    clean                       = require('gulp-clean'),               /*.pipe(browser-sync())*/
-    rename                 = require('gulp-rename'),         /* .pipe(rename('newFileName.js'))*/
-    uglify                      = require('gulp-uglify'),             /* .pipe(rename('newFileName.js'))*/
-    cache                      = require('gulp-cache'),
-    cssnano                = require('gulp-cssnano'),
-    uglifyjs                  = require('gulp-uglifyjs'),
-    pngquant            = require('imagemin-pngquant'),
-    imagemin           = require('gulp-imagemin'),
-    autoprefixer     = require('gulp-autoprefixer'),
-    csscomb             = require('gulp-csscomb'),        /*.pipe(csscomb())*/
-    shorthand          = require('gulp-shorthand'),      /*.pipe(shorthand())*/
-    shrthnd                = require('shrthnd'),
-    postcss               = require('gulp-postcss'),
-    important          = require('postcss-important-shorthand'),
-    del                           = require('del'),
-    plumber             = require('gulp-plumber'),
-    mutipipe             = require('multipipe'),
-    stream_combiner2             = require('stream-combiner2').obj,
-    newer                   = require('gulp-newer'), //.pipe(newer(imgDest))
-    sylus                     = require('gulp-stylus');
+var gulp = require('gulp'),
+    sass = require('gulp-sass'),                     /*.pipe(sass())*/
+    notify = require('gulp-notify'),                 /*.pipe(notify('Done! scc apdates'))*/
+    less = require('gulp-less'),                    /*.pipe(less())*/
+    debug = require('gulp-debug'),              /*.pipe(sourcemaps.init())*/
+    sourcemaps = require('gulp-sourcemaps'),/*.pipe(debug({title:'Come On!'}))*/
+    concat = require('gulp-concat'),             /*.pipe(concat(outputFilename))*/
+    cleanCSS = require('gulp-clean-css'),      /*.pipe(gulpif(argv.prod, cleanCSS()))*/
+    gulpIf = require('gulp-if'),
+    argv = require('yargs').argv,                /*.pipe(gulpif(argv.prod, cleanCSS()))*/
+    browser_sync = require('browser-sync'),        /*.pipe(browser-sync())*/
+    clean = require('gulp-clean'),               /*.pipe(browser-sync())*/
+    rename = require('gulp-rename'),         /* .pipe(rename('newFileName.js'))*/
+    uglify = require('gulp-uglify'),             /* .pipe(rename('newFileName.js'))*/
+    cache = require('gulp-cache'),
+    cssnano = require('gulp-cssnano'),
+    uglifyjs = require('gulp-uglifyjs'),
+    pngquant = require('imagemin-pngquant'),
+    imagemin = require('gulp-imagemin'),
+    autoprefixer = require('gulp-autoprefixer'),
+    csscomb = require('gulp-csscomb'),        /*.pipe(csscomb())*/
+    shorthand = require('gulp-shorthand'),      /*.pipe(shorthand())*/
+    shrthnd = require('shrthnd'),
+    postcss = require('gulp-postcss'),
+    important = require('postcss-important-shorthand'),
+    del = require('del'),
+    plumber = require('gulp-plumber'),
+    mutipipe = require('multipipe'),
+    stream_combiner2 = require('stream-combiner2').obj,
+    newer = require('gulp-newer'), //.pipe(newer(imgDest))
+    sylus = require('gulp-stylus');
 
-    /*https://learn.javascript.ru/screencast/gulp#gulp-basics*/
+/*https://learn.javascript.ru/screencast/gulp#gulp-basics*/
 
-    // const  isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV =='development';
+// const  isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV =='development';
 
-var  isDevelopment = false; // Development (without maps )
- //let  isDevelopment = true; // Public ( with maps )
+var isDevelopment = false; // Development (without maps )
+//let  isDevelopment = true; // Public ( with maps )
 
-gulp.task('clean' , function () {
+gulp.task('clean', function () {
     return del('public');
 });
 
@@ -46,9 +46,9 @@ gulp.task('clean' , function () {
 // });
 
 
-gulp.task('serv' , function () {
+gulp.task('serv', function () {
     browser_sync.init(
-        {server : 'public'}
+        {server: 'public'}
     );
     // browser_sync.watch('public/**/*.*').on('change', browser_sync.reload);
 });
@@ -66,112 +66,110 @@ gulp.task('serv' , function () {
 // });
 
 
-gulp.task('less_1_if_stream_combiner2',function(){
+gulp.task('less_1_if_stream_combiner2', function () {
 
     return stream_combiner2(
-        gulp.src('frontend/styles/*.less',{base:'frontend'}), // Как задать переменную из комапндной строки?
+        gulp.src('app/less/*.less', {base: 'app'}), // Как задать переменную из комапндной строки?
         newer('public'),
         debug({title: 'newer :'}),
-        gulpIf(isDevelopment,sourcemaps.init()),
+        gulpIf(isDevelopment, sourcemaps.init()),
         less(),
-        concat('styles/all.css'),
-        gulpIf(isDevelopment,sourcemaps.write()),
+        concat('css/all.css'),
+        gulpIf(isDevelopment, sourcemaps.write()),
         gulp.dest('public'),
         browser_sync.reload({stream: true})
     )
-    .on('error' , notify.onError());
+        .on('error', notify.onError());
 
 });
 
 
-gulp.task('less_1_if_multipipe',function(){
+gulp.task('less_1_if_multipipe', function () {
 
     return mutipipe(
-    gulp.src('frontend/styles/*.less',{base:'frontend'}), // Как задать переменную из комапндной строки?
-    newer('public'),
-    debug({title: 'newer :'}),
-    gulpIf(isDevelopment,sourcemaps.init()),
-    less(),
-    concat('styles/all.css'),
-    gulpIf(isDevelopment,sourcemaps.write()),
-    gulp.dest('public'),
-    browser_sync.reload({stream: true})
+        gulp.src('frontend/styles/*.less', {base: 'frontend'}), // Как задать переменную из комапндной строки?
+        newer('public'),
+        debug({title: 'newer :'}),
+        gulpIf(isDevelopment, sourcemaps.init()),
+        less(),
+        concat('styles/all.css'),
+        gulpIf(isDevelopment, sourcemaps.write()),
+        gulp.dest('public'),
+        browser_sync.reload({stream: true})
     )
-    .on('error' , notify.onError());
+        .on('error', notify.onError());
 
 });
 
 
-gulp.task('less_1_dev_or_pub_Two_if',function(){
-    return gulp.src('frontend/styles/*.less',{base:'frontend'}) // Как задать переменную из комапндной строки?
-    .pipe(newer('public'))
-    .pipe(debug({title: 'newer :'}))
-    .pipe(gulpIf(isDevelopment,sourcemaps.init()))
-    .pipe(less())
-    .on('error' , notify.onError(function (err) {
-        return{
-            title:'LESS',
-            message: err.message
-        };
-    }))
-    .pipe(concat('styles/all.css'))
-    .pipe(gulpIf(isDevelopment,sourcemaps.write()))
-    .pipe(gulp.dest('public'))
-.pipe(browser_sync.reload({stream: true}));
+gulp.task('less_1_dev_or_pub_Two_if', function () {
+    return gulp.src('frontend/styles/*.less', {base: 'frontend'}) // Как задать переменную из комапндной строки?
+        .pipe(newer('public'))
+        .pipe(debug({title: 'newer :'}))
+        .pipe(gulpIf(isDevelopment, sourcemaps.init()))
+        .pipe(less())
+        .on('error', notify.onError(function (err) {
+            return {
+                title: 'LESS',
+                message: err.message
+            };
+        }))
+        .pipe(concat('styles/all.css'))
+        .pipe(gulpIf(isDevelopment, sourcemaps.write()))
+        .pipe(gulp.dest('public'))
+        .pipe(browser_sync.reload({stream: true}));
 
 });
-gulp.task('assets' , function () {
-    return gulp.src('frontend/assets/**/*.*' )
-    .pipe(debug({title: 'src :'}))
-    .pipe(newer('public'))
-    .pipe(debug({title: 'newer :'}))
-    .pipe(gulp.dest('public'))
-.pipe(browser_sync.reload({stream: true}));
+gulp.task('assets', function () {
+    return gulp.src('frontend/assets/**/*.*')
+        .pipe(debug({title: 'src :'}))
+        .pipe(newer('public'))
+        .pipe(debug({title: 'newer :'}))
+        .pipe(gulp.dest('public'))
+        .pipe(browser_sync.reload({stream: true}));
 });
 
-gulp.task('build' , gulp.series('clean' , gulp.parallel('less_1_dev_or_pub_Two_if','assets')));
+gulp.task('build', gulp.series('clean', gulp.parallel('less_1_dev_or_pub_Two_if', 'assets')));
 
-gulp.task('less_1_dev_or_pub_One',function(){
-   var papeline = gulp.src('frontend/styles/*.less',{base:'frontend'});
-    if(isDevelopment){
+gulp.task('less_1_dev_or_pub_One', function () {
+    var papeline = gulp.src('frontend/styles/*.less', {base: 'frontend'});
+    if (isDevelopment) {
         papeline = papeline.pipe(sourcemaps.init());
     }
 
-    papeline = papeline.on('data',function (file) {
+    papeline = papeline.on('data', function (file) {
         console.log({
-            sourceMap : file.sourceMap,
-            relative : file.relative
+            sourceMap: file.sourceMap,
+            relative: file.relative
         });
     });
 
     papeline = papeline
-    .pipe(less())
-    .pipe(concat('styles/all.css'));
-    if(isDevelopment){
+        .pipe(less())
+        .pipe(concat('styles/all.css'));
+    if (isDevelopment) {
         papeline = papeline.pipe(sourcemaps.write());
     }
 
-   return papeline.pipe(gulp.dest('public'));
+    return papeline.pipe(gulp.dest('public'));
 
 });
 
 
-
-gulp.task('less_1',function(){
-    return gulp.src('frontend/styles/*.less',{base:'frontend'})
-    .pipe(sourcemaps.init())
-    .pipe(less())
-    .pipe(concat('styles/all.css'))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('publc'));
+gulp.task('less_1', function () {
+    return gulp.src('frontend/styles/*.less', {base: 'frontend'})
+        .pipe(sourcemaps.init())
+        .pipe(less())
+        .pipe(concat('styles/all.css'))
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('publc'));
 
 });
 
 
+gulp.task('less', function () {
 
-gulp.task('less',function () {
-
-    return gulp.src('frontend/styles/*.less',{base:'frontend'})
+    return gulp.src('frontend/styles/*.less', {base: 'frontend'})
 
     // .pipe(debug({title: 'src :'}))
     // .on('data',function (file) {
@@ -180,76 +178,77 @@ gulp.task('less',function () {
     //     })
     // })
 
-    .pipe(sourcemaps.init())
-    .pipe(debug({title: 'sourcemaps :'}))
-    .on('data',function (file) {
-        console.log({
-            sourceMap : file.sourceMap,
-            relative : file.relative
-        });
-    })
+        .pipe(sourcemaps.init())
+        .pipe(debug({title: 'sourcemaps :'}))
+        .on('data', function (file) {
+            console.log({
+                sourceMap: file.sourceMap,
+                relative: file.relative
+            });
+        })
 
-    .pipe(less())
-    .pipe(debug({title: 'less :'}))
-    .on('data',function (file) {
-        console.log({
-            // relative : file.relative,
-            sourceMap : file.sourceMap
-        });
-    })
+        .pipe(less())
+        .pipe(debug({title: 'less :'}))
+        .on('data', function (file) {
+            console.log({
+                // relative : file.relative,
+                sourceMap: file.sourceMap
+            });
+        })
 
-    .pipe(concat('styles/all.css'))
-    .pipe(debug({title: 'concat :'}))
-    .on('data',function (file) {
-        console.log({
-            // relative : file.relative,
-            sourceMap : file.sourceMap
-        });
-    })
+        .pipe(concat('styles/all.css'))
+        .pipe(debug({title: 'concat :'}))
+        .on('data', function (file) {
+            console.log({
+                // relative : file.relative,
+                sourceMap: file.sourceMap
+            });
+        })
 
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('publc'));
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest('publc'));
 
 });
 
 
-gulp.task('paths_files',function () {
-    return gulp.src(['source/**/*.js','source/**/*.{css|html}'] , {read:false } )  // minimatch
-    .on('data',function (file) {
-        console.log({
-            contents : file.content,
-            path : file.path,
-            base : file.base,
-        //    path components helpers
-            relative : file.relative,
-            dirname : file.dirname,
-            basename : file.basename,
-            stem : file.stem,
-            extname : file.extname
-        });
-    })
-    .pipe(gulp.dest(function (file) {
-        return file.extname == '.js' ? 'dest/js' :
-            file.extname == '.css'  ? 'dest/css' :
-                file.extname == '.html'  ? 'dest/html' :
-                    'dest';
+gulp.task('paths_files', function () {
+    return gulp.src(['source/**/*.js', 'source/**/*.{css|html}'], {read: false})  // minimatch
+        .on('data', function (file) {
+            console.log({
+                contents: file.content,
+                path: file.path,
+                base: file.base,
+                //    path components helpers
+                relative: file.relative,
+                dirname: file.dirname,
+                basename: file.basename,
+                stem: file.stem,
+                extname: file.extname
+            });
+        })
+        .pipe(gulp.dest(function (file) {
+            return file.extname == '.js' ? 'dest/js' :
+                file.extname == '.css' ? 'dest/css' :
+                    file.extname == '.html' ? 'dest/html' :
+                        'dest';
 
-    }));
+        }));
 });
 
-gulp.task('hello',function (callback) {
+gulp.task('hello', function (callback) {
     console.log("Hello!");
-    callback();});
-gulp.task('watch', function() {
-    gulp.watch('frontend/assets/*.*',gulp.series('assets','build'));
-    gulp.watch('frontend/styles/*.*',gulp.series('less_1_if_stream_combiner2','build'));
+    callback();
+});
+gulp.task('watch', function () {
+    gulp.watch('frontend/assets/*.*', gulp.series('assets', 'build'));
+    gulp.watch('frontend/styles/*.*', gulp.series('less_1_if_stream_combiner2', 'build'));
 });
 
 
-gulp.task('default',gulp.series('build',gulp.parallel('watch','serv')));
+gulp.task('default', gulp.series('build', gulp.parallel('watch', 'serv')));
 
 //  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    /*http://webdesign-master.ru/blog/tools/2016-03-09-gulp-beginners.html*/
+/*http://webdesign-master.ru/blog/tools/2016-03-09-gulp-beginners.html*/
 // gulp.task('move_to_dist',function () {
 //     return gulp.src('app/sass/*.css')
 //     .pipe(rename('**/sass/*_sass.css'))
@@ -283,7 +282,7 @@ gulp.task('default',gulp.series('build',gulp.parallel('watch','serv')));
 //     return gulp.src(['app/css/mane_less_i.css','app/css/mane_scss_i.css'], { allowEmpty: true })
 //     .pipe(concat('mane.css'))
 //     .pipe(debug({title: 'concat:'}))
-    // .pipe(shorthand())
+// .pipe(shorthand())
 //     .pipe(gulp.dest('app/css/'))
 //     .pipe(browser_sync.reload({stream: true})) // Обновляем CSS на странице при изменении
 //     .pipe(debug({title: 'Reloading:'}))
@@ -297,9 +296,9 @@ gulp.task('default',gulp.series('build',gulp.parallel('watch','serv')));
 //     .pipe(concat('mane_sass_i.css'))
 //     .pipe(debug({title: 'concat:'}))
 //     .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
-    // .pipe(shorthand())
-    // .pipe(gulp.dest('app/css')) // Выгружаем результата в папку app/css
-    /*.pipe(browser_sync.reload({stream: true}))*/ // Обновляем CSS на странице при изменении
+// .pipe(shorthand())
+// .pipe(gulp.dest('app/css')) // Выгружаем результата в папку app/css
+/*.pipe(browser_sync.reload({stream: true}))*/ // Обновляем CSS на странице при изменении
 // });
 
 // gulp.task('reload', series('browser_sync'), function() {
@@ -314,17 +313,17 @@ gulp.task('default',gulp.series('build',gulp.parallel('watch','serv')));
 //     .pipe(concat('mane.css'))
 //     .pipe(debug({title: 'concat:'}))
 //     .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
-    // .pipe(shorthand())
+// .pipe(shorthand())
 //     .pipe(gulp.dest('app/css')) // Выгружаем результата в папку app/css
 //     .pipe(browser_sync.reload({stream: true})) // Обновляем CSS на странице при изменении
 // });
 
 
 // gulp.task('watch', function() {
-    // gulp.watch('app/sass/*.sass', gulp.parallel('concat_l_s','sass')); // Наблюдение за sass файлами
-    // gulp.watch('app/less/*.less', gulp.parallel('less','concat_l_s')); // Наблюдение за less файлами
-    // gulp.watch('app/*.html', gulp.parallel('code')); // Наблюдение за HTML файлами в корне проекта
-   /* gulp.watch(['app/js/common.js', 'app/libs/!**!/!*.js'], gulp.parallel('scripts')); */// Наблюдение за главным JS файлом и за библиотеками
+// gulp.watch('app/sass/*.sass', gulp.parallel('concat_l_s','sass')); // Наблюдение за sass файлами
+// gulp.watch('app/less/*.less', gulp.parallel('less','concat_l_s')); // Наблюдение за less файлами
+// gulp.watch('app/*.html', gulp.parallel('code')); // Наблюдение за HTML файлами в корне проекта
+/* gulp.watch(['app/js/common.js', 'app/libs/!**!/!*.js'], gulp.parallel('scripts')); */// Наблюдение за главным JS файлом и за библиотеками
 // });
 
 // gulp.task('code', function() {
@@ -495,8 +494,8 @@ gulp.task('default',gulp.series('build',gulp.parallel('watch','serv')));
 /*Групповой вочер*/
 // gulp.task('watch', function () {
 //     gulp.watch('app/sass/*.sass' , gulp.series('sass' ));
-    // gulp.watch('*.html' , gulp.series());
-    // gulp.watch('dest/*.html' , gulp.series('html'));
+// gulp.watch('*.html' , gulp.series());
+// gulp.watch('dest/*.html' , gulp.series('html'));
 // });
 //---------------------------------------------------------------------
 
@@ -549,8 +548,8 @@ gulp.task('default',gulp.series('build',gulp.parallel('watch','serv')));
 // });
 
 /*Плагин shrthnd(*/
-    // var shorthandedCss = shrthnd('app/css/mane.css');
-    // console.log(shorthandedCss.string);
+// var shorthandedCss = shrthnd('app/css/mane.css');
+// console.log(shorthandedCss.string);
 
 
 /*'postcss-important-shorthand'  'gulp-postcss'*/
