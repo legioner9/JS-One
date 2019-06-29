@@ -2,75 +2,97 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 
-function Menu(state) {
-    this._state = state || this.STATE_CLOSED;
+function MenuOpenClose(State) {
+    this.State_ = State || this.State_Close;
 }
 
-Menu.prototype.STATE_CLOSED = 0;
-Menu.prototype.STATE_OPEN = 1;
+MenuOpenClose.prototype.State_Close = 0;
+MenuOpenClose.prototype.State_Open = 1;
 
-Menu.prototype.open = function () {
-    this._state = this.STATE_OPEN;
+MenuOpenClose.prototype.inOpen = function () {
+    //CODE inOpen
+    this.State_ = this.State_Open;
 }
 
-Menu.prototype.close = function () {
-    this._state = this.STATE_CLOSED;
+MenuOpenClose.prototype.inClose = function () {
+    //CODE inClose
+    this.State_ = this.State_Close;
 }
 
-Menu.prototype.resultOpen = function () {
+MenuOpenClose.prototype.openTo = function () {
     //OPEN code
-    return `state is ${this._state} result OPEN`;
+    return `state is ${this.State_} result OPEN`;
 }
 
-Menu.prototype.resultClose = function () {
+MenuOpenClose.prototype.closeTo = function () {
     //CLOSE code
-    return `state is ${this._state} result CLOSE`;
+    return `state is ${this.State_} result CLOSE`;
 }
 
-Menu.prototype.resultState = function () {
+MenuOpenClose.prototype.decodingState = function () {
     try {
-        switch (this._state) {
-            case this.STATE_OPEN :
-                return this.resultOpen();
-            case this.STATE_CLOSED :
-                return this.resultClose();
+        switch (this.State_) {
+            case this.State_Close :
+                return this.closeTo();
+            case this.State_Open :
+                return this.openTo();
             default : {
-                col(`state is uncorrect = ${this._state}`)
+                col(`state is uncorrect = ${this.State_}`)
                 new Error(`state is uncorrect`)
             }
         }
     } catch (e) {
         if (e.message == `state is uncorrect`) {
-            //    Code for treat err _state ( open , close)
+            //    Code for treat err State_ ( open , close)
         } else {
             throw e;
         }
     }
 }
-Menu.prototype.showResult = function () {
-    col(this.resultState());
+MenuOpenClose.prototype.resumeState = function () {
+    col(this.decodingState());
 }
 
 //AnimateMenu
-function AnimateMenu(state) {
-    Menu.apply(this, arguments);
+function MenuOpenCloseAnimate(State) {
+    MenuOpenClose.apply(this, arguments);
 }
 
-AnimateMenu.prototype = Object.create(Menu.prototype);
-AnimateMenu.prototype.constructor = AnimateMenu;
+MenuOpenCloseAnimate.prototype = Object.create(MenuOpenClose.prototype);
+MenuOpenCloseAnimate.prototype.constructor = MenuOpenCloseAnimate;
 
-AnimateMenu.prototype.STATE_ANIMATE = 2;
+MenuOpenCloseAnimate.prototype.State_Animate = 2;
 
-AnimateMenu.prototype.resultAnimate = function () {
-    //ANYMATE code
-    return `state is ${this._state} result ANYMATE`;
+MenuOpenCloseAnimate.prototype.animateTo = function () {
+    //CODE animateTo
+    return `state is ${this.State_} result ANYMATE`;
 }
-AnimateMenu.prototype.resultState = function () {
-    switch (this._state) {
-        case this.STATE_ANIMATE :
-            return this.resultAnimate();
+MenuOpenCloseAnimate.prototype.decodingState = function () {
+    switch (this.State_) {
+        case this.State_Animate :
+            return this.animateTo();
         default : {
-            return Menu.resultState.apply(this , arguments);
+            return MenuOpenClose.decodingState.apply(this, arguments);
         }
     }
 }
+
+MenuOpenCloseAnimate.prototype.inAnimate = function () {
+    this.State_ = this.State_Animate;
+    col(new Date());
+    col(`state is ${this.State_}`);
+    this.tm = setTimeout(() => {
+            MenuOpenClose.prototype.inOpen.apply(this, arguments);
+            col(new Date());
+            col(`state is ${this.State_}`);
+        }
+    )
+}
+
+MenuOpenCloseAnimate.prototype.closeTo = function () {
+    clearTimeout(this.tm);
+    MenuOpenClose.prototype.closeTo.apply(this, arguments);
+}
+
+debugger;
+let me = new MenuOpenCloseAnimate();
