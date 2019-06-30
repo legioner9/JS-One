@@ -131,6 +131,8 @@ MenuOpenCloseAnimate.prototype.inAnimate = function () {
 }
 
 let me = new MenuOpenCloseAnimate();
+col(me instanceof MenuOpenCloseAnimate);
+col(me instanceof MenuOpenClose);
 // debugger;
 // me.resumeState();
 // me.inAnimate();
