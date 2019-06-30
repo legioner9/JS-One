@@ -50,7 +50,7 @@ AnimatingMenu.prototype.close = function () {
 
 }
 
-// debugger;
+debugger;
 let ms = new AnimatingMenu();
 ms.open();
 ms.close();

@@ -72,7 +72,7 @@ MenuOpenCloseAnimate.prototype.decodingState = function () {
         case this.State_Animate :
             return this.animateTo();
         default : {
-            return MenuOpenClose.decodingState.apply(this, arguments);
+            return MenuOpenClose.prototype.decodingState.call(this);
         }
     }
 }
@@ -91,8 +91,9 @@ MenuOpenCloseAnimate.prototype.inAnimate = function () {
 
 MenuOpenCloseAnimate.prototype.closeTo = function () {
     clearTimeout(this.tm);
-    MenuOpenClose.prototype.closeTo.apply(this, arguments);
+    MenuOpenClose.prototype.closeTo.apply(this);
 }
 
-debugger;
 let me = new MenuOpenCloseAnimate();
+debugger;
+me.resumeState();

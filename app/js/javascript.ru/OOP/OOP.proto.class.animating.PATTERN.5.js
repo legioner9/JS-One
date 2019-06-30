@@ -72,7 +72,7 @@ debugger;
 var menu = new AnimatingMenu();
 
 menu.showState(); // закрыто
-
+debugger;
 menu.open();
 menu.showState(); // анимация
 

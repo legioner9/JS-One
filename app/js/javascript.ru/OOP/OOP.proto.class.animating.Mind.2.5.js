@@ -2,46 +2,6 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 
-/* TODO: PTR template - replase  */
-
-option = {
-    template: 'h : m : s'
-}
-let H = 'H';
-option.template.replace('h', H);
-
-/* TODO: PTR mane class prototype definder  */
-
-function Animal(name) {
-    this.name = name;
-}
-
-Animal.prototype.walk =
-    function () {
-        col("ходит " + this.name);
-    }
-
-function Rabbit(name) {
-    Animal.apply(this, arguments);
-}
-
-
-Rabbit.prototype = Object.create(Animal.prototype);
-Rabbit.prototype.constructor = Rabbit;
-
-Rabbit.prototype.walk = function () {
-    Animal.prototype.walk.apply(this, arguments);
-    col("прыгает " + this.name);
-};
-
-/* TODO: PTR maskFour ligic mask  */
-function maskFour() {
-    var bol, a = 2, b = 4, c = 8, d = 16;
-    bol = a | b | c | d;
-    col(bol & a);
-}
-
-/* TODO: PTR OOP State ( in to ADD proto Class )  */
 function MenuOpenClose(state) {
     this.State_ = state || this.State_Close;
 }
@@ -132,6 +92,6 @@ MenuOpenCloseAnimate.prototype.inAnimate = function () {
 
 let me = new MenuOpenCloseAnimate();
 // debugger;
-// me.resumeState();
-// me.inAnimate();
-// me.resumeState();
+me.resumeState();
+me.inAnimate();
+me.resumeState();
