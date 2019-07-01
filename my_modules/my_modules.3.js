@@ -404,6 +404,23 @@
         _this.res__my_ProtoPropObject = init;
     }
 
+    /**
+     * ParentError for childClassError
+     *
+     */
+    /* TODO:PARENT CLASS ERROR  __my_Class_Init_Error for childClassError  */
+    window.__my_Class_Init_Error = function (message) {
+        this.name = 'ParentError';
+        this.message = message;
+        if (Error.captureStackTrace) {
+            Error.captureStackTrace(this, this.constructor);
+        } else {
+            this.stack = (new Error()).stack;
+        }
+    }
+    __my_Class_Init_Error.prototype = Object.create(Error.prototype);
+    __my_Class_Init_Error.prototype.constructor = __my_Class_Init_Error;
+
 
     // window.col = col;
     // window.my_ch_checkStr = my_ch_checkStr;

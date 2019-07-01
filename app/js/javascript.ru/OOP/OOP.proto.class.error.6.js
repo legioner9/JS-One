@@ -21,18 +21,6 @@ PropertyError.prototype = Object.create(Error.prototype);
 PropertyError.prototype.constructor = PropertyError;
 debugger;
 
-let er;
-try {
-    throw new PropertyError('rut');
-    col(er instanceof Error);
-} catch (e) {
-    col(e.message);
-    col(e);
-}
-col(new Error());
-col(new Error().stack);
-
-
 // Генерация ошибки
 function readUser(data) {
 
