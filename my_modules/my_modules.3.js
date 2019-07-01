@@ -371,6 +371,7 @@
         }
         let _this = this;
         _this.res__my_OwnPropObject = init;
+        return init;
     }
 
     /**
@@ -386,6 +387,7 @@
         }
         let _this = this;
         _this.res__my_AllPropObject = init;
+        return init;
     }
 
     /**
@@ -402,6 +404,7 @@
         }
         let _this = this;
         _this.res__my_ProtoPropObject = init;
+        return init;
     }
 
     /**
@@ -409,7 +412,7 @@
      *
      */
     /* TODO:PARENT CLASS ERROR  __my_Class_Init_Error for childClassError  */
-    window.__my_Class_Init_Error = function (message) {
+    window.__My_Class_Init_Error = function (message) {
         this.name = 'ParentError';
         this.message = message;
         if (Error.captureStackTrace) {
@@ -418,9 +421,51 @@
             this.stack = (new Error()).stack;
         }
     }
-    __my_Class_Init_Error.prototype = Object.create(Error.prototype);
-    __my_Class_Init_Error.prototype.constructor = __my_Class_Init_Error;
+    __My_Class_Init_Error.prototype = Object.create(Error.prototype);
+    __My_Class_Init_Error.prototype.constructor = __My_Class_Init_Error;
 
+    /**
+     * childClassError__my_PropError
+     *
+     */
+    /* TODO:CHILD CLASS ERROR  __my_PropError */
+    window.__My_PropError = function (prop) {
+        __My_Class_Init_Error.call(this , `Sorry error in property ${prop}`);
+        this.name = 'PropError';
+        this.property = prop;
+    }
+
+    __My_PropError.prototype = Object.create(__My_Class_Init_Error.prototype);
+    __My_PropError.prototype.constructor = __My_PropError;
+
+    /**
+     * JSON.parse__my_ArrProp
+     *
+     */
+    /* TODO:JSON.parse__my_ArrProp  */
+    JSON.parse__my_ArrProp = function (date, arr_prop) {
+        let data_pars;
+        try {
+            data_pars = JSON.parse(date);
+            if (arr_prop) {
+                let obj_key = Object.keys(data_pars);
+                for (let i = 0; i < arr_prop.length; i++) {
+                    if (obj_key.indexOf(arr_prop[i]) == -1) {
+                        throw new __My_PropError(arr_prop[i]);
+                    }
+                }
+            }
+        } catch (e) {
+            if (e.name == 'PropError') {
+                col(`Sorry you property ${e.property} is empty (((`);
+            } else if (e instanceof SyntaxError) {
+                col(`Sorry ${date} is not valid (((`)
+            } else {
+                throw e;
+            }
+        }
+        return data_pars;
+    }
 
     // window.col = col;
     // window.my_ch_checkStr = my_ch_checkStr;
