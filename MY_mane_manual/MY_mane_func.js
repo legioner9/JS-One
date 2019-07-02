@@ -101,6 +101,14 @@
 // setMilliseconds(ms)
 // setTime(milliseconds) (устанавливает всю дату по миллисекундам с 01.01.1970 UTC)
 
+// Полезные методы
+// Добавлен ряд полезных методов общего назначения:
+
+//     str.includes(s) – проверяет, включает ли одна строка в себя другую, возвращает true/false.
+// str.endsWith(s) – возвращает true, если строка str заканчивается подстрокой s.
+// str.startsWith(s) – возвращает true, если строка str начинается со строки s.
+// str.repeat(times) – повторяет строку str times раз.
+//     Конечно, всё это можно было сделать при помощи других встроен
 
 /**
  * Return integer as float without part after dot
@@ -1655,3 +1663,16 @@ var to = setTimeout(function run() {
     col(i+ '\n');
     setTimeout(run , 100*i);
 }, 100);
+
+
+/**
+ *
+ * @param literal
+ * @param value
+ */
+literalVolue ` texst and ${variables = 'any'}`;
+/* TODO: FUNC literalVolue(literal, ...value) of ``  */
+function literalVolue(literal, ...value) {
+    // literal.__my_getObjClass();  is array
+    // value.__my_getObjClass();  is array
+}

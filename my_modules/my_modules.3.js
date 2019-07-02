@@ -187,6 +187,10 @@
         return {}.toString.call(obj_ini).slice(8, -1).toLowerCase();
     }
 
+    Object.prototype.__my_getObjClass =  function (){
+        return {}.toString.call(this).slice(8, -1).toLowerCase();
+    }
+
     /**
      *checkNum
      * @param ini

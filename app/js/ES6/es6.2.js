@@ -41,3 +41,9 @@ col(s.name);
 debugger;
 let ar = [6, 12, 8];
 ar = ar.sort((a, b) => a - b);
+
+function f1() {
+    let show_arg = () => col(arguments.callee.name);
+    show_arg();
+}
+f1(44);
