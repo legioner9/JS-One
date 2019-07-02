@@ -430,7 +430,7 @@
      */
     /* TODO:CHILD CLASS ERROR  __my_PropError */
     window.__My_PropError = function (prop) {
-        __My_Class_Init_Error.call(this , `Sorry error in property ${prop}`);
+        __My_Class_Init_Error.call(this, `Sorry error in property ${prop}`);
         this.name = 'PropError';
         this.property = prop;
     }
@@ -467,6 +467,69 @@
         return data_pars;
     }
 
+    /**
+     * window.__my_eventMixin
+     *
+     */
+    /* TODO:WIN __my_eventMixin (on , off , trigger )  */
+    window.__my_eventMixin = {
+
+        /**
+         * Подписка на событие
+         * Использование:
+         *  menu.on('select', function(item) { ... }
+         */
+        __my_on: function (eventName, handler) {
+            if (!this._eventHandlers) this._eventHandlers = {};
+            if (!this._eventHandlers[eventName]) {
+                this._eventHandlers[eventName] = [];
+            }
+            this._eventHandlers[eventName].push(handler);
+        },
+
+        /**
+         * Прекращение подписки
+         *  menu.off('select',  handler)
+         */
+        __my_off: function (eventName, handler) {
+            var handlers = this._eventHandlers && this._eventHandlers[eventName];
+            if (!handlers) return;
+            for (var i = 0; i < handlers.length; i++) {
+                if (handlers[i] == handler) {
+                    handlers.splice(i--, 1);
+                }
+            }
+        },
+
+        /**
+         * Генерация события с передачей данных
+         *  this.trigger('select', item);
+         */
+        __my_trigger: function (eventName /*, ... */) {
+
+            if (!this._eventHandlers || !this._eventHandlers[eventName]) {
+                return; // обработчиков для события нет
+            }
+
+            // вызвать обработчики
+            var handlers = this._eventHandlers[eventName];
+            for (var i = 0; i < handlers.length; i++) {
+                handlers[i].apply(this, [].slice.call(arguments, 1));
+            }
+        }
+    };
+
+    /**
+     * window.__my_eventMixin
+     *
+     */
+    /* TODO:PROTO OBJ __my_eventMixin (on , off , trigger )  */
+    for (var key in __my_eventMixin) {
+        if (!__my_eventMixin.hasOwnProperty(key)) continue;
+        Object.prototype[key] = __my_eventMixin[key];
+    }
+
+
     // window.col = col;
     // window.my_ch_checkStr = my_ch_checkStr;
     // window.my_ch_checkNum = my_ch_checkNum;
@@ -490,6 +553,7 @@
     // window.___getObjClass = ___getObjClass;
     window.Math._fib = _fib;
 
+    Object.prototype.constructor = Object;
 
 }());
 // Z();
