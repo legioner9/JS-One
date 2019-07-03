@@ -1676,3 +1676,19 @@ function literalVolue(literal, ...value) {
     // literal.__my_getObjClass();  is array
     // value.__my_getObjClass();  is array
 }
+
+/**
+ * Object.defineProperty
+ */
+/* TODO: FUNC Object.defineProperty  */
+Object.defineProperty(obj, 'property name', {
+        value: '',
+        writable: false,
+        enumerable: false,
+        configurable: false,
+        get() {
+        },
+        set() {
+        }
+    }
+)
