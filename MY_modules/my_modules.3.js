@@ -533,6 +533,12 @@
         Object.prototype[key] = __my_eventMixin[key];
     }
 
+    /**
+     * Math.random().toString(36).slice(2)
+     */
+    /* TODO: GENERATOR Math.random().toString(36).slice(2)  */
+    Math.random().toString(36).slice(2);
+window.__my_MRTS = Math.random().toString(36).slice(2);
 
     // window.col = col;
     // window.my_ch_checkStr = my_ch_checkStr;

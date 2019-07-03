@@ -7,7 +7,14 @@ let Garry = class {
         this.name = name;
     }
 
-    sayHi() {
-        col(` Hi ${this.name} `);
+    sayHi(word) {
+        col(` ${word} ! ${this.name} `);
     }
 }
+
+let gar = new Garry('Hobbit');
+gar.sayHi('HHII');
+new Garry('Mary').sayHi('Qucu');
+
+col(__my_MRTS);
+debugger;
