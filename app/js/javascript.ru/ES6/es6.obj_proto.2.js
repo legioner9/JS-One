@@ -50,27 +50,5 @@ Object.setPrototypeOf(us, ob);
 let trj = {};
 Object.assign(trj, ob, us)
 Object.is(a, a); // true a === a
-Object.defineProperty(trj, 'dube', {
-        get() {
-            return this.dube + 'd';
-        },
-        // writable : true,
-        enumerable: true,
-        configurable: true
-    }
-);
-debugger;
-trj.dube = 6;
-col(trj.dube);
 
-Object.defineProperty(obj, 'property name', {
-        value: '',
-        writable: false,
-        enumerable: false,
-        configurable: false,
-        get() {
-        },
-        set() {
-        }
-    }
-)
+
