@@ -187,7 +187,7 @@
         return {}.toString.call(obj_ini).slice(8, -1).toLowerCase();
     }
 
-    Object.prototype.__my_getObjClass =  function (){
+    Object.prototype.__my_getObjClass = function () {
         return {}.toString.call(this).slice(8, -1).toLowerCase();
     }
 
@@ -538,8 +538,16 @@
      */
     /* TODO: GENERATOR Math.random().toString(36).slice(2)  */
     Math.random().toString(36).slice(2);
-window.__my_MRTS = Math.random().toString(36).slice(2);
+    window.__my_MRTS = Math.random().toString(36).slice(2);
 
+/* TODO: PROTO MAP __my_MapToArr */
+    Map.prototype.__my_MapToArr = function () {
+        this.res__my_MapToArr = []
+        let arr = this.res__my_MapToArr;
+        for (let key of this.keys()) {
+            arr.push({key : key , volume : this.get(key)})
+        }
+    }
     // window.col = col;
     // window.my_ch_checkStr = my_ch_checkStr;
     // window.my_ch_checkNum = my_ch_checkNum;
@@ -564,6 +572,7 @@ window.__my_MRTS = Math.random().toString(36).slice(2);
     window.Math._fib = _fib;
 
     Object.prototype.constructor = Object;
+    Map.prototype.constructor = Map;
 
 }());
 // Z();
