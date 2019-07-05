@@ -137,3 +137,95 @@ col(me instanceof MenuOpenClose);
 // me.resumeState();
 // me.inAnimate();
 // me.resumeState();
+
+/* TODO: PTR Generator of iterator  */
+class Users {
+    constructor(users) {
+        this.users = users;
+        this.len = users.length;
+    }
+
+    //это генератор, который возвращает итератор
+    * getIterator() {
+        for (let i in this.users) {
+            if (!this.users.hasOwnProperty(i)) continue;
+            yield this.users[i];
+            //хотя эта команда вызывается внутри цикла,
+            //yield выполняется лишь один раз за вызов
+        }
+    }
+}
+
+const allUsers = new Users([
+    {name: 'raja'},
+    {name: 'john'},
+    {name: 'matt'},
+]);
+
+//allUsersIterator называют итератором
+// const allUsersIterator = allUsers.getIterator();
+
+for (const u of allUsers.getIterator()) {
+    col(u.name);
+}
+
+/* TODO: PTR [Symbol.iterator] as method of Obj  */
+const users = [
+    {name: 'raja'},
+    {name: 'john'},
+    {name: 'matt'},
+];
+
+users[Symbol.iterator] = function () {
+
+    let i = 0;
+    // let users = this.users;
+
+    //этот возвращаемый объект называется итератором
+    return {
+        next() {
+            // i++ or other code in each iteration
+            if (i < users.length) {
+                return {done: false, value: users[i++]};
+            }
+            return {done: true};
+        },
+    };
+}
+
+for (const u of users) {
+    col(u.name);
+}
+
+/* TODO: PTR [Symbol.iterator] as method of CLASS  */
+class Us {
+    constructor(users) {
+        this.users = users;
+    }
+
+    [Symbol.iterator]() {
+        let i = 0;
+        let users = this.users;
+
+        //этот возвращаемый объект называется итератором
+        return {
+            next() {
+                // i++ or other code in each iteration
+                if (i < users.length) {
+                    return {done: false, value: users[i++]};
+                }
+                return {done: true};
+            },
+        };
+    }
+}
+
+const users = new Us([
+    {name: 'raja'},
+    {name: 'john'},
+    {name: 'matt'},
+]);
+
+for (const u of users) {
+    col(u.name);
+}
