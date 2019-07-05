@@ -2,54 +2,28 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 
-
-class Us {
-    constructor(users) {
-        this.users = users;
-    }
-
-    [Symbol.iterator]() {
-        let i = 0;
-        let users = this.users;
-        Object.keys(users)
-
-        //этот возвращаемый объект называется итератором
-        return {
-            next() {
-                // i++ or other code in each iteration
-                if (i < users.length) {
-                    return {done: false, value: users[i++]};
-                }
-                return {done: true};
-            },
-        };
-    }
+let range = {
+    _from: 1,
+    to: 5
 }
 
-const users = new Us(
-    {
-        a: {name: 'raja'},
-        b: {name: 'john'},
-        c: {name: 'matt'}
-    }
-);
-// users[Symbol.iterator] = function () {
-//
-//     let i = 0;
-//     // let users = this.users;
-//
-//     //этот возвращаемый объект называется итератором
-//     return {
-//         next() {
-//             // i++ or other code in each iteration
-//             if (i < users.length) {
-//                 return {done: false, value: users[i++]};
-//             }
-//             return {done: true};
-//         },
-//     };
-// }
+range[Symbol.iterator] = function () {
+
+    let start = this._from;
+    let stop = this.to;
+    return {
+        next() {
+            // i++ or other code in each iteration
+            if (start <= stop) {
+                col(Math.random().toString(36).slice(2));
+                return {done: false, value: start++};
+            } else {
+                return {done: true};
+            }
+        },
+    };
+}
 debugger;
-for (const u of users) {
-    col(users(u));
+for (let u of range) {
+    // col(u);
 }

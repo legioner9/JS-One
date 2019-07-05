@@ -25,31 +25,30 @@ class Us {
     }
 }
 
-const users =
-    {
-        a: {name: 'raja'},
-        b: {name: 'john'},
-        c: {name: 'matt'}
-    }
-;
+const users = [
+    {name: 'raja'},
+    {name: 'john'},
+    {name: 'matt'}
+];
 users[Symbol.iterator] = function () {
 
     let i = 0;
-    // let users = this.users;
+    let user = this;
+    col(this.length);
 
     //этот возвращаемый объект называется итератором
     return {
         next() {
-            // i++ or other code in each iteration
-            if (i < Object.keys(users).length){
+            col(i);
+            if (i < user.length) {
                 return {done: false, value: users[i++]};
             }
             return {done: true};
-        },
+        }
+
     };
 }
 debugger;
 for (const u of users) {
-   let us =users.u
-    col(us.name);
+    col(u.name);
 }
