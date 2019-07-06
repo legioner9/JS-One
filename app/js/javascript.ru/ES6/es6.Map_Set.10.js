@@ -57,6 +57,7 @@ debugger;
 //         arr.push({key : key , volume : this.get(key)})
 //     }
 // }
+map_collectiv = new Object();
 map_collectiv.__my_MapToArr();
 let mapping = new Map();
 mapping.set(new Map(), new Map());

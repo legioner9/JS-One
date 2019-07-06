@@ -339,6 +339,7 @@
      */
     /* TODO: PROTO OBJ __my_ms  */
     Object.prototype.__my_ms = function (ms) {
+        if (!(this instanceof Object)) return col('Sorry ((( you object is not Object');
         var f = this;
         return function () {
             setTimeout(() => f.apply(this, arguments)
@@ -353,6 +354,7 @@
     /* TODO: PROTO OBJ __my_toEveryPropFunc  */
 
     Object.prototype.__my_toEveryPropFunc = function (f) {
+        if (!(this instanceof Object)) return col('Sorry ((( you object is not Object');
         for (var prop in this) {
             if (!this.hasOwnProperty(prop)) continue;
             var value = this[prop];
@@ -367,6 +369,7 @@
     /* TODO: PROTO OBJ __my_OwnPropObject  */
 
     Object.prototype.__my_OwnPropObject = function () {
+        if (!(this instanceof Object)) return col('Sorry ((( you object is not Object');
         let init = {};
         for (let prop in this) {
             if (!this.hasOwnProperty(prop)) continue;
@@ -384,6 +387,7 @@
      */
     /* TODO: PROTO OBJ __my_AllPropObject  */
     Object.prototype.__my_AllPropObject = function () {
+        if (!(this instanceof Object)) return col('Sorry ((( you object is not Object');
         let init = {};
         for (let prop in this) {
             let value = this[prop];
@@ -400,6 +404,7 @@
      */
     /* TODO: PROTO OBJ __my_ProtoPropObject  */
     Object.prototype.__my_ProtoPropObject = function () {
+        if (!(this instanceof Object)) return col('Sorry ((( you object is not Object');
         let init = {};
         for (let prop in this) {
             if (this.hasOwnProperty(prop)) continue;
@@ -541,7 +546,8 @@
     window.__my_MRTS = Math.random().toString(36).slice(2);
 
 /* TODO: PROTO MAP __my_MapToArr */
-    Map.prototype.__my_MapToArr = function () {
+    Object.prototype.__my_MapToArr = function () {
+        if (!(this instanceof Map)) return col('Sorry ((( you object is not Map');
         this.res__my_MapToArr = []
         let arr = this.res__my_MapToArr;
         for (let key of this.keys()) {
