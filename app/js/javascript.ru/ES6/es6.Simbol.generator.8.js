@@ -70,7 +70,7 @@ class Users{
 const allUsers = new Users([
     { name: 'raja' },
     { name: 'john' },
-    { name: 'matt' },
+    { name: 'matt' }
 ]);
 
 debugger;

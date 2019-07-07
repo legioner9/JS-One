@@ -34,12 +34,12 @@ users[Symbol.iterator] = function () {
 
     let i = 0;
     let user = this;
-    col(this.length);
+    // col(this.length);
 
     //этот возвращаемый объект называется итератором
     return {
         next() {
-            col(i);
+            // col(i);
             if (i < user.length) {
                 return {done: false, value: users[i++]};
             }
@@ -49,6 +49,7 @@ users[Symbol.iterator] = function () {
     };
 }
 debugger;
+col(users[Symbol.iterator]().next());
 for (const u of users) {
     col(u.name);
 }
