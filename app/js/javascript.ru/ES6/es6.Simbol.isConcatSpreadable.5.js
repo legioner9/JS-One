@@ -5,6 +5,7 @@ const alpha = ['a', 'b', 'c'];
 const numeric = [1, 2, 3];
 let alphaNumeric = alpha.concat(numeric);
 
+debugger;
 console.log(alphaNumeric);
 // expected output: Array ["a", "b", "c", 1, 2, 3]
 

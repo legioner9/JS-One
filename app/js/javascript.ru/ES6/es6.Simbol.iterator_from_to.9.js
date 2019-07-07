@@ -27,3 +27,4 @@ debugger;
 for (let u of range) {
     // col(u);
 }
+col(Math.max(...range));
