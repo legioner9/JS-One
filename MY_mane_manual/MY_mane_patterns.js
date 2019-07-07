@@ -344,3 +344,31 @@ for (let u of range) {
     col(u);
 }
 col(Math.max(...range));
+
+/* TODO: PTR *[Symbol.iterator]  Genrrator-Iterator  */
+class Users{
+    constructor(users) {
+        this.users = users;
+        this.len = users.length;
+    }
+
+    //это генератор, который возвращает итератор
+    *[Symbol.iterator](){
+        for (let i in this.users){
+            if (!this.users.hasOwnProperty(i)) continue;
+            yield (this.users[i].name +' ' + i);
+            //хотя эта команда вызывается внутри цикла,
+            //yield выполняется лишь один раз за вызов
+        }
+    }
+}
+
+const allUsers = new Users([
+    { name: 'raja' },
+    { name: 'john' },
+    { name: 'matt' },
+]);
+
+for(const u of allUsers){
+    col(u);
+}

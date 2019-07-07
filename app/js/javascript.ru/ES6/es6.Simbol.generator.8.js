@@ -2,6 +2,17 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 
+function* generateSequence() {
+    yield 'a1';
+    yield 'e2';
+    // return 'u3';
+}
+
+let generator = generateSequence();
+debugger;
+for(let value of generator) {
+    col(value); // 1, затем 2
+}
 // const users = [
 //     {name: 'raja'},
 //     {name: 'john'},
@@ -46,10 +57,10 @@ class Users{
     }
 
     //это генератор, который возвращает итератор
-    *getIterator(){
+    *[Symbol.iterator](){
         for (let i in this.users){
             if (!this.users.hasOwnProperty(i)) continue;
-            yield this.users[i];
+            yield (this.users[i].name +' ' + i);
             //хотя эта команда вызывается внутри цикла,
             //yield выполняется лишь один раз за вызов
         }
@@ -66,8 +77,8 @@ debugger;
 //allUsersIterator называют итератором
 // const allUsersIterator = allUsers.getIterator();
 
-for(const u of allUsers.getIterator()){
-    col(u.name);
+for(const u of allUsers){
+    col(u);
 }
 // for(const u of users){
 //     col(u.name);
