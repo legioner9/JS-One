@@ -234,7 +234,7 @@
      * @constructor
      */
     /* TODO: FUNC _fib  */
-    let _fib = function N(n) {
+    window._fib = function N(n) {
         if (n > 2) {
             return N(n - 1) + N(n - 2)
         } else return 1;
@@ -575,7 +575,7 @@
     // window.res_my_Parse_Error = res_my_Parse_Error;
     // window.___options_toLocaleString = ___options_toLocaleString;
     // window.___getObjClass = ___getObjClass;
-    window.Math._fib = _fib;
+
 
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
