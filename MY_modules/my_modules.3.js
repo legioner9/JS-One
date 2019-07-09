@@ -545,13 +545,13 @@
     Math.random().toString(36).slice(2);
     window.__my_MRTS = Math.random().toString(36).slice(2);
 
-/* TODO: PROTO MAP __my_MapToArr */
+    /* TODO: PROTO MAP __my_MapToArr */
     Object.prototype.__my_MapToArr = function () {
         if (!(this instanceof Map)) return col('Sorry ((( you object is not Map');
         this.res__my_MapToArr = []
         let arr = this.res__my_MapToArr;
         for (let key of this.keys()) {
-            arr.push({key : key , volume : this.get(key)})
+            arr.push({key: key, volume: this.get(key)})
         }
     }
     // window.col = col;
@@ -576,8 +576,18 @@
     // window.___options_toLocaleString = ___options_toLocaleString;
     // window.___getObjClass = ___getObjClass;
 
-
-    Object.prototype.constructor = Object;
+    /* TODO: FUNC ifCallbackTypeTrue  */
+    window.ifCallbackTypeTrue = function (callback) {
+        if (callback && typeof (callback) === "function") {
+            callback();
+        } else {
+            throw new Error('Callback not valid type(((')
+        }
+    }
+    window.cp = function(a){
+            col(`Pt (${a}) = ` +performance.now())
+    };
+        Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
 
 }());
