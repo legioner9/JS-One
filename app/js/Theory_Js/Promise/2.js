@@ -6,31 +6,31 @@
 let fi;
 cp(1);
 let promise2 = new Promise(function (resolve, reject) {
-    cp(2)
+    cp('enter promise');
     setTimeout(function () {
-        cp(3);
-        if (fi < 100000) {
-            resolve({
-                message: "The man likes to keep his word",
-                code: "aManKeepsHisWord"
-            });
+        cp('enter time out');
+        if (fi <100000) {
+            resolve(
+                 function () {col('UUURRRAAA')}
+            );
         } else {
+            cp('enter reject')
             reject('Nu e mae(((')
         }
-    }, 10 * 1000);
+    }, 1 * 10);
+    cp('exit promise')
 });
-console.log(promise2);
+col(promise2);
 
 promise2.then(function (result) {
-    console.log(promise2);
-    console.log('Промис сработал') + cp(4);
+    col(result + ' is result');
+    col(promise2);
+    col('Промис сработал') + cp(4);
 }, function (err) {
-    console.log('Что-то сломалось') + cp(5);
-}).then(function (result) {
-    console.log('Промис сработал') + cp(6);
-}, function (err) {
-    console.log('Что-то сломалось') + cp(7);
-});
-
-// debugger;
+    col(err + ' is err');
+    col(promise2);
+    col('Что-то сломалось') + cp(5);
+})
+cp('start fib 25')
 fi = _fib(25);
+cp('end fib 25')

@@ -2,7 +2,6 @@
 node_modules
 public
 dist
-coverage
 .idea
 test
 .nyc_output
@@ -19,5 +18,5 @@ MyOne
 app/js/Test.php
 js-one.*
 uml
-.nyc_output
-patches
+patchesapp.xmlz
+/app/app.xmlz
