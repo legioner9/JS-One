@@ -1,7 +1,22 @@
 let a = 3;
 
-setTimeout(()=>
-    a = 88 , 1000
-);
-col(a);
-// debugger;
+cp('start');
+let pr = new Promise((resolve, reject) => {
+    setTimeout(() => {
+            resolve(a = 88);
+            col(pr);
+            cp(' resolve ');
+        }, 1000
+    );
+    setTimeout(() => {
+        reject(a = 99);
+        col(pr);
+        cp(' reject ');
+    }, 500)
+})
+cp('then');
+pr
+    .then(
+        (result) => cp(result),
+        (err) => cp(err));
+cp('end  of code');
