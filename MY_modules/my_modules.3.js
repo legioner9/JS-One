@@ -584,10 +584,10 @@
             throw new Error('Callback not valid type(((')
         }
     }
-    window.cp = function(a){
-            col(`Pt (${a}) = ` +performance.now())
+    window.cp = function (a) {
+        col(`Pt  (${a}) =` + performance.now())
     };
-        Object.prototype.constructor = Object;
+    Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
 
 }());
