@@ -587,6 +587,11 @@
     window.cp = function (a) {
         col(`Pt  (${a}) =` + performance.now())
     };
+
+    window.cpu = function (a, str) {
+        col(str + performance.now());
+        col(a)
+    };
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
 

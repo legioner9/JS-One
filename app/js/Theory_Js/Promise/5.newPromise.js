@@ -1,48 +1,55 @@
-let a, a2;
+/*
+ * Copyright (c) 2019. Legioner9@inbox.ru
+ */
+cp('start code');
+let nPrTimeOut = function (numYes, timeYes, numNo, timeNo) {
 
-// cp('start');
-let pr = new Promise((resolve, reject) => {
-    // cp('start Promise')
-    setTimeout(() => {
-            // cp(' resolve start Time out');
-            resolve(a = 88);
-            // col(pr);
-            cp(' resolve dan!');
-        }, 100
-    );
-    setTimeout(() => {
-            // cp(' reject start Time out');
-            reject(a = 99);
-            // col(pr);
-            cp(' reject  dan!');
-        }, 500
+    return new Promise(function (resolve, reject) {
+            this.numYes = numYes || false;
+            this.timeYes = timeYes || false;
+            this.numNo = numNo || false;
+            this.timeNo = timeNo || false;
+            if (this.numYes) {
+                setTimeout(
+                    () => {
+                        resolve(this.numYes);
+                        cpu(numYes, 'resolve!!!');
+                    }
+                    , this.timeYes)
+            }
+            if (this.numNo) {
+                setTimeout(
+                    () => {
+                        reject(this.numNo)
+                        cpu(numNo, 'reject!!!');
+                    }
+                    , this.timeNo)
+            }
+        }
     )
-    // cp('end of Promise')
-})
-// cp('then');
+}
+
+let pr = nPrTimeOut(1, 1000, 2, 2000);
+
 
 let pt = pr
     .then(
-        result => {
-            // let pa = JSON.parse(' ');
-            // col('then result');
-            cp(result);
-            // return result;
-        },
-        // null
-    )
-let ptc = pt
-    .then(
-        // result => result,
-        // err => {
-        //     cp(' last error catch err = ' + err)
+        null
+        // result => {
+        //     cp(result);
+        //     cpu(pt, " it s than resolv");
+        //     return result;
         // }
-    )
-setTimeout(() => {
-    cp('start of protocol pomise\'s')
-    col(pr);
-    col(pt);
-    col(ptc);
-}, 1500)
+        ,
+            err => {
+                cp(err);
+                cpu(pt, " it s than reject");
+            }
 
-// cp('end  of code');
+    )
+cpu(pt, ' start yes ');
+
+setTimeout(function () {
+    cpu(pr , 'pr ');
+    cpu(pt , 'pt ');
+}, 4000);
