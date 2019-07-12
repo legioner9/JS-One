@@ -3,32 +3,35 @@
  */
 cp('start code');
 
-let p = nPrTrueFalse(false, 'pr Promise', 500)
+let p = nPrTrueFalse(true, '(pr Promise)', 500)
 
 
 let pt = p
     .then(
-       result => nPrTrueFalse(true, 'pr then true ', 500)
+        result => nPrTrueFalse(false, '(pr then true) ', 500)
         ,
         err => {
-           if(err instanceof Error) {return err}
-           else {return nPrTrueFalse(true, 'pr then false' , 500)}
+            if (err instanceof Error) {
+                return err
+            } else {
+                return nPrTrueFalse(false, '(pr then false)', 500)
+            }
         }
     )
 
 let ptt = pt.then(
-    null,
+    result => result,
     err => err
 )
 
-let ptc = pt.catch(
-    err => err
-)
+// let ptc = pt.catch(
+//     err => col(err + ' (err catch) ')
+// )
 
 setTimeout(function () {
-    cpu(p, 'p ');
-    cpu(pt, 'pt ');
-    cpu(ptt, 'ptt ');
-    cpu(ptc, 'ptc ');
+    cpu(p, '( p )');
+    cpu(pt, '( pt )');
+    cpu(ptt, '( ptt )');
+    // cpu(ptc, '( ptc )');
 }, 2000);
 

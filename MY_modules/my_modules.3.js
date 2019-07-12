@@ -596,7 +596,7 @@
         col(a)
     };
 
-    /* TODO: NEWPROMISE nPrTimeOut */
+    /* TODO:retunn NEWPROMISE nPrTimeOut */
     window.nPrTimeOut = function (numYes, timeYes, numNo, timeNo) {
 
         return new Promise(function (resolve, reject) {
@@ -624,7 +624,7 @@
         )
     }
 
-    /* TODO: NEWPROMISE nPrTrueFalse */
+    /* TODO:retunn NEWPROMISE nPrTrueFalse */
     window.nPrTrueFalse = function (bullianYesNo, str_ident, timer) {
 
         return new Promise(function (resolve, reject) {
@@ -648,6 +648,33 @@
                 }
             }
         )
+    }
+
+    /* TODO:retunn NEWPROMISE httpGet (url)*/
+    window.__my_XMLhttpGet = function(url) {
+
+        return new Promise(function (resolve, reject) {
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    resolve(this.response);
+                } else {
+                    var error = new Error(this.statusText);
+                    error.code = this.status;
+                    reject(error);
+                }
+            };
+
+            xhr.onerror = function () {
+                reject(new Error("Network Error"));
+            };
+
+            xhr.send();
+        });
+
     }
 
 
