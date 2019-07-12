@@ -584,14 +584,73 @@
             throw new Error('Callback not valid type(((')
         }
     }
+
+    /* TODO: FUNC cp `Pt  (${a}) =` + performance.now() */
     window.cp = function (a) {
         col(`Pt  (${a}) =` + performance.now())
     };
 
+    /* TODO: FUNC cpu (a, str) str + performance.now() */
     window.cpu = function (a, str) {
         col(str + performance.now());
         col(a)
     };
+
+    /* TODO: NEWPROMISE nPrTimeOut */
+    window.nPrTimeOut = function (numYes, timeYes, numNo, timeNo) {
+
+        return new Promise(function (resolve, reject) {
+                this.numYes = numYes || false;
+                this.timeYes = timeYes || false;
+                this.numNo = numNo || false;
+                this.timeNo = timeNo || false;
+                if (this.numYes) {
+                    setTimeout(
+                        () => {
+                            resolve(this.numYes);
+                            cpu(numYes, 'resolve!!!');
+                        }
+                        , this.timeYes)
+                }
+                if (this.numNo) {
+                    setTimeout(
+                        () => {
+                            reject(this.numNo)
+                            cpu(numNo, 'reject!!!');
+                        }
+                        , this.timeNo)
+                }
+            }
+        )
+    }
+
+    /* TODO: NEWPROMISE nPrTrueFalse */
+    window.nPrTrueFalse = function (bullianYesNo, str_ident, timer) {
+
+        return new Promise(function (resolve, reject) {
+                this.bullianYesNo = bullianYesNo || false;
+                this.str_ident = str_ident || 'default str';
+                this.timer = timer || 100;
+
+                if (this.bullianYesNo) {
+                    setTimeout(
+                        () => {
+                            resolve(this.str_ident);
+                            cpu(this.str_ident, 'resolve!!!');
+                        }
+                        , this.timer)
+                } else {
+                    setTimeout(
+                        () => {
+                            reject(this.str_ident)
+                        }
+                        , this.timer)
+                }
+            }
+        )
+    }
+
+
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
 
