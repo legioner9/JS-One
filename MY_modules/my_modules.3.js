@@ -654,12 +654,12 @@
     window.__my_XMLhttpGet = function(url) {
 
         return new Promise(function (resolve, reject) {
-
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url, true);
 
             xhr.onload = function () {
                 if (this.status == 200) {
+                    cpu(this.response , ' (res XMLHttpRequest ) ');
                     resolve(this.response);
                 } else {
                     var error = new Error(this.statusText);
@@ -685,6 +685,28 @@
             }
         )
     }
+
+    /* TODO: Promise.consis result from array */
+    Promise.consis = function (arr_url, nPromise) {
+        window.arr_result = [];
+        Pt = Promise.resolve();
+        for (let i = 0; i < arr_url.length; i++) {
+            Pt = Pt.then(() => nPromise(arr_url[i]));
+            Pt = Pt.then(result => {
+                    cpu(result, `(res i = ${i})`);
+                    arr_result.push(result);
+                }
+            )
+            Pt = Pt.then(() => cpu(arr_result , 'resalt array'));
+        }
+    }
+
+    let urls = [
+        'user.json',
+        'user2.json',
+        'user3.json'
+    ]
+    let op = Promise.consis(urls, __my_XMLhttpGet);
 
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
