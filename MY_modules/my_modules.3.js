@@ -677,6 +677,14 @@
 
     }
 
+/* TODO:retunn NEWPROMISE __my_PromiseDelay (time_dely)   */
+    window.__my_PromiseDelay = function (time_dely) {
+        return new Promise(function (resolve, reject) {
+                this.time_dely = time_dely;
+                setTimeout(resolve('default result') , this.time_dely)
+            }
+        )
+    }
 
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;

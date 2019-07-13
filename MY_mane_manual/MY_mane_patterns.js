@@ -372,3 +372,14 @@ const allUsers = new Users([
 for(const u of allUsers){
     col(u);
 }
+
+/* TODO:PTR Promise.all  urls.map(__my_XMLhttpGet)  */
+let urls = [
+    '/article/promise/user.json',
+    '/article/promise/guest.json'
+];
+
+Promise.all( urls.map(__my_XMLhttpGet) )
+    .then(results => {
+        alert(results);
+    });
