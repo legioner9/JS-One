@@ -16,19 +16,19 @@ let urls = [
     'user3.json'
 ]
 
-Promise.consis = function (arr_url, nPromise) {
-    window.arr_result = [];
-    Pt = Promise.resolve();
-    for (let i = 0; i < arr_url.length; i++) {
-        Pt = Pt.then(() => nPromise(arr_url[i]));
-        Pt = Pt.then(result => {
-                cpu(result, `(res i = ${i})`);
-                arr_result.push(result);
-            }
-        )
-        Pt = Pt.then(() => cpu(arr_result , 'resalt array'));
-    }
-}
+// Promise.consis = function (arr_url, nPromise) {
+//     var arr_result = [];
+//     Pt = Promise.resolve();
+//     for (let i = 0; i < arr_url.length; i++) {
+//         Pt = Pt.then(() => nPromise(arr_url[i]));
+//         Pt = Pt.then(result => {
+//                 cpu(result, `(res i = ${i})`);
+//                 arr_result.push(result);
+//             }
+//         )
+//         Pt = Pt.then(() => cpu(arr_result , 'resalt array'));
+//     }
+// }
 let op = Promise.consis(urls, __my_XMLhttpGet);
 
 // let a = setTimeout(function () {

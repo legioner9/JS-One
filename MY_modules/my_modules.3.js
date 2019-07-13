@@ -651,7 +651,7 @@
     }
 
     /* TODO:retunn NEWPROMISE httpGet (url)*/
-    window.__my_XMLhttpGet = function(url) {
+    window.__my_XMLhttpGet = function (url) {
 
         return new Promise(function (resolve, reject) {
             var xhr = new XMLHttpRequest();
@@ -659,7 +659,7 @@
 
             xhr.onload = function () {
                 if (this.status == 200) {
-                    cpu(this.response , ' (res XMLHttpRequest ) ');
+                    cpu(this.response, ' (res XMLHttpRequest ) ');
                     resolve(this.response);
                 } else {
                     var error = new Error(this.statusText);
@@ -677,28 +677,28 @@
 
     }
 
-/* TODO:retunn NEWPROMISE __my_PromiseDelay (time_dely)   */
+    /* TODO:retunn NEWPROMISE __my_PromiseDelay (time_dely)   */
     window.__my_PromiseDelay = function (time_dely) {
         return new Promise(function (resolve, reject) {
                 this.time_dely = time_dely;
-                setTimeout(resolve('default result') , this.time_dely)
+                setTimeout(resolve('default result'), this.time_dely)
             }
         )
     }
 
     /* TODO: Promise.consis result from array */
     Promise.consis = function (arr_url, nPromise) {
-        window.arr_result = [];
-        Pt = Promise.resolve();
+        let arr_result = [];
+        let Pt = Promise.resolve();
         for (let i = 0; i < arr_url.length; i++) {
             Pt = Pt.then(() => nPromise(arr_url[i]));
             Pt = Pt.then(result => {
-                    cpu(result, `(res i = ${i})`);
+                    // cpu(result, `(res i = ${i})`);
                     arr_result.push(result);
                 }
             )
-            Pt = Pt.then(() => cpu(arr_result , 'resalt array'));
         }
+        Pt = Pt.then(() => cpu(arr_result, 'resalt array'));
     }
 
     let urls = [
@@ -706,7 +706,7 @@
         'user2.json',
         'user3.json'
     ]
-    let op = Promise.consis(urls, __my_XMLhttpGet);
+    // let op = Promise.consis(urls, __my_XMLhttpGet);
 
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
