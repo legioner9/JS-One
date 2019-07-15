@@ -60,3 +60,30 @@ let question = generator.next().value;
 // "2 + 2?"
 
 setTimeout(() => generator.next(4), 10000);
+
+function* yieldAndReturn() {
+    yield "Y";
+    return "R";
+    yield "unreachable";
+}
+
+let geny = yieldAndReturn();
+debugger;
+console.log(geny.next()); // { value: "Y", done: false }
+console.log(geny.next()); // { value: "R", done: true }
+console.log(geny.next()); // { value: undefined, done: true }
+
+function* logGenerator() {
+    console.log(yield);
+    console.log(yield);
+    console.log(yield);
+}
+
+let gent = logGenerator();
+
+// первый вызов next выполняется от начала функции
+// и до первого оператора yield
+gent.next();
+gent.next('pretzel'); // pretzel
+gent.next('california'); // california
+gent.next('mayonnaise'); // mayonnaise
