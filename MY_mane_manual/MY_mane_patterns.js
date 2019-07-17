@@ -383,3 +383,86 @@ Promise.all( urls.map(__my_XMLhttpGet) )
     .then(results => {
         alert(results);
     });
+
+/* TODO: PTR FUNC* flat asinc code Generator  */
+// генератор для получения и показа аватара
+// он yield'ит промисы
+function* showUserAvatar() {
+
+    let userFetch = yield fetch('user.json');
+    let userInfo = yield userFetch.json();
+
+    let githubFetch = yield fetch(`https://api.github.com/users/${userInfo.name}`);
+    let githubUserInfo = yield githubFetch.json();
+
+    let img = new Image();
+    img.src = githubUserInfo.avatar_url;
+    img.className = "promise-avatar-example";
+    document.body.appendChild(img);
+
+    yield new Promise(resolve => setTimeout(resolve, 3000));
+
+    img.remove();
+
+    return img.src;
+}
+
+// вспомогательная функция-чернорабочий
+// для выполнения промисов из generator
+function execute(generator, yieldValue) {
+
+    let next = generator.next(yieldValue);
+
+    if (!next.done) {
+        next.value.then(
+            result => execute(generator, result),
+            err => generator.throw(err)
+        );
+    } else {
+        // обработаем результат return из генератора
+        // обычно здесь вызов callback или что-то в этом духе
+        col(next.value);
+    }
+
+}
+
+execute( showUserAvatar() );
+
+/* TODO: PTR Proxy Obect get/set delete in */
+let target = {};
+let handler = {
+    get(target, prop) {
+        if (target[prop]) {
+            col(`reading prop = ${prop}`);
+            return target[prop]
+        } else {
+            col(` target[${prop}] is not exist `)
+        }
+
+    },
+    set(target, prop, value) {
+        col(`setting  ${prop} is ${value}`)
+        target[prop] = value;
+        return true;
+    },
+    deleteProperty(target, prop) {
+        col('delete is not resolve')
+        return true;
+    },
+    has(target, prop) {
+        return true;// ... in target alvays true
+    }
+}
+
+let target = {};
+let proxy = new Proxy(target, handler);
+proxy['a'];
+proxy['a'] = 'aa';
+proxy['a'];
+col(target['a']);
+proxy['b'] = 'bb';
+
+col('t' in target); //always true
+delete proxy['a'];
+delete proxy['b'];
+delete proxy['c'];
