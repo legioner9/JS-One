@@ -1,8 +1,6 @@
 /*
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
-
-
 let target = {};
 let handler = {
     get(target, prop) {
@@ -28,7 +26,7 @@ let handler = {
     }
 }
 
-let target = {};
+target = {};
 let proxy = new Proxy(target, handler);
 proxy['a'];
 proxy['a'] = 'aa';
@@ -36,21 +34,30 @@ proxy['a'];
 col(target['a']);
 proxy['b'] = 'bb';
 
-debugger;
 col('t' in target); //always true
 delete proxy['a'];
 delete proxy['b'];
 delete proxy['c'];
 
-let target_func = function sum(a, b) {
+let sum = function (a, b) {
     return a + b;
 }
 
-let proxy_func = new Proxy(target_func, {
-    construct(target , argumentList)
-    enumerate(target) {
+let proxy_func = new Proxy(sum, {
+    construct(sum, argumentList) {
+        col(`run new with ${argumentList}`);
+        return new sum(...argumentList);
+    },
+    apply(target_func, this_, argumentList) {
+        col(`run new with ${argumentList} and this =`);
+        col(this_);
+        return sum.apply(this_, argumentList);
     }
 })
+
+debugger;
+
+let nf =new proxy_func(1,2);
 
 
 

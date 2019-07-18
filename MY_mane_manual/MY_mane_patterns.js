@@ -466,3 +466,20 @@ col('t' in target); //always true
 delete proxy['a'];
 delete proxy['b'];
 delete proxy['c'];
+
+/* TODO: PTR Proxy Function construct apply  */
+let sum = function (a, b) {
+    return a + b;
+}
+
+let proxy_func = new Proxy(sum, {
+    construct(sum, argumentList) {
+        col(`run new with ${argumentList}`);
+        return new sum(...argumentList);
+    },
+    apply(target_func, this_, argumentList) {
+        col(`run new with ${argumentList} and this =`);
+        col(this_);
+        return sum.apply(this_, argumentList);
+    }
+})
