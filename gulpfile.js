@@ -29,11 +29,23 @@ var gulp = require('gulp'),
     stream_combiner2 = require('stream-combiner2').obj,
     newer = require('gulp-newer'), //.pipe(newer(imgDest))
     sylus = require('gulp-stylus');
+    typescriptFormatter = require('gulp-typescript-formatter');
+    // ts_ = require('gulp-')
 
 /*https://learn.javascript.ru/screencast/gulp#gulp-basics*/
 
 // const  isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV =='development';
 
-gulp.task('watch', function() {
+var ts = require("gulp-typescript");
+var tsProject = ts.createProject("tsconfig.json");
 
-}
+gulp.task("default", function () {
+    return tsProject.src()
+        .pipe(ts(tsProject()))
+        .js.pipe(gulp.dest("dist"));
+});
+
+
+gulp.task('watch', function() {
+    gulp.watch('**/*.ts',gulp.series('default'));
+});

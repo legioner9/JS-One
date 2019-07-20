@@ -1,7 +1,6 @@
 [core]
 node_modules
 public
-dist
 .idea
 test
 .nyc_output
