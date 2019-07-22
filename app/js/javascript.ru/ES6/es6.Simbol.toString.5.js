@@ -3,17 +3,17 @@
  */
 
 class Cat {
-    get [Symbol.toStringTa]() {
+    get [Symbol.toStringTag]() {
         return 'Cat is';
     }
 }
 
 let dog = function Dog(){};
-dog[Symbol.toStringTa] = 'Dog is';
+dog[Symbol.toStringTag] = 'Dog is';
 debugger;
 // class Cat {}
 let cat = new Cat();
-col(cat[Symbol.toStringTa]);//Cat
+col(cat[Symbol.toStringTag]);//Cat
 
 // function Dog() {}
-col(dog[Symbol.toStringTa] );// Dog
+col(dog[Symbol.toStringTag] );// Dog
