@@ -346,17 +346,17 @@ for (let u of range) {
 col(Math.max(...range));
 
 /* TODO: PTR *[Symbol.iterator]  Genrrator-Iterator  */
-class Users{
+class Users {
     constructor(users) {
         this.users = users;
         this.len = users.length;
     }
 
     //это генератор, который возвращает итератор
-    *[Symbol.iterator](){
-        for (let i in this.users){
+    * [Symbol.iterator]() {
+        for (let i in this.users) {
             if (!this.users.hasOwnProperty(i)) continue;
-            yield (this.users[i].name +' ' + i);
+            yield (this.users[i].name + ' ' + i);
             //хотя эта команда вызывается внутри цикла,
             //yield выполняется лишь один раз за вызов
         }
@@ -364,12 +364,12 @@ class Users{
 }
 
 const allUsers = new Users([
-    { name: 'raja' },
-    { name: 'john' },
-    { name: 'matt' },
+    {name: 'raja'},
+    {name: 'john'},
+    {name: 'matt'},
 ]);
 
-for(const u of allUsers){
+for (const u of allUsers) {
     col(u);
 }
 
@@ -379,7 +379,7 @@ let urls = [
     '/article/promise/guest.json'
 ];
 
-Promise.all( urls.map(__my_XMLhttpGet) )
+Promise.all(urls.map(__my_XMLhttpGet))
     .then(results => {
         alert(results);
     });
@@ -426,7 +426,7 @@ function execute(generator, yieldValue) {
 
 }
 
-execute( showUserAvatar() );
+execute(showUserAvatar());
 
 /* TODO: PTR Proxy Obect get/set delete in */
 let target = {};
@@ -483,3 +483,49 @@ let proxy_func = new Proxy(sum, {
         return sum.apply(this_, argumentList);
     }
 })
+
+/* TODO: PTR Class with Class [Symbol.iterator] DoJo  */
+class MyObjectWithIterator {
+    constructor(callBack, ...args) {
+        this.callBack = callBack;
+        this.args = args;// array of arguments
+    }
+
+    addArgs(...add_args) {
+        this.args = this.args.concat(add_args);
+    }
+
+    [Symbol.iterator]() {
+        return new MyIterator(this.args, this.callBack);
+    }
+}
+
+class MyIterator {
+    constructor(array, callBack) {
+        this.array = array;
+        this.callBack = callBack;
+        this.index = 0;
+    }
+
+    next() {
+        let result = {value: undefined, done: true};
+
+        if (this.index < this.array.length) {
+            result.value = this.callBack(this.array[this.index]);
+            result.done = false;
+            this.index++;
+        }
+        return result;
+    }
+
+}
+
+
+let db_arr = new MyObjectWithIterator(a => 2 * a, 1, 2, 3);
+debugger;
+// let sn = db_arr[Symbol.iterator]().next();
+
+
+for (let volume of db_arr) {
+    col(volume);
+}
