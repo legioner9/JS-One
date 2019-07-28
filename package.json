@@ -47,6 +47,7 @@
     "imagemin-pngquant": "^7.0.0",
     "mocha": "^6.1.4",
     "multipipe": "^3.0.1",
+    "node-fetch": "^2.6.0",
     "nyc": "^14.0.0",
     "stream-combiner2": "^1.1.1",
     "stylus": "^0.54.5",
