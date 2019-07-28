@@ -31,7 +31,7 @@ class DataServise {
 
     async getUserPosts(userId) {
         try {
-            let response = await fetch(`${this.url}/posts?userId=${id}`);
+            let response = await fetch(`${this.url}/posts?userId=${userId}`);
             let data_user = await response.json();
             return data_user;
         } catch (e) {
@@ -41,7 +41,7 @@ class DataServise {
 
     async getPostsComments(postId) {
         try {
-            let response = await fetch(`${this.url}/comments?postId=${id}`);
+            let response = await fetch(`${this.url}/comments?postId=${postId}`);
             let data_user = await response.json();
             return data_user;
         } catch (e) {
@@ -52,9 +52,12 @@ class DataServise {
 
 
 mane = async () => {
+    let dataServise = new DataServise('https://jsonplaceholder.typicode.com')
     try {
-        let user = await getUser_4(1);
-        console.log('USER IS ==', user);
+        let user = await dataServise.getUser(1);
+        let posts = await dataServise.getUserPosts(user.id);
+        let commernts_first = await dataServise.getPostsComments(posts[0].id);
+        console.log('USER IS Comments ==', commernts_first);
     } catch (e) {
         console.log('no User (((', e);
     }
