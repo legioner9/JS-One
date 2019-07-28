@@ -35,15 +35,20 @@ let getUser_3 = function (id) {
         .then(response => response.json());
 }
 
-let getUser_4 = async function (id) {
-    let response = await fetch(`https://jsonplaceholder.typicode.comm/users/${id}`);
-    let data_user = await response.json();
-    return data_user;
+let getUser_4 = async id => {
+    try {
+        let response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+        let data_user = await response.json();
+        return data_user;
+    } catch (e) {
+        throw new Error('Response from server is poor(((')
+    }
 }
-mane = async function () {
+
+mane = async () => {
     try {
         let user = await getUser_4(1);
-        console.log(user);
+        console.log('USER IS ==', user);
     } catch (e) {
         console.log('no User (((', e);
     }
