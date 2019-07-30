@@ -1,0 +1,105 @@
+<!--
+  ~ Copyright (c) 2019. Legioner9@inbox.ru
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!--    <link rel="stylesheet" href="css/main.css">-->
+
+    <!--    <script defer src="js/async-scr.js"></script>-->
+    <script src="../../../../MY_modules/my_modules.3.js"></script>
+    <title>Title</title>
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+
+            td {
+                border: 1px solid black;
+                padding: 3px 5px;
+            }
+        </style>
+    </head>
+
+<body>
+<table>
+    <tr>
+        <td>1:1</td>
+        <td>2:1</td>
+        <td>3:1</td>
+        <td>4:1</td>
+        <td>5:1</td>
+    </tr>
+    <tr>
+        <td>1:2</td>
+        <td>2:2</td>
+        <td>3:2</td>
+        <td>4:2</td>
+        <td>5:2</td>
+    </tr>
+    <tr>
+        <td>1:3</td>
+        <td>2:3</td>
+        <td>3:3</td>
+        <td>4:3</td>
+        <td>5:3</td>
+    </tr>
+    <tr>
+        <td>1:4</td>
+        <td>2:4</td>
+        <td>3:4</td>
+        <td>4:4</td>
+        <td>5:4</td>
+    </tr>
+    <tr>
+        <td>1:5</td>
+        <td>2:5</td>
+        <td>3:5</td>
+        <td>4:5</td>
+        <td>5:5</td>
+    </tr>
+</table>
+
+<script>
+    // ... ваш код
+</script>
+<script>
+    let i = 0;
+    let body = document.body
+    col(body);
+    let tab = body.children[0];
+    col(tab);
+    let tab_rows1 = tab.rows[1];
+    col(tab_rows1);
+    let tab_rows1_2 = tab_rows1.cells[2];
+    col(tab_rows1_2);
+    tab_rows1_2.style.backgroundColor = 'red';
+    // document.body.children[0].rows[0].cells[0].style.backgroundColor = '#555';
+    col(document.body.children[0].rows.length);
+
+    let tabl = document.body.children[0]
+    for (let j = 0; j < tabl.rows.length; j++) {
+        for (let k = 0; k < tabl.rows[j].cells.length; k++) {
+            if (j == k) {
+                tabl.rows[j].cells[k].style.color = '#7174ff';
+            }
+        }
+    }
+    debugger;
+
+    // while (document.body.children[0]) {
+    //     debugger
+    // }
+
+</script>
+...
+</body>
+
+</html>

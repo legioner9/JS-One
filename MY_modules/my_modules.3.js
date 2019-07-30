@@ -706,7 +706,12 @@
         'user2.json',
         'user3.json'
     ]
-    // let op = Promise.consis(urls, __my_XMLhttpGet);
+    let op = Promise.consis(urls, __my_XMLhttpGet);
+
+    /* TODO: __toArr Transform Collection to Arr */
+    window.__toArr = function (collection) {
+        return [].slice.call(collection);
+    }
 
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;

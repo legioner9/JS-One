@@ -16,18 +16,32 @@
     <script src="../../../../MY_modules/my_modules.3.js"></script>
     <title>Title</title>
     <head>
-        <script>
-            col("Из HEAD: " + document.body); // null, body ещё нет
-        </script>
     </head>
 
 <body>
-rrr
-<script>
-    col(document.body); // body есть
-    debugger;
-</script>
+<table>
+    <tr>
+        <td>один</td>
+        <td>два</td>
+    </tr>
+    <tr>
+        <td>три</td>
+        <td>четыре</td>
+    </tr>
+</table>
 
+<script>
+    let table = document.body.children[0];
+    let tb = table.rows[0].cells[0].innerHTML;// "один"
+    col(document.body.children);
+    col(document.body.children[0].children[0]);
+    col(document.body.children[0].children[0].children[0]);
+    col(document.body.children[0].children[0].children[0].children[0]);
+    debugger;
+    let el_t = document.body.children[0].children[0].children[0].children[0].innerHTML;
+    el_t = '<div> vsdfvfvgb </div>';
+</script>
+...
 </body>
 
 </html>

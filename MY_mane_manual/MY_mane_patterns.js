@@ -584,3 +584,8 @@ mane = async () => {
 }
 
 mane();
+
+/* TODO: DOM Collection as Arr js.ru  */
+let elems = document.documentElement.childNodes;
+elems = Array.prototype.slice.call(elems); // теперь elems - массив
+elems = [].slice.call(elems)

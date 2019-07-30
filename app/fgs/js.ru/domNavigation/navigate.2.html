@@ -16,18 +16,31 @@
     <script src="../../../../MY_modules/my_modules.3.js"></script>
     <title>Title</title>
     <head>
-        <script>
-            col("Из HEAD: " + document.body); // null, body ещё нет
-        </script>
     </head>
 
 <body>
-rrr
-<script>
-    col(document.body); // body есть
-    debugger;
-</script>
+<div>Начало</div>
 
+<ul>
+    <li>Информация</li>
+</ul>
+
+<div>Конец</div>
+
+<script>
+    for (var i = 0; i < document.body.children.length; i++) {
+        col(document.body.children[i]); // Text, DIV, Text, UL, ..., SCRIPT
+    }
+    col(document.body.children[0].nextSibling);
+    col(document.body.children[0].nextElementSibling);
+    col(document.body.children[0].innerHTML);
+    col(document.body.children[2].innerHTML);
+    debugger;
+    let doc_children = document.body.children;
+    let arr_children = __toArr(doc_children);
+
+</script>
+...
 </body>
 
 </html>
