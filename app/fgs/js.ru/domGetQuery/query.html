@@ -24,11 +24,52 @@
 <body>
 <div>Js.Ru</div>
 
-<script>
-    // ... ваш код
-</script>
+<a href="http://example.com/file.zip">...</a>
+<a href="http://ya.ru">...</a>
+
+<ul>
+    <li>Этот</li>
+
+    <li>тест</li>
+</ul>
+<ul>
+    <li>полностью</li>
+    <li>пройден</li>
+</ul>
+
+<ul>
+    <li class="chapter">Глава I
+        <ul>
+            <li class="subchapter">Глава <span class="num">1.1</span></li>
+            <li class="subchapter">Глава <span class="num">1.2</span></li>
+        </ul>
+    </li>
+</ul>
+
 <script>
 
+    //Метод closest ищет ближайший родительский элемент,
+    // подходящий под указанный CSS селектор
+    // (сам элемент тоже включается в поиск). под селектор .chapter
+    alert(numberSpan.closest('.chapter').tagName) // LI
+
+    let elements = document.querySelectorAll('ul > li:last-child');
+    let h_n = document.documentElement.childNodes
+    elements.forEach(item => col(item.innerHTML));
+    for (let i = 0; i < elements.length; i++) {
+        let el = elements[i];
+        col(el);
+        col(el.innerHTML); // "тест", "пройден"
+    }
+
+    let elems = document.body.children;
+
+    debugger;
+    for (var i = 0; i < elems.length; i++) {
+        if (elems[i].matches('a[href$="zip"]')) {
+            col("Ссылка на архив: " + elems[i].href);
+        }
+    }
 </script>
 ...
 </body>

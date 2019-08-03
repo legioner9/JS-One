@@ -585,7 +585,148 @@ mane = async () => {
 
 mane();
 
-/* TODO: DOM Collection as Arr js.ru  */
+/* TODO: PTR  closest Js.Ru */
+// <ul>
+// <li class="chapter">Глава I
+// <ul>
+// <li class="subchapter">Глава <span class="num">1.1</span></li>
+// <li class="subchapter">Глава <span class="num">1.2</span></li>
+// </ul>
+// </li>
+// </ul>
+
+let numberSpan = document.querySelector('.num');
+
+// ближайший элемент сверху подходящий под селектор li
+col(numberSpan.closest('li').className) // subchapter
+
+// ближайший элемент сверху подходящий под селектор .chapter
+col(numberSpan.closest('.chapter').tagName) // LI
+
+// ближайший элемент сверху, подходящий под селектор span
+// это сам numberSpan, так как поиск включает в себя сам элемент
+col(numberSpan.closest('span') === numberSpan) // true
+
+/* TODO: PTR DOM Collection as Arr js.ru  */
 let elems = document.documentElement.childNodes;
 elems = Array.prototype.slice.call(elems); // теперь elems - массив
-elems = [].slice.call(elems)
+elems = [].slice.call(elems);
+
+/* TODO: PTR evaluate iterateNext()  */
+let headings = document.evaluate("//h2", document, null,
+    XPathResult.ANY_TYPE, null
+);
+
+let thisHeading = headings.iterateNext();
+let alertText = "Заголовки уровня 2 этого документа:\n"
+
+while (thisHeading) {
+    alertText += thisHeading.textContent + "\n"
+    thisHeading = headings.iterateNext();
+}
+col(alertText);
+// let xpathResult = document.evaluate(
+//     XPathExpression,
+//     ContextNode,
+//     namespaceResolver,
+//     ResultType,
+//     result
+// );
+//    xpathExpression - строка, содержащая выражение xpath, которое нужно вычислить;
+//     contextNode - узел документа, по отношению к которому должно быть вычислено выражение xpath;
+//     namespaceResolver - функция, принимающая строку с префиксом пространства имен из xpathExpression и возвращающая строку, содержащаю URI, которому соответствует этот префикс. Она дает возможность проеобразования между префиксами, используемыми в выражениях xpath и (возможно отличными) префиксами, используемыми в документе;
+//     resultType - числовая константа, указывающая тип возвращаемого результата. Эти константы доступны в глобальных объектах XPathResult и определены в соответствующем разделе спецификации Xpath. Для большинства целей можно передавать XPathResult.ANY_TYPE, что приводит к возврату результата выражения Xpath в наиболее естественном виде;
+//     result - существующий XPathResult, используемый для результатов. Передача null приводит к созданию нового XPathResult.
+/* TODO: PTR Exaple XPath all tags(.) in area of serching  */
+document.evaluate(".// h2", document.body, null, XPathResult.ANY_TYPE, null);
+
+/* TODO: PTR Exaple XPath all tags  */
+//Пример подсчета всех ссылок в вашем документе - всего один запрос XPath
+let linkCount = document.evaluate('count (// a [@href])', document, null, XPathResult.NUMBER_TYPE, null).getNumberValue();
+
+/* TODO: PTR Exaple XPath without an alt tag  */
+// И для получения списка всех изображений без тега alt:
+let imgIterator = document.evaluate('//img[not(@alt)]', document, null, XPathResult.ANY_TYPE, null);
+
+/* TODO: PTR Exaple XPath first LI element  */
+// Итак, чтобы найти первый элемент LI из всех тегов UL:
+var firstLiIterator = document.evaluate('//ul/li[1]', document, null, XPathResult.ANY_TYPE, null);
+
+/* TODO: https://codebeautify.org/Xpath-Tester example */
+// <root xmlns:foo="http://www.foo.org/" xmlns:bar="http://www.bar.org">
+//     <employees>
+//     <employee id="1">Johnny Dapp</employee>
+// <employee id="2">Al Pacino</employee>
+// <employee id="3">Robert De Niro</employee>
+// <employee id="4">Kevin Spacey</employee>
+// <employee id="5">Denzel Washington</employee>
+//
+// </employees>
+// <foo:companies>
+// <foo:company id="6">Tata Consultancy Services</foo:company>
+// <foo:company id="7">Wipro</foo:company>
+//     <foo:company id="8">Infosys</foo:company>
+//     <foo:company id="9">Microsoft</foo:company>
+//     <foo:company id="10">IBM</foo:company>
+//     <foo:company id="11">Apple</foo:company>
+//     <foo:company id="12">Oracle</foo:company>
+//     </foo:companies>
+//     </root>
+// Select the 'root' element
+// (/root)
+
+//Select all 'employee' elements that are direct children of the 'employees' element.
+// (/root/employees/employee)
+
+//Select all 'company' elements regardless of their positions in the document.
+// (//foo:company)
+
+//5. Select the 'id' attributes of the 'company' elements regardless of their positions in the document.
+// (//foo:company/@id)
+
+//Select the textual value of first 'employee' element.
+// (//employee[1]/text())
+
+//Select the last 'employee' element.
+// (//employee[last()])
+
+//Select the first and second 'employee' elements using their position.
+// /(/employee[position() < 3])
+
+//Select all 'employee' elements that have an 'id' attribute.
+// (//employee[@id])
+
+//Select all 'employee' nodes with the 'id' attribute value lower or equal to '3'.
+// (//employee[@id<=3])
+
+//Select all the children of the 'companies' node.
+// (/root/foo:companies/*)
+
+// Select all the elements in the document.
+// (//*)
+
+// Select all the 'employee' elements AND the 'company' elements.
+// (//employee|//foo:company)
+
+//Select the name of the first element in the document. (
+// name(//*[1]))
+
+//Select the string representation value of the 'id' attribute of the first 'employee' element.
+// string(//employee[1]/@id)
+
+//Select the length of the first 'employee' element's textual value.
+// string-length(//employee[1]/text())
+
+//Select the local name of the first 'company' element, i.e. without the namespace.
+// local-name(//foo:company[1])
+
+// Select the number of 'company' elements.
+// count(//foo:company)
+
+// Select the sum of the 'id' attributes of the 'company' elements.
+// sum(//foo:company/@id)
+
+//запрос для поиска элементов H2, содержащих текст "XPath", будет выглядеть так:
+// (//h2[contains(., "XPath")])
+
+/* TODO: http://xpather.com/ traning */

@@ -1,0 +1,78 @@
+<!--
+  ~ Copyright (c) 2019. Legioner9@inbox.ru
+  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <!--    <link rel="stylesheet" href="css/main.css">-->
+
+    <!--    <script defer src="js/async-scr.js"></script>-->
+    <script src="../../../../MY_modules/my_modules.3.js"></script>
+    <title>Js.Ru</title>
+    <head>
+        <style>
+
+        </style>
+    </head>
+
+<body>
+
+<foo:companies>
+    <foo:company id="6">Tata Consultancy Services</foo:company>
+    <foo:company id="7">Wipro</foo:company>
+    <foo:company id="8">Infosys</foo:company>
+    <foo:company id="9">Microsoft</foo:company>
+    <foo:company id="10">IBM</foo:company>
+    <foo:company id="11">Apple</foo:company>
+    <foo:company id="12">Oracle</foo:company>
+</foo:companies>
+
+<h2 id='er'>H2 YCIKGVBKFIYV</h2>
+<div id='rt'>Js.Ru</div>
+
+<h2>H2 YCIKfddfvefrv wertfvewrfverfi</h2>
+<script>
+
+    let headings = document.evaluate("//h2", document, null,
+        XPathResult.ANY_TYPE, null
+    );
+
+    let thisHeading = headings.iterateNext();
+    let alertText = "Заголовки уровня 2 этого документа:\n"
+
+    while (thisHeading) {
+        alertText += thisHeading.textContent + "\n"
+        thisHeading = headings.iterateNext();
+    }
+    col(alertText);
+
+    debugger;
+    let headings_id = document.evaluate("sum(.//*@id)", document.body, null,
+        XPathResult.ANY_TYPE, null
+    );
+    // ... ваш код
+</script>
+<script>
+    // let xpathResult = document.evaluate(
+    //     XPathExpression,
+    //     ContextNode,
+    //     namespaceResolver,
+    //     ResultType,
+    //     result
+    // );
+    //    xpathExpression - строка, содержащая выражение xpath, которое нужно вычислить;
+    //     contextNode - узел документа, по отношению к которому должно быть вычислено выражение xpath;
+    //     namespaceResolver - функция, принимающая строку с префиксом пространства имен из xpathExpression и возвращающая строку, содержащаю URI, которому соответствует этот префикс. Она дает возможность проеобразования между префиксами, используемыми в выражениях xpath и (возможно отличными) префиксами, используемыми в документе;
+    //     resultType - числовая константа, указывающая тип возвращаемого результата. Эти константы доступны в глобальных объектах XPathResult и определены в соответствующем разделе спецификации Xpath. Для большинства целей можно передавать XPathResult.ANY_TYPE, что приводит к возврату результата выражения Xpath в наиболее естественном виде;
+    //     result - существующий XPathResult, используемый для результатов. Передача null приводит к созданию нового XPathResult.
+</script>
+...
+</body>
+
+</html>

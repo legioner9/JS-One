@@ -104,3 +104,44 @@ p[class~="test"] {
 p[class|="menu"] {
 
 }
+
+ul > li:last-child {
+
+}
+
+:hover {
+
+}
+
+tr:nth-child(1) {
+    background: #666; /* Цвет фона */
+    color: #fff; /* Цвет текста */
+}
+
+/*В данном примере нечётные картинки выравниваются по левому
+ краю окна, а чётные картинки по правому */
+img:nth-of-type(2n+1) {
+    float: left;
+}
+
+img:nth-of-type(2n) {
+    float: right;
+}
+
+
+/*    <li><a href="#h1">История 1</a></li>
+    <li><a href="#h2">История 2</a></li>*/
+h2:target {
+    background: #fc0; /* Цвет фона */
+    padding: 3px;
+}
+
+a:link {
+    color: #0000d0; /* Цвет ссылок */
+}
+
+/*  <p><a href="1.html">Посещенная ссылка</a></p>
+  <p><a href="2.html">Непосещенная ссылка</a></p>*/
+a:visited {
+    color: #900060; /* Цвет посещенных ссылок */
+}

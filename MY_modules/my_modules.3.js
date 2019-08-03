@@ -701,18 +701,31 @@
         Pt = Pt.then(() => cpu(arr_result, 'resalt array'));
     }
 
-    let urls = [
-        'user.json',
-        'user2.json',
-        'user3.json'
-    ]
-    let op = Promise.consis(urls, __my_XMLhttpGet);
+    // let urls = [
+    //     'user.json',
+    //     'user2.json',
+    //     'user3.json'
+    // ]
+    // let op = Promise.consis(urls, __my_XMLhttpGet);
 
     /* TODO: __toArr Transform Collection to Arr */
     window.__toArr = function (collection) {
         return [].slice.call(collection);
     }
 
+    /* TODO: __my_forEachNode return set node  */
+    window.__my_forEachNode = function (nodeElem) {
+        let __my_forEach_resalt = [];
+        for (let i = 0; i < 12; i++) {
+            __my_forEach_resalt[i] = [];
+        }
+        nodeElem.forEach(item => {
+            let j = item.nodeType;
+            if (item.nodeType != 3 || item.nodeType == 3 && item.data.trim() != '') __my_forEach_resalt[j].push(item);
+
+        })
+        return __my_forEach_resalt;
+    }
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
 
