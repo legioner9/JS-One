@@ -726,6 +726,10 @@
         })
         return __my_forEach_resalt;
     }
+
+    window.__my_IsNullUndefine = function (any) {
+        return any === null || any === undefined;
+    }
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
 
