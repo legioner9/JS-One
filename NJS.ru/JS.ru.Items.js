@@ -46,7 +46,7 @@ undefined + 1 = NaN // (6)
 alert(2 + 2 + '1'); // будет "41", а не "221"
 
 
-/* TODO:  Unar (+) */
+/* TODO:  Unar (+) and analog Number() */
 let apples = "2";
 let oranges = "3";
 alert(apples + oranges); // "23", так как бинарный плюс складывает строки
@@ -109,6 +109,49 @@ alert(isBoss); // true если нажата OK
 
 /* TODO:  (?) */
 let accessAllowed = age > 18 ? true : false;
+
+/* TODO:  (?) chane */
+let age = prompt('Возраст?', 18);
+
+let message = (age < 3) ? 'Здравствуй, малыш!' :
+    (age < 18) ? 'Привет!' :
+        (age < 100) ? 'Здравствуйте!' :
+            'Какой необычный возраст!';
+
+alert(message);
+
+/* TODO: (||)  */
+alert(null || 0 || 1); // 1 (первое истинное значение)
+alert(undefined || null || 0); // 0 (поскольку все ложно, возвращается последнее значение)
+
+/* TODO:  (||) analog if Cокращённое вычисление */
+let x;
+true || (x = 1);
+alert(x); // undefined, потому что (x = 1) не вычисляется
+false || (x = 1);
+alert(x); // 1
+
+/* TODO:  (&&) */
+// Если первый операнд истинный,
+// И возвращает второй:
+alert(1 && 0); // 0
+alert(1 && 5); // 5
+
+/* TODO:  (&&)  analog if  */
+let x = 1;
+(x > 0) && alert(`your x = ${x} is negative meaning or zero ((( `);
+
+/* TODO:  (!)  */
+alert(!true); // false
+alert(!0); // true
+alert(!!"non-empty string"); // true
+alert(!!null); // false
+alert(Boolean("non-empty string")); // true
+alert(Boolean(null)); // false
+
+/* TODO:   */
+/* TODO:   */
+/* TODO:   */
 /* TODO:   */
 /* TODO:   */
 /* TODO:   */
