@@ -727,9 +727,26 @@
         return __my_forEach_resalt;
     }
 
-    window.__my_IsNullUndefine = function (any) {
+    /* TODO: __my_IsNullOrUndefine  */
+    window.__my_IsNullOrUndefine = function (any) {
         return any === null || any === undefined;
     }
+
+    window.__my_isIntegerPositiveArgs = function (...args) {
+
+        for (let i = 0; i < args.length; i++) {
+
+            if (!(+args[i] === (args[i] ^ 0)) && !(args[i] > 0)) {
+                col(`Argument  "${args[i]}"  is not integer or positive`);
+                return false;
+            }
+
+        }
+        col(`Arguments is good`);
+        return true;
+    }
+
+
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
 
