@@ -46,7 +46,7 @@ undefined + 1 = NaN // (6)
 alert(2 + 2 + '1'); // будет "41", а не "221"
 
 
-/* TODO:  Unar (+) and analog Number() #Singl_Operator #+ */
+/* TODO:  Unar (+) and analog Number() #Singl_Operator #(+) */
 let apples = "2";
 let oranges = "3";
 alert(apples + oranges); // "23", так как бинарный плюс складывает строки
@@ -141,7 +141,7 @@ alert(1 && 5); // 5
 let x = 1;
 (x > 0) && alert(`your x = ${x} is negative meaning or zero ((( `);
 
-/* TODO:  #Singl_Operator(!)  */
+/* TODO:  #Singl_Operator #(!)  */
 alert(!true); // false
 alert(!0); // true
 alert(!!"non-empty string"); // true
@@ -149,7 +149,10 @@ alert(!!null); // false
 alert(Boolean("non-empty string")); // true
 alert(Boolean(null)); // false
 
-/* TODO:   */
+/* TODO: Object.assign  clone_of_object_OBJ */
+let OBJ = {prop: 'prop'};
+let clone_of_object_OBJ = Object.assign({}, OBJ);
+
 /* TODO:   */
 /* TODO:   */
 /* TODO:   */

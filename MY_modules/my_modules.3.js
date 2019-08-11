@@ -554,27 +554,7 @@
             arr.push({key: key, volume: this.get(key)})
         }
     }
-    // window.col = col;
-    // window.my_ch_checkStr = my_ch_checkStr;
-    // window.my_ch_checkNum = my_ch_checkNum;
-    // window.my_dec_CheckArg = my_dec_CheckArg;
-    // window.my_dec_Bind = my_dec_Bind;
-    // window.my_dec_TimsDuring = my_dec_TimsDuring;
-    // window.my_dec_Cach_v1 = my_dec_Cach_v1;
-    // window.my_dec_getObjClass = my_dec_getObjClass;
-    // window.my_dec_setTimeout = my_dec_setTimeout;
-    // window.my_dec_setInterval = my_dec_setInterval;
-    // window.my_Parse_Error = my_Parse_Error;
-    //
-    // window.res_my_dec_CheckArg = res_my_dec_CheckArg;
-    // window.res_my_dec_Cach_v1 = res_my_dec_Cach_v1;
-    // window.res_my_dec_TimsDuring = res_my_dec_TimsDuring;
-    // window.res_my_dec_getObjClass = res_my_dec_getObjClass;
-    // window.res_my_dec_setTimeout = res_my_dec_setTimeout;
-    // window.res_my_dec_setInterval = res_my_dec_setInterval;
-    // window.res_my_Parse_Error = res_my_Parse_Error;
-    // window.___options_toLocaleString = ___options_toLocaleString;
-    // window.___getObjClass = ___getObjClass;
+
 
     /* TODO: FUNC ifCallbackTypeTrue  */
     window.ifCallbackTypeTrue = function (callback) {
@@ -736,20 +716,151 @@
 
         for (let i = 0; i < args.length; i++) {
 
-            if (!(+args[i] === (args[i] ^ 0)) && !(args[i] > 0)) {
-                col(`Argument  "${args[i]}"  is not integer or positive`);
+            if (!(+args[i] === (args[i] ^ 0)) || !(args[i] > 0)) {
+                // col(`Argument __my_isIntegerPositiveArgs  "${args[i]}"  is not integer or positive`);
                 return false;
             }
+            // col(`Arguments __my_isIntegerPositiveArgs "${args[i]}" is good`);
 
         }
-        col(`Arguments is good`);
         return true;
+    }
+
+
+    /* TODO: __my_isInteger  */
+    window.__my_isIntegerArgs = function (...args) {
+
+        for (let i = 0; i < args.length; i++) {
+
+            if (!(+args[i] === (args[i] ^ 0))) {
+                // col(`Argument __my_isInteger "${args[i]}"  is not integer`);
+                return false;
+            }
+            // col(`Arguments __my_isInteger "${args[i]}" is good`);
+
+        }
+        return true;
+    }
+
+    /* TODO: __my_primeNtoM  */
+    window.__my_primeNtoM = function (n, m) {
+        if (__my_isIntegerPositiveArgs(n, m)) {
+            let max = Math.max(n, m);
+            let min = Math.min(n, m);
+            let arr_prime = [2];
+            for (let i = 3; i <= max; i++) {
+                let res_j = true;
+                for (let j = 0; j < arr_prime.length; j++) {
+                    let z = !(i % arr_prime[j]);
+                    if (z) {
+                        res_j = false;
+                    }
+                }
+                if (res_j) arr_prime.push(i);
+            }
+            return arr_prime = arr_prime.slice(arr_prime.indexOf(min));
+        }
+        return false;
+    }
+
+    /* TODO: __my_primeNtoMContinue  */
+    window.__my_primeNtoMContinue = function (n, m) {
+        if (__my_isIntegerPositiveArgs(n, m)) {
+            let max = Math.max(n, m);
+            let min = Math.min(n, m);
+            let arr_prime = [2];
+            Nex:for (let i = 3; i <= max; i++) {
+                let res_j = true;
+                for (let j = 0; j < arr_prime.length; j++) {
+                    let z = !(i % arr_prime[j]);
+                    if (z) continue Nex;
+                }
+                if (res_j) arr_prime.push(i);
+            }
+            return arr_prime = arr_prime.slice(arr_prime.indexOf(min));
+        }
+        return false;
+    }
+
+    /* TODO: __my_AllIndexEnterInArr  */
+    window.__my_AllIndexEnterInArr = function (arr_init, item) {
+        let arr = [];
+        let pos = arr_init.indexOf(item)
+        if (~pos) arr.push(pos);
+        else return arr;
+        do {
+            if (~arr_init.indexOf(item, ++pos)) {
+                pos = arr_init.indexOf(item, pos)
+                arr.push(arr_init.indexOf(item, pos));
+            } else return arr;
+        } while (pos < arr_init.length)
+        return arr;
+    }
+
+    /* TODO: __my_isSimple  */
+    window.__my_isPrime = function (a) {
+        if (!__my_isIntegerArgs(a)) {
+            return col(`Args ifSimple "${a}" is not valid!!!`);
+        }
+        let res = true;
+        let dt;
+        a <= -2 ? dt = -1 :
+            a >= 2 ? dt = 1 : res = false;
+        let j;
+        let dt_bul = dt > 0;
+        st:for (dt_bul ? j = 2 : j = -2;
+                dt_bul ? j < a : j > a;
+                j += dt) {
+            if (a % j == 0) {
+                res = false;
+                break st;
+            }
+        }
+        return res;
     }
 
 
     Object.prototype.constructor = Object;
     Map.prototype.constructor = Map;
 
+
+    window.__my_numDigitalProp = function (a_init) {
+        let k = 0, max = 0, b = 0, arr_dig = [];
+        let a = a_init;
+        while (a > 0) {
+            let d = a % 10;
+            arr_dig.push(d);
+            b += d
+            if (d > max) max = d;
+            a = Math.floor(a / 10);
+            k++;
+        }
+        let everage = b / k;
+        let res = {};
+        return window.__my_numDigitalProp[a_init] = {
+            number: a_init,
+            number_digit: k,
+            max_digit: max,
+            everage_of_digit: everage,
+            sum_of_digit: b,
+            arr_dig,
+        }
+        col(`number digit "${a_init}" = "${k}" max digit = "${max}" everage of digit =  "${everage}"`);
+    }
+
+    /* TODO: __my_pow  */
+    window.__my_pow = (x, n = 1) => {
+        let x_res = 1;
+        // if (!__my_isIntegerPositiveArgs(n)) return col(`n =  ${n} is not positive Integer`);
+        if (!__my_isIntegerPositiveArgs(n)) return NaN;
+        if (!(+x === x)) return NaN;
+        while (n >= 1) {
+            x_res = x_res * x;
+            n--;
+        }
+        return x_res;
+
+    }
 }());
 // Z();
 

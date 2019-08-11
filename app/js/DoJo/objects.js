@@ -6,8 +6,8 @@ function createObj(property = 'bgf', value = 'ummrtm') {
     return {
         'laster': 'default',
         [property]: value,
-        ['_' + property.toUpperCase()]: value,
-        ['ts' + '_' + property]() {
+        ['.eslintrc' + property.toUpperCase()]: value,
+        ['ts' + '.eslintrc' + property]() {
             return this[property] + property;
         },
         get full() {
