@@ -820,10 +820,6 @@
     }
 
 
-    Object.prototype.constructor = Object;
-    Map.prototype.constructor = Map;
-
-
     window.__my_numDigitalProp = function (a_init) {
         let k = 0, max = 0, b = 0, arr_dig = [];
         let a = a_init;
@@ -861,6 +857,14 @@
         return x_res;
 
     }
+
+    Object.prototype.__my_isEmptyObject = (obj) => {
+        if (Object.keys(obj).length === 0) return true;
+        else return false;
+    }
+
+    Object.prototype.constructor = Object;
+    Map.prototype.constructor = Map;
 }());
 // Z();
 

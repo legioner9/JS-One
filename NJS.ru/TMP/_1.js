@@ -149,8 +149,22 @@ __my_isIntegerPositiveArgs(2, -3);
 //     () => col('yes of course)))'),
 //     () => col('OOh Noo(((')
 // );
-debugger;
 
 let res = __my_pow(5, 3);
 let r0 = __my_pow(-2, -2);
+
+
+debugger;
+let salaries = {
+    John: 100,
+    Ann: 160,
+    Pete: 130
+};
+
+let doublNumProp = (obj) => {
+    for (let prop in obj) {
+        if ((typeof obj[prop]) == "number" && obj.hasOwnProperty(prop)) obj[prop] = obj[prop] * 2;
+    }
+}
+doublNumProp(salaries);
 
