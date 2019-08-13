@@ -730,3 +730,19 @@ var firstLiIterator = document.evaluate('//ul/li[1]', document, null, XPathResul
 // (//h2[contains(., "XPath")])
 
 /* TODO: http://xpather.com/ traning */
+
+/* TODO: reference-specification-type  */
+let us = {
+    surname: 'doby )))',
+    sayHi(a) {
+        let tr = () => {
+            col(`Hi ${a} ... ${this.surname}`);
+        }
+        tr();
+    },
+}
+
+us.sayHi('YU');// this correct reference-specification-type
+let yut = us.sayHi;
+yut('vfvd gb'); // this underfind !!! reference-specification-type
+//after =
