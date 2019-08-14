@@ -857,13 +857,47 @@
         return x_res;
 
     }
-
+    /* TODO: __my_isEmptyObject  */
     Object.prototype.__my_isEmptyObject = (obj) => {
         if (Object.keys(obj).length === 0) return true;
         else return false;
     }
 
+    /* TODO: __my_upFirstChar  */
+    window.__my_upFirstCharString = (str) => {
+        str = str.length ? str.charAt(0).toUpperCase() + str.slice(1) : '';// if str ='' charAt(0) = ''
+        // but str[0] = undefined
+        return str;
+    }
+
+    /* TODO: __my_checkTextForStopWord  */
+    window.__my_checkTextForStopWord = (text, stop_word_arr) => {
+        stop_word_arr = stop_word_arr.filter(a =>
+            Boolean(
+                ~text.toLowerCase().indexOf(a.toLowerCase())
+            )
+        );
+        return {
+            check: Boolean(stop_word_arr.length),
+            arr_res: stop_word_arr
+        };
+    }
+
+    window.__my_unicodArr = [];
+    for (let i = 0; i < 10000; i++) {
+        __my_unicodArr.push(
+            {
+                DEC: i,
+                HEX: i.toString(16),
+                SIMV: String.fromCodePoint(i),
+            }
+        )
+    }
+    window.__my_serchUncodeSimv = simv => __my_unicodArr.filter(a => a.SIMV == simv)
+    window.__my_serchUncodeFromTo = (a, b) => __my_unicodArr.slice(a - 1, b - 1)
+
     Object.prototype.constructor = Object;
+    Function.prototype.constructor = Function;
     Map.prototype.constructor = Map;
 }());
 // Z();
