@@ -826,3 +826,20 @@ let Us_meth = function (name) {
             },
         };
 }
+
+/* TODO: Object as context for collback in methods  */
+let user_ = {
+    age: 14,
+    younger(age) {
+        return age > this.age;
+    }
+};
+
+let users_ = [
+    {age: 12},
+    {age: 16},
+    {age: 32}
+];
+
+let users_filt = users_.filter(item => user_.younger(item.age), user_);
+

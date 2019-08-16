@@ -883,8 +883,9 @@
         };
     }
 
+    /* TODO: __my_unicodArr  */
     window.__my_unicodArr = [];
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 2000; i++) {
         __my_unicodArr.push(
             {
                 DEC: i,
@@ -893,12 +894,83 @@
             }
         )
     }
+
+    /* TODO: __my_serchUncodeSimv  */
     window.__my_serchUncodeSimv = simv => __my_unicodArr.filter(a => a.SIMV == simv)
-    window.__my_serchUncodeFromTo = (a, b) => __my_unicodArr.slice(a - 1, b - 1)
+
+    /* TODO: __my_serchUncodeFromTo  */
+    window.__my_serchUncodeFromTo = (a, b) => __my_unicodArr.slice(a, b)
+
+    let __my_arrOfAllSubArrSortForSum = (arr) => {
+        let len = arr.length;
+        if (len === 0) return 0;
+        let sub_arr = [], all_sub_arr = [], sum_sub_arr = 0;
+
+        for (let begin = 0; begin < len; begin++) {
+            for (let end = len; end > begin; end--) {
+                sub_arr = arr.slice(begin, end);
+                sum_sub_arr = sub_arr.reduce((a, b) => a + b);
+                all_sub_arr.push({
+                        sum: sum_sub_arr,
+                        arr: sub_arr,
+                    }
+                )
+            }
+        }
+        all_sub_arr.sort((a, b) => {
+            return b.sum - a.sum
+        })
+        return all_sub_arr;
+    }
+
+    /* TODO: __my_Camelize  */
+    window.__my_Camelize = (str) => {
+        let arr = str.split(''), is = false;
+        let res = arr.map((item, key) => {
+            if (is) {
+                item = item.toUpperCase();
+                is = false;
+            }
+            if (item == '-') is = true;
+            return item;
+        }).filter(a => !(a == '-')).join('');
+        return res;
+    }
+
+    /* TODO: __my_Camelize_  */
+    window.__my_Camelize_ = (str) => {
+        return str.split('-')
+            .map((item, ind) => !ind ? item : item[0].toUpperCase() + item.slice(1))
+            .join('');
+    }
+
+    /* TODO: _my_filterRangeFromAToBInPlace  */
+    window._my_filterRangeFromAToBInPlace = (arr, a, b) => {
+        if (a == undefined || b == undefined) return _arr;
+        let _a = Math.min(a, b);
+        let _b = Math.max(a, b);
+        for (let i = 0; i < arr.length; i++) {
+
+            if (arr[i] < _a || arr[i] > _b) {
+                arr.splice(i, 1);
+                i--;
+            }
+        }
+    }
+
+    /* TODO: _my_filterRangeFromAToBReturn  */
+    window._my_filterRangeFromAToBReturn = (arr, a, b) => {
+        if (a == undefined || b == undefined) return _arr;
+        let _a = Math.min(a, b);
+        let _b = Math.max(a, b);
+        return arr.filter(item => item >= _a && item <= _b);
+    }
+
 
     Object.prototype.constructor = Object;
     Function.prototype.constructor = Function;
     Map.prototype.constructor = Map;
+
 }());
 // Z();
 
