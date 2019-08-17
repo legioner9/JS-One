@@ -220,11 +220,11 @@ class Us {
     }
 }
 
-const users = new Us([
-    {name: 'raja'},
-    {name: 'john'},
-    {name: 'matt'},
-]);
+// var users = new Us([
+//     {name: 'raja'},
+//     {name: 'john'},
+//     {name: 'matt'},
+// ]);
 
 for (const u of users) {
     col(u.name);
@@ -427,6 +427,7 @@ function execute(generator, yieldValue) {
 }
 
 execute(showUserAvatar());
+
 
 /* TODO: PTR Proxy Obect get/set delete in */
 let target = {};
@@ -843,3 +844,6 @@ let users_ = [
 
 let users_filt = users_.filter(item => user_.younger(item.age), user_);
 
+/* TODO: Pattern MethInPlase and MethReturn  */
+/* TODO:  _$_CIP ==== Pttern CangeInPlace */
+/* TODO:  _$_CFR ==== Pttern CangeFromReturn */

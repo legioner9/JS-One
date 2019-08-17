@@ -153,8 +153,53 @@ alert(Boolean(null)); // false
 let OBJ = {prop: 'prop'};
 let clone_of_object_OBJ = Object.assign({}, OBJ);
 
+/* TODO:   Calculator with add func*/
+/**
+ * Calculator with add func
+ * @constructor
+ */
+let Calculator = function () {
 
-/* TODO:   */
+    this.pars_str = function () {
+        let arr = this.str.split(' ');
+        this.a = +arr[0];
+        this.b = +arr[2];
+        this.sign = arr[1];
+        return col(`a = ${this.a} ; b = ${this.b} ; sign = ${this.sign}`);
+    }
+
+    this.get_res = function () {
+        let keys = this.map_of_func.keys
+        for (let key in this.map_of_func) {
+            if (key == this.sign) return this.res = this.map_of_func[key](this.a, this.b);
+        }
+    }
+
+    this.calculate = function (str) {
+        this.str = str;
+        this.pars_str();
+        this.get_res();
+        return this.res;
+    }
+
+    this.map_of_func = {
+        '+': (a, b) => a + b,
+        '-': (a, b) => a - b,
+    }
+
+    this.addMethod = function (name, callback) {
+        this.map_of_func[name] = callback;
+        col(Object.keys(this.map_of_func));
+    }
+}
+let powerCalc = new Calculator;
+powerCalc.addMethod("*", (a, b) => a * b);
+powerCalc.addMethod("/", (a, b) => a / b);
+powerCalc.addMethod("**", (a, b) => a ** b);
+let r2m6 = powerCalc.calculate('2 * 6');
+let r2c6 = powerCalc.calculate('2 / 6');
+let r2p6 = powerCalc.calculate('2 ** 6');
+
 /* TODO:   */
 /* TODO:   */
 /* TODO:   */

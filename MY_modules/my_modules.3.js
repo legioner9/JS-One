@@ -3,6 +3,10 @@
  */
 
 ;
+/**
+ *
+ * @type {void}
+ */
 (function () {
     /**
      *  console.log(volume)
@@ -239,6 +243,7 @@
             return N(n - 1) + N(n - 2)
         } else return 1;
     }
+
 
     window.res_my_dec_setTimeout = {};
 
@@ -896,12 +901,26 @@
     }
 
     /* TODO: __my_serchUncodeSimv  */
+    /**
+     *
+     * @param simv
+     * @returns {*[]}
+     * @private
+     */
     window.__my_serchUncodeSimv = simv => __my_unicodArr.filter(a => a.SIMV == simv)
 
     /* TODO: __my_serchUncodeFromTo  */
+
+    /**
+     *
+     * @param a
+     * @param b
+     * @returns {*[]}
+     * @private
+     */
     window.__my_serchUncodeFromTo = (a, b) => __my_unicodArr.slice(a, b)
 
-    let __my_arrOfAllSubArrSortForSum = (arr) => {
+    window.__my_arrOfAllSubArrSortForSum = (arr) => {
         let len = arr.length;
         if (len === 0) return 0;
         let sub_arr = [], all_sub_arr = [], sum_sub_arr = 0;
@@ -944,8 +963,9 @@
             .join('');
     }
 
-    /* TODO: _my_filterRangeFromAToBInPlace  */
-    window._my_filterRangeFromAToBInPlace = (arr, a, b) => {
+    /* TODO: __my_filterRangeFromAToBChange  */
+
+    window.__my_filterRangeFromAToBChange = (arr, a, b) => {
         if (a == undefined || b == undefined) return _arr;
         let _a = Math.min(a, b);
         let _b = Math.max(a, b);
@@ -958,8 +978,8 @@
         }
     }
 
-    /* TODO: _my_filterRangeFromAToBReturn  */
-    window._my_filterRangeFromAToBReturn = (arr, a, b) => {
+    /* TODO: __my_filterRangeFromAToBInPlace  */
+    window.__my_filte8rRangeFromAToBInPlace = (arr, a, b) => {
         if (a == undefined || b == undefined) return _arr;
         let _a = Math.min(a, b);
         let _b = Math.max(a, b);
