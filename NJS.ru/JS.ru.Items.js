@@ -153,12 +153,12 @@ alert(Boolean(null)); // false
 let OBJ = {prop: 'prop'};
 let clone_of_object_OBJ = Object.assign({}, OBJ);
 
-/* TODO:   Calculator with add func*/
+/* TODO:   Calculator with add func without!!! Clousuer*/
 /**
- * Calculator with add func
+ * Calculator with add func without!!! Clousuer
  * @constructor
  */
-let Calculator = function () {
+let Calculator_ = function () {
 
     this.pars_str = function () {
         let arr = this.str.split(' ');
@@ -192,6 +192,46 @@ let Calculator = function () {
         col(Object.keys(this.map_of_func));
     }
 }
+
+/* TODO:   Calculator with add func with !!! Clousuer As Global Valuer*/
+/**
+ * Calculator with add func with !!! Clousuer As Global Value
+ * @constructor
+ */
+let Calculator = function () {
+    // let a, b, sign, map_of_func, str, res, arr, pars_str, get_res;
+    pars_str = function () {
+        arr = str.split(' ');
+        a = +arr[0];
+        b = +arr[2];
+        sign = arr[1];
+        return col(`a = ${a} ; b = ${b} ; sign = ${sign}`);
+    }
+
+    get_res = function () {
+        if (!map_of_func[sign]) return NaN;
+        res = map_of_func[sign](a, b);
+    }
+
+
+    this.calculate = function (str_) {
+        str = str_
+        if (isNaN(a) || isNaN(b)) return NaN;
+        pars_str();
+        get_res();
+        return res;
+    }
+
+    map_of_func = {
+        '+': (a, b) => a + b,
+        '-': (a, b) => a - b,
+    }
+
+    this.addMethod = function (name, callback) {
+        map_of_func[name] = callback;
+    }
+}
+
 let powerCalc = new Calculator;
 powerCalc.addMethod("*", (a, b) => a * b);
 powerCalc.addMethod("/", (a, b) => a / b);

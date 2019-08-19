@@ -174,7 +174,7 @@ let arry_sort = reverse_utf_$_CFR(arry);
 let aaa_1 = "3 + 7".split('');
 reverse_utf_$_CIP(arry);
 
-let Calculator = function () {
+let Calculator_ = function () {
 
     this.pars_str = function () {
         let arr = this.str.split(' ');
@@ -208,17 +208,258 @@ let Calculator = function () {
         col(Object.keys(this.map_of_func));
     }
 }
-let calc = new Calculator();
-let r1p6 = calc.calculate('12 + 34');
-let r1m6 = calc.calculate('1 - 6');
+
+let Calculator = function () {
+    let a, b, sign, map_of_func, str, res, arr, pars_str, get_res;
+    pars_str = function () {
+        arr = str.split(' ');
+        a = +arr[0];
+        b = +arr[2];
+        sign = arr[1];
+        if (isNaN(a) || isNaN(b)) return NaN;
+        return col(`a = ${a} ; b = ${b} ; sign = ${sign}`);
+    }
+
+    get_res = function () {
+        if (!map_of_func[sign]) return NaN;
+        res = map_of_func[sign](a, b);
+    }
+
+
+    this.calculate = function (str_) {
+        str = str_
+        pars_str();
+        get_res();
+        return res;
+    }
+
+    map_of_func = {
+        '+': (a, b) => a + b,
+        '-': (a, b) => a - b,
+    }
+
+    this.addMethod = function (name, callback) {
+        map_of_func[name] = callback;
+    }
+}
+
+// let calc = new Calculator();
+// let r1p6 = calc.calculate('12 + 34');
+// let r1m6 = calc.calculate('1 - 6');
 
 let powerCalc = new Calculator;
+// col(a);
 powerCalc.addMethod("*", (a, b) => a * b);
 powerCalc.addMethod("/", (a, b) => a / b);
 powerCalc.addMethod("**", (a, b) => a ** b);
 let r2m6 = powerCalc.calculate('2 * 6');
 let r2c6 = powerCalc.calculate('2 / 6');
 let r2p6 = powerCalc.calculate('2 ** 6');
+powerCalc.calculate('2 *** 6');
+powerCalc.calculate('2 ***');
+
+let vasya = {name: "Вася", age: 25};
+let petya = {name: "Петя", age: 30};
+let masha = {name: "Маша", age: 28};
+
+let users = [vasya, petya, masha];
+
+let names_ = (() => {
+    let arr = [];
+    for (let key in  users) {
+        if (users.hasOwnProperty(key)) arr[key] = users[key].name;
+    }
+    return arr;
+})();
+
+let names = users.map(item => item.name);
+
+col(names); // Вася, Петя, Маша
+
+vasya = {name: "Вася", surname: "Пупкин", id: 1};
+petya = {name: "Петя", surname: "Иванов", id: 2};
+masha = {name: "Маша", surname: "Петрова", id: 3};
+
+users = [vasya, petya, masha];
+let usersMapped = users.map(item => ({
+    fullName: item.name + ' ' + item.surname,
+    id: item.id,
+}));
+
+vasya = {name: "Вася", age: 25};
+petya = {name: "Петя", age: 30};
+masha = {name: "Маша", age: 29};
+
+let arr_s = [vasya, petya, masha];
+let sortByAde_$_CIP = (arr) => {
+    arr.sort((a, b) => {
+        return a.age - b.age;
+    });
+}
+sortByAde_$_CIP(arr_s);
+
+let getAverageAge = (arr) => arr.reduce((a, b, ind, arr) => a + b.age, 0) / arr.length
+
+
+let ev = getAverageAge(arr_s);
+
+let shuffle_2 = (arr) => {
+    return arr.sort((a, b) => Math.random() - .5)
+    // return Math.random() - .5;
+}
+let shuffle_1 = (arr) => {
+    let _arr = arr;
+    for (let i = arr.length - 1; i >= 0; i--) {
+        let j = Math.floor(Math.random() * (arr.length - 1 + 1));
+        let db = _arr[i];
+        _arr[i] = _arr[j];
+        _arr[j] = db;
+        // [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return _arr;
+}
+
+function shuffle_3(array) {
+    let _arr = array;
+    for (let i = _arr.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1)); // случайный индекс от 0 до i
+
+        // поменять элементы местами
+        // мы используем для этого синтаксис "деструктурирующее присваивание"
+        // подробнее о нём - в следующих главах
+        // то же самое можно записать как:
+        // let t = array[i]; array[i] = array[j]; array[j] = t
+        [_arr[i], _arr[j]] = [_arr[j], _arr[i]];
+        return _arr;
+    }
+}
+
+let a_0 = shuffle_3([1, 2, 3]);
+
+let iter_arr = function (arr_ini, value_range_of_test, standing_variats = false) {
+
+    let sum_obj = {};
+    let total_count = value_range_of_test * __my_factorial(arr_ini.length);
+
+    let iter_arr_init = () => {
+        for (let i = 0; i < total_count; i++) {
+            let sf = shuffle_2(arr_ini);
+            // let item = sum_obj[sf];
+            if (sum_obj[sf] == undefined) sum_obj[sf] = 1;
+            else sum_obj[sf]++;
+        }
+
+        let arr_value = sum_obj.__my_ArrOwnValueOfObject();
+
+
+        let arr_prop = sum_obj.__my_ArrOwnPropsOfObject();
+        let _arr_prop = arr_prop
+        let arr_prop_arr = [];
+        let obj_prop_arr = {};
+        arr_prop.forEach(item => {
+            arr_prop_arr.push(item.split(','));
+            return item;
+        })
+        arr_prop.forEach(item => {
+            obj_prop_arr[item.split(',')] = 0;
+            return item;
+        })
+
+
+        let res = {
+            'resalts': arr_value,
+            'allVariants': obj_prop_arr,
+        };
+        return res;
+    }
+
+    let iter_arr_mane = () => {
+        // let _standing_variats = standing_variats.__my_OwnPropObject().res__my_OwnPropObject;
+        let _standing_variats = Object.assign({}, standing_variats)
+        for (let i = 0; i < total_count; i++) {
+            let sf = shuffle_2(arr_ini);
+            _standing_variats[sf]++
+        }
+        return _standing_variats;
+    }
+
+
+    if (standing_variats) {
+        return iter_arr_mane();
+    } else {
+        return iter_arr_init();
+    }
+
+}
+
+let arr_init = [1, 2, 3];
+let depth_scan = 10;
+let stand_variats = iter_arr(arr_init, depth_scan).allVariants
+// let opo = stand_variats.__my_OwnPropObject().res__my_OwnPropObject;
+let step_variats = iter_arr(arr_init, depth_scan, stand_variats);
+
+step_variats = iter_arr(arr_init, depth_scan, stand_variats);
+// let standing_variats = iter_arr(arr_init, depth_scan).allVariants
+
+
+for (let i = 0; i < 10; i++) {
+
+    let obj_rand = iter_arr(arr_init, depth_scan, stand_variats);
+    let everage = 0;
+
+    for (let key in obj_rand) {
+        let pr = obj_rand.hasOwnProperty(key);
+        if (obj_rand.hasOwnProperty(key)) {
+            let d = obj_rand[key] - depth_scan;
+            d > 0 ? everage++ : everage--;
+        }
+    }
+    col(everage);
+}
+
+let strings_ini = ["кришна", "кришна", "харе", "харе",
+    "харе", "харе", "кришна", "кришна", ":-O"
+];
+
+let unique = arr_str => arr_str.reduce((a, b, ind, arr) => {
+    if (a.indexOf(b) === -1) {
+        a.push(b);
+        return a;
+    } else return a;
+}, [])
+
+
+let unq = unique(strings_ini);
+
+let friends = [{
+    name: 'Anna',
+    books: ['Bible', 'Harry Potter'],
+    age: 21
+}, {
+    name: 'Bob',
+    books: ['War and peace', 'Romeo and Juliet'],
+    age: 26
+}, {
+    name: 'Alice',
+    books: ['The Lord of the Rings', 'The Shining'],
+    age: 18
+}];
+
+let allBooks = arr_ini => arr_ini.reduce((a, b, ind, arr) => {
+    // let as = a.join(',');
+    // return as.concat(',', b.books.join(',')).split(',');
+    return [...a, ...b.books];
+}, ['Alphabet'])
+
+let fr = allBooks(friends);
+
+window.__my_pipeOfSetFunctions = (...function_set) => {
+    return (input) => function_set.reduce((res, func, ind, arr) => func(res)
+        , input)
+}
+const f1 = x => 2 * x;
+const f2 = x => x ** 3;
+const f3 = x => x - 100;
 debugger;
-
-
+let set_functions = [f1, f3, f2, f1];
+let h_1 = __my_pipeOfSetFunctions(...set_functions)(2);

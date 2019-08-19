@@ -847,3 +847,16 @@ let users_filt = users_.filter(item => user_.younger(item.age), user_);
 /* TODO: Pattern MethInPlase and MethReturn  */
 /* TODO:  _$_CIP ==== Pttern CangeInPlace */
 /* TODO:  _$_CFR ==== Pttern CangeFromReturn */
+
+
+/* TODO: Pattern Pipe of Functions as reduce  */
+let __my_pipeOfSetFunctions = (...function_set) => {
+    return (input) => function_set.reduce((res, func, ind, arr) => func(res)
+        , input)
+}
+const f1 = x => 2 * x;
+const f2 = x => x ** 3;
+const f3 = x => x - 100;
+debugger;
+let set_functions = [f1, f3, f2, f1]
+let h_1 = __my_pipeOfSetFunctions(...set_functions)(2);

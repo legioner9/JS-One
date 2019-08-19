@@ -237,8 +237,8 @@
      * @returns {number|*}
      * @constructor
      */
-    /* TODO: FUNC _fib  */
-    window._fib = function N(n) {
+    /* TODO: Math.__my_fib  */
+    window.__my_fib = function N(n) {
         if (n > 2) {
             return N(n - 1) + N(n - 2)
         } else return 1;
@@ -383,7 +383,35 @@
         }
         let _this = this;
         _this.res__my_OwnPropObject = init;
-        return init;
+        return _this;
+    }
+
+    /* TODO: PROTO OBJ __my_ArrOwnPropsOfObject  */
+    Object.prototype.__my_ArrOwnPropsOfObject = function () {
+        if (!(this instanceof Object)) return col('Sorry ((( you object is not Object');
+        let arr_of_prop = [];
+
+        for (let prop in this) {
+
+            if (!this.hasOwnProperty(prop)) continue;
+            arr_of_prop.push(prop);
+        }
+
+        return arr_of_prop;
+    }
+
+    /* TODO: PROTO OBJ __my_ArrOwnValueOfObject  */
+    Object.prototype.__my_ArrOwnValueOfObject = function () {
+        if (!(this instanceof Object)) return col('Sorry ((( you object is not Object');
+        let arr_of_value = [];
+
+        for (let prop in this) {
+
+            if (!this.hasOwnProperty(prop)) continue;
+            arr_of_value.push(this[prop]);
+        }
+
+        return arr_of_value;
     }
 
     /**
@@ -985,6 +1013,24 @@
         let _b = Math.max(a, b);
         return arr.filter(item => item >= _a && item <= _b);
     }
+
+    /* TODO: Math.n_factorial  */
+    window.__my_factorial = function F(n) {
+        if (n > 1) return n * F(n - 1);
+        else return 1;
+    }
+
+    /* TODO: __my_pipeOfSetFunctions  */
+    window.__my_pipeOfSetFunctions = (...function_set) => {
+        return (input) => function_set.reduce((res, func, ind, arr) => func(res)
+            , input)
+    }
+    const f1 = x => 2 * x;
+    const f2 = x => x ** 3;
+    const f3 = x => x - 100;
+    debugger;
+    let set_functions = [f1, f3, f2, f1];
+    // let h_1 = __my_pipeOfSetFunctions(...set_functions)(2);
 
 
     Object.prototype.constructor = Object;
