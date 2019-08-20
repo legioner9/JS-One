@@ -460,6 +460,25 @@ window.__my_pipeOfSetFunctions = (...function_set) => {
 const f1 = x => 2 * x;
 const f2 = x => x ** 3;
 const f3 = x => x - 100;
-debugger;
 let set_functions = [f1, f3, f2, f1];
 let h_1 = __my_pipeOfSetFunctions(...set_functions)(2);
+let aaaa = [1, 2]
+let a_r = []
+let ma = aaaa.map(a => a + 3);
+a_r.splice(0, 0, ...aaaa);
+
+
+aaaa.map_$_RR(a => a * 3);
+
+let __my_map_$_CIP = function (arr, callback_map, thisArg) {
+    let temp_arr = arr.map(callback_map, thisArg);
+    arr.splice(0, arr.length, ...temp_arr);
+}
+let arg_for_map = {
+    const_a: 5,
+    call_back_for_map: function (x) {
+        return this.const_a * x
+    },
+}
+debugger;
+__my_map_$_CIP(aaaa, arg_for_map.call_back_for_map, arg_for_map);

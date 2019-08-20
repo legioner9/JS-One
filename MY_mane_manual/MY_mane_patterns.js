@@ -846,7 +846,7 @@ let users_filt = users_.filter(item => user_.younger(item.age), user_);
 
 /* TODO: Pattern MethInPlase and MethReturn  */
 /* TODO:  _$_CIP ==== Pttern CangeInPlace */
-/* TODO:  _$_CFR ==== Pttern CangeFromReturn */
+/* TODO:  _$_RR ==== Pttern ReturnRefact */
 
 
 /* TODO: Pattern Pipe of Functions as reduce  */
@@ -859,4 +859,19 @@ const f2 = x => x ** 3;
 const f3 = x => x - 100;
 debugger;
 let set_functions = [f1, f3, f2, f1]
-let h_1 = __my_pipeOfSetFunctions(...set_functions)(2);
+// let h_1 = __my_pipeOfSetFunctions(...set_functions)(2);
+
+
+/* TODO: __my_map_$_CIP Pattern Tramsform Array.meth_$_RR ====> _$_CIP  */
+/* TODO: __my_map_$_CIP Pattern Transfer  thisArg to Array.meth */
+let __my_map_$_CIP = function (arr, callback_map, thisArg) {
+    let temp_arr = arr.map(callback_map, thisArg);
+    arr.splice(0, arr.length, ...temp_arr);
+}
+let arg_for_map = {
+    const_a: 5,
+    call_back_for_map: function (x) {
+        return this.const_a * x
+    },
+}
+// __my_map_$_CIP(aaaa, arg_for_map.call_back_for_map, arg_for_map);

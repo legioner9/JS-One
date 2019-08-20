@@ -1028,11 +1028,19 @@
     const f1 = x => 2 * x;
     const f2 = x => x ** 3;
     const f3 = x => x - 100;
-    debugger;
     let set_functions = [f1, f3, f2, f1];
     // let h_1 = __my_pipeOfSetFunctions(...set_functions)(2);
 
+    /* TODO: map_$_RR  Reduce As Array.Map */
+    Array.prototype.map_$_RR = function (callback, thisArg) {
+        return this
+            .reduce(function (res, b, ind, arr) {
+                res[ind] = callback.call(thisArg, b, ind, arr);
+                return res;
+            }, []);
+    }
 
+    
     Object.prototype.constructor = Object;
     Function.prototype.constructor = Function;
     Map.prototype.constructor = Map;
