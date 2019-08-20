@@ -875,3 +875,40 @@ let arg_for_map = {
     },
 }
 // __my_map_$_CIP(aaaa, arg_for_map.call_back_for_map, arg_for_map);
+
+
+/* TODO: Pattern using integral [Symbol.iterator]() in free cycie with next() */
+// let sr = 'rulet';
+// let iter = sr[Symbol.iterator]();
+// while (true) {
+//     let item = iter.next();
+//     if (item.done) break;
+//     col(item.value + item.value);
+// }
+
+/* TODO: Pattern assigment [Symbol.iterator] to any Obj and cycle 'of'  */
+let rande = {
+    first: 1,
+    last: 5,
+};
+rande[Symbol.iterator] = function () {
+    return {
+        current: this.first,
+        end: this.last,
+        next() {
+            if (this.current <= this.end) {
+                return {
+                    value: this.current++,
+                    done: false,
+                }
+            } else {
+                return {
+                    done: true,
+                }
+            }
+        }
+    }
+}
+// for (item of range) {
+//
+// }
