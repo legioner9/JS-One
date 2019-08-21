@@ -912,3 +912,8 @@ rande[Symbol.iterator] = function () {
 // for (item of range) {
 //
 // }
+
+/* TODO: Pattern get Own meth {}.toString.call(obj_ini)  */
+let getObjClass = function (obj_ini) {
+    return {}.toString.call(obj_ini).slice(8, -1).toLowerCase();
+}

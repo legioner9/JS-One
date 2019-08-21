@@ -2,47 +2,37 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 
-Object.prototype._$ = function () {
-    let Types = [String, Array, Object, Map, Set];
-    let type = this.__proto__.constructor;
-    let isType = Types.indexOf(type);
-    let Self = this;
-
-    let Keys = [];
-    let Value = [];
-    let Entres = [];
-    debugger;
-    //========================Set
-    //========================Map
-    //========================Object
-    //========================Array
-    //========================String
-
-    if (type == Map) {
-        let en = this.entries();
-        for (let item of en) {
-            Entres.push(item);
-        }
-
-    }
-
-    if (type == Object) {
-
-    }
-
-    let thisEssens = {
-        Keys,
-        Value,
-        Entres,
-    }
-    return thisEssens;
-}
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+let map_new = new Map();
+map_new.set(['k', 2], ['v', 4]);
+map_new.set({k: 'a'}, {v: 'b'});
+let $map_new = map_new._$();
+
+let new_obj = {
+    k1: 'v1',
+    k2: ['v2'],
+    k3: {'v3': 'vlume'},
+}
+let $new_obj = new_obj._$();
+let bol = $new_obj.isObj
+let name = $new_obj.Type
 let new_arr = [
     'v1',
     ['v2'],
     {'v3': 'vlume'},
 ]
+
+let $new_arr = new_arr._$();
+
+let $new_str = 'vsdve'._$();
+let str_1 = 'sadc';
+let bl = ''._$().__my_getObjClass()
+
+debugger;
+
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++
 
 let pca = new_arr.__proto__.constructor == Array
 let tofa = typeof (new_arr);
@@ -70,11 +60,6 @@ col(iter_arr.next());
 
 //================================================================
 
-let new_obj = {
-    k1: 'v1',
-    k2: ['v2'],
-    k3: {'v3': 'vlume'},
-}
 
 let pco = new_obj.__proto__.constructor == Object
 for (let key in new_obj) {
@@ -101,12 +86,6 @@ col(iter_entries_obj.next());
 
 //================================================================
 
-let map_new = new Map();
-
-map_new.set(['k', 2], ['v', 4]);
-map_new.set({k: 'a'}, {v: 'b'});
-
-let $map_new = map_new._$()
 
 let tofm = typeof (map_new);
 let tofmc = map_new.__proto__[Symbol.toStringTag];

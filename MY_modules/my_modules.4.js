@@ -17,18 +17,6 @@
     }
 
 
-    /**
-     *  Analog of bind - copy contrxt
-     * @param func_ini
-     * @param context
-     * @returns {function(): *}
-     */
-    window.my_dec_Bind = function (func_ini, context) {
-        return function B() {
-            return func_ini.apply(context, arguments);
-        }
-    }
-
     window.res_my_dec_TimsDuring = {};
 
     /**
@@ -180,38 +168,6 @@
         return obj_ini;
     }
 
-    /**
-     * ___getObjClass
-     * @param obj_ini
-     * @returns {string}
-     * @private
-     */
-    /* TODO: getObjClass  */
-    window.___getObjClass = function (obj_ini) {
-        return {}.toString.call(obj_ini).slice(8, -1).toLowerCase();
-    }
-
-    Object.prototype.__my_getObjClass = function () {
-        return {}.toString.call(this).slice(8, -1).toLowerCase();
-    }
-
-    /**
-     *checkNum
-     * @param ini
-     * @returns {boolean}
-     */
-    function my_ch_checkNum(ini) {
-        return typeof ini == 'number';
-    }
-
-    /**
-     *checkStr
-     * @param ini
-     * @returns {boolean}
-     */
-    window.my_ch_checkStr = function (ini) {
-        return typeof ini == 'string';
-    }
 
     /**
      * FICH
@@ -245,9 +201,6 @@
     }
 
 
-    window.res_my_dec_setTimeout = {};
-
-
     /**
      *
      * @param ini_fun
@@ -255,6 +208,7 @@
      * @param delay
      * @returns {Function}
      */
+    window.res_my_dec_setTimeout = {};
     /* TODO: my_dec_setTimeout  */
     window.my_dec_setTimeout = function (ini_fun, id, delay) {
         return function () {
@@ -264,7 +218,6 @@
         }
     }
 
-    window.res_my_dec_setInterval = {};
 
     /**
      *
@@ -273,6 +226,7 @@
      * @param delay
      * @returns {Function}
      */
+    window.res_my_dec_setInterval = {};
     /* TODO: my_dec_setInterval  */
     window.my_dec_setInterval = function (ini_fun, id, delay) {
         return function () {
@@ -281,33 +235,6 @@
             }, delay);
         }
     }
-
-    window.res_my_Parse_Error = {}
-
-    /**
-     *
-     * @param cause
-     * @param id
-     */
-    /* TODO: my_Parse_Error  */
-    window.my_Parse_Error = function (cause, id) {
-        id = id || ' id = undefine value '
-        this.message = cause.message;
-        this.name = cause.name;
-        this.cause = cause;
-        this.id = id;
-        this.time = new Date();
-        this.stack = cause.stack;
-        res_my_Parse_Error[this.id] = {
-            message: this.message,
-            name: this.name,
-            stack: this.stack,
-            cause: this.cause,
-            time: this.time
-        }
-    }
-
-    window.res_onerror = {};
 
 
     /**
@@ -344,7 +271,6 @@
      */
     /* TODO: PROTO OBJ __my_ms  */
     Object.prototype.__my_ms = function (ms) {
-        if (!(this instanceof Object)) return col('Sorry ((( you object is not Object');
         var f = this;
         return function () {
             setTimeout(() => f.apply(this, arguments)
