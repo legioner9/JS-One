@@ -14,7 +14,10 @@ let new_obj = {
     k2: ['v2'],
     k3: {'v3': 'vlume'},
 }
+
 let $new_obj = new_obj._$();
+let re_n = $new_obj.Re
+
 let bol = $new_obj.isObj
 let name = $new_obj.Type
 let new_arr = [
@@ -22,14 +25,14 @@ let new_arr = [
     ['v2'],
     {'v3': 'vlume'},
 ]
+new_arr['ReType'] = 'Object'
+let new_arr_m = new_arr.map(a => a + '2');
 
 let $new_arr = new_arr._$();
 
 let $new_str = 'vsdve'._$();
 let str_1 = 'sadc';
 let bl = ''._$().__my_getObjClass()
-
-debugger;
 
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -131,3 +134,4 @@ let pcstr = new_str.__proto__.constructor == String
 //     if (typeof (this) == a)
 //         let en = this.entries()
 // }
+debugger;
