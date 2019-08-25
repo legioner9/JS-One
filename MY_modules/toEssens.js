@@ -16,7 +16,7 @@
             let Keys = [];
             let Value = [];
             let Entres = [];
-            let Re, Copy, Clear, Splice, Slice, IndexOf;
+            let Re, Copy, Clear, Splice, Slice, IndexOf, Map, Filter, Sort, OwnMeth;
 
             //========================lib func
             const genKey = (n) => {
@@ -46,6 +46,18 @@
                 Copy = function () {
                     return new Set(Value);
                 }
+                IndexOf = function (item) {
+
+                }
+                Splice = function (n, m, args) {
+
+                }
+                Slice = function (n, m) {
+
+                }
+                Clear = function () {
+
+                }
             }
             //========================Map
 
@@ -66,6 +78,18 @@
 
                 Copy = function () {
                     return new Map(Entres);
+                }
+                IndexOf = function (item) {
+
+                }
+                Splice = function (n, m, args) {
+
+                }
+                Slice = function (n, m) {
+
+                }
+                Clear = function () {
+
                 }
 
             }
@@ -88,31 +112,50 @@
                 Copy = function () {
                     return Object.assign({}, Self);
                 }
+                IndexOf = function (item) {
+
+                }
+                Splice = function (n, m, args) {
+
+                }
+                Slice = function (n, m) {
+
+                }
+                Clear = function () {
+
+                }
             }
             //========================Array
 
             if (type == Array) {
-                col(`TYPE OF ${this} is ${str_type} NOT  in _$ essense`);
                 Entres = this;
                 Value = this;
                 Keys = genKey(Entres.length);
+
                 Copy = function () {
                     let ar = [];
                     ar.splice(0, 0, ...Self);
                     return ar;
                 }
-
                 IndexOf = function (item) {
                     return this.indexOf(item);
                 }
                 Splice = function (n, m, args) {
-                    this.splice(n, m, args);
+                    Self.splice(n, m, args);
                 }
                 Slice = function (n, m) {
-                    return this.slice(n, m);
+                    return Self.slice(n, m);
                 }
                 Clear = function () {
-                    this.splice(0, this.length);
+                    Self.splice(0);
+                }
+                OwnMeth = function () {
+                    let a;
+                    return {
+                        a() {
+
+                        }
+                    }
                 }
             }
             //========================String
@@ -122,12 +165,34 @@
                 Entres = this.split('');
                 Value = this;
                 Keys = genKey(Entres.length);
+
                 Copy = function () {
-                    return Self;
+                    // let ar = '';
+                    // ar.splice(0, 0, ...Self);
+                    // return ar;
+                }
+                IndexOf = function (item) {
+                    return this.indexOf(item);
+                }
+                Splice = function (n, m, args) {
+                    return undefined;
+                }
+                Slice = function (n, m) {
+                    return Self.slice(n, m);
+                }
+                Map = function (callback, thisArg) {
+
+                }
+                Filter = function (callback, thisArg) {
+
+                }
+                Sort = function (callback, thisArg) {
+
                 }
                 Clear = function () {
-                    return '';
+                    Self.splice(0);
                 }
+
             }
             let thisEssens = {
 
@@ -139,6 +204,11 @@
                 Type: str_type,
                 consruct: type,
                 Copy,
+                Clear,
+                Splice,
+                Slice,
+                Map,
+                Filter,
 
                 isEmpty: !Boolean(Entres.length),
                 isSet: type == Set,

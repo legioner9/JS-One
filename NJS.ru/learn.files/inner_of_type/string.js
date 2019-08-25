@@ -6,6 +6,8 @@ let str = 'varf';//p-sring
 let str_similar = 'varf';
 let bol_str = str == str_similar;
 let ob_str = new String('vdvevfgw');//ob-string
+debugger;
+delete ob_str[0];
 let if_str = ob_str.valueOf();// convert ob-string to p-sring
 let if_str_ = ob_str.toString();// convert ob-string to p-sring
 let ob_str_similar = new String('vdevfgw');
@@ -21,4 +23,3 @@ let ob_io = typeof ob_str;
 let ob_io_ = ob_str.types___();
 let p_io = typeof str;
 let p_io_ = str.types___();
-debugger;
