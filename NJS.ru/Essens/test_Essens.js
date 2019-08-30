@@ -2,6 +2,7 @@
 
 let arr = [1, 2, 4, 'a', ['b'], {c: 'c'}];
 col(arr._$());
+let $arr = arr._$();
 debugger;
 
 let arr_splise = arr._$().Copy();
