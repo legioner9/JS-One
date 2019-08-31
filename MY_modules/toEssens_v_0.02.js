@@ -6,7 +6,7 @@
             return this.__proto__.constructor.name;
         }
 
-        Object.prototype._$ = function () {
+        Object.prototype._$_REss = function () {
             let Keys = [];
             let Value = [];
             let Entres = [];
@@ -309,7 +309,7 @@
         }
 
 
-        Object.prototype._$_v_01 = function () {
+        Object.prototype._$_CIP_add_Ess = function () {
             if (this['thisEssens']) {
                 return this;
             } else {
@@ -341,9 +341,7 @@
                 //========================Symbol
 
                 //========================Date
-                if (this === undefined) {
 
-                }
                 //========================Nan
 
                 //========================Number

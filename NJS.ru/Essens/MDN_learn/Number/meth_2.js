@@ -1,19 +1,7 @@
 /*
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
-class Rectangle {
-    constructor(height, width) {
-        this.height = height;
-        this.width = width;
-    }
-}
 
-let nf = new Function('a');
-let $nf = nf._$_REss();
-
-debugger;
-let rect = new Rectangle(1, 2);
-let $rect = rect._$_REss();
 let a = new Number(123);
 let b = Number('csa');
 let c = Number(23);
