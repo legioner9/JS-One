@@ -962,6 +962,20 @@
             }, []);
     }
 
+    /* TODO: Prox Get to undef prop _$_proxUndef  */
+    Object.prototype._$_proxUndef = function () {
+        return new Proxy(this, {
+                get: function (target, name) {
+                    if (name in target) {
+                        return target[name]
+                    } else {
+                        col(`Prop : "${name}" in Target : "${target}" missing `);
+                        return undefined;
+                    }
+                }
+            }
+        );
+    }
 
     Object.prototype.constructor = Object;
     Function.prototype.constructor = Function;

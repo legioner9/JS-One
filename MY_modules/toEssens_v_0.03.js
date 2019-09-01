@@ -8,7 +8,8 @@
 
         let FNc = {}
 
-        let Glob = ['Number',
+        let Glob = [
+            'Number',
             'String',
             'Symbol',
             'Array',
@@ -72,12 +73,13 @@
                 A.IsNan = true;
             } else {
                 A.New = {
-                    _$new_(n_valume) {
+                    _$new_(n_value) {
                     },
                 };
 
                 A.Enum = {
                     _$entries_() {
+                        return [A.Self];
                     }
                 };
 
@@ -87,8 +89,53 @@
 
                 A.Meth = {
                     _$copy_() {
+                        return A.Self;
                     },
                     _$clear_() {
+                        return undefined;
+                    },
+                    _$toExponential_(digit_after_dot) {
+                        return A.Self.toExponential(digit_after_dot);// {3 digit_after_dot }(125 => "1.230e+2")
+                    },
+                    _$toFixed_(digit_after_dot) {
+                        return A.Self.toFixed(digit_after_dot);//{5 digit_after_dot }(125 => "123.00000")
+                    },
+                    _$toLocaleString_(arr_options) {
+                        return A.Self.toLocaleString(arr_options);//{'de-DE' arr_options}(123456.789 =>"123.456,789")
+                        //{'ru-RU' arr_options}(123456.789 =>"123 456,789")
+                    },
+                    _$toPrecision_(volume_of_signif_numb) {
+                        return A.Self.toPrecision(volume_of_signif_numb);//{5 volume_of_signif_numb}(0.000123
+                        // =>"0.00012300")
+                        //{1 volume_of_signif_numb}(0.000123 =>"0.0001")
+                    },
+                    _$toString_(radix) {
+                        return A.Self.toString(radix);//{2 radix }(123 => "1111011")
+                    },
+                    _$valueOf_() {
+                        return A.Self.valueOf();//{ }("123" => 123)
+                    },
+
+                };
+
+                A.Parent = {
+                    _$isFinite_() {
+                        return Number.isFinite(A.Self.valueOf());// not +-Infinity not NaN
+                    },
+                    _$isNaN_() {
+                        return Number.isNaN(A.Self.valueOf());
+                    },
+                    _$isInteger_() {
+                        return Number.isInteger(A.Self.valueOf());
+                    },
+                    _$isSafeInteger_() {
+                        return Number.isSafeInteger(A.Self.valueOf());// yet Infinity
+                    },
+                    _$parseFloat_() {
+                        return Number.parseFloat(A.Self.valueOf());// first dig float from string
+                    },
+                    _$parseInt_() {
+                        return Number.parseInt(A.Self.valueOf());// first dig float from string
                     },
                 };
             }
@@ -186,9 +233,14 @@
                 _$isArray_(arr) {
                     return Arr
                 }
-
-
             };
+
+            A.Parent = {
+                _$par_() {
+
+                }
+            };
+
         }
 
         FNc['Function'] = function (A) {
@@ -257,6 +309,12 @@
                 // _$isArray_(arr) {
                 //     return Arr
                 // }
+            };
+
+            A.Parent = {
+                _$par_() {
+
+                }
             };
         }
 
@@ -327,6 +385,18 @@
                 //     return Arr
                 // }
             };
+
+            A.Parent = {
+                _$par_() {
+
+                },
+                _$parseFloat_() {
+                    return Number.parseFloat(A.Self.valueOf());// first dig float from string
+                },
+                _$parseInt_() {
+                    return Number.parseInt(A.Self.valueOf());// first dig float from string
+                },
+            };
         }
 
         FNc['Object'] = function (A) {
@@ -367,11 +437,9 @@
             A.Prop = {};
 
             A.Meth = {
-                // _$copy_() {
-                //     let ar = [];
-                //     ar = A.Self.slice();
-                //     return ar;
-                // },
+                _$copy_() {
+                    return Object.assign({}, A.Self);
+                },
                 // _$copyWithin__$CIP(targ_pos, start_ins, end_ins) {
                 //     Self.copyWithin(targ_pos, start_ins, end_ins);
                 // },
@@ -395,6 +463,12 @@
                 // _$isArray_(arr) {
                 //     return Arr
                 // }
+            };
+
+            A.Parent = {
+                _$par_() {
+
+                }
             };
         }
 
@@ -465,6 +539,12 @@
                 //     return Arr
                 // }
             };
+
+            A.Parent = {
+                _$par_() {
+
+                }
+            };
         }
 
         FNc['Set'] = function (A) {
@@ -533,6 +613,12 @@
                 // _$isArray_(arr) {
                 //     return Arr
                 // }
+            };
+
+            A.Parent = {
+                _$par_() {
+
+                }
             };
         }
 
@@ -603,6 +689,12 @@
                 //     return Arr
                 // }
             };
+
+            A.Parent = {
+                _$par_() {
+
+                }
+            };
         }
 
         FNc['Promise'] = function (A) {
@@ -671,6 +763,12 @@
                 // _$isArray_(arr) {
                 //     return Arr
                 // }
+            };
+
+            A.Parent = {
+                _$par_() {
+
+                }
             };
         }
 
@@ -741,6 +839,12 @@
                 //     return Arr
                 // }
             };
+
+            A.Parent = {
+                _$par_() {
+
+                }
+            };
         }
 
         FNc['RegExp'] = function (A) {
@@ -809,6 +913,12 @@
                 // _$isArray_(arr) {
                 //     return Arr
                 // }
+            };
+
+            A.Parent = {
+                _$par_() {
+
+                }
             };
         }
 
@@ -879,6 +989,12 @@
                 //     return Arr
                 // }
             };
+
+            A.Parent = {
+                _$par_() {
+
+                }
+            };
         }
 
         FNc['Any'] = function (A) {
@@ -948,6 +1064,12 @@
                 //     return Arr
                 // }
             };
+
+            A.Parent = {
+                _$par_() {
+
+                }
+            };
         }
 
 
@@ -959,7 +1081,7 @@
                 IsNan = false,
                 isEmpty = false;
 
-            let Meth, Prop, Symb, Enum, New, str_type, type;
+            let Meth, Prop, Parent, Symb, Enum, New, str_type, type;
 
             let M = {
                 Entres,
@@ -970,6 +1092,7 @@
                 Prop,
                 Symb,
                 Enum,
+                Parent,
                 New,
                 isEmpty,
                 IsNan,
@@ -998,19 +1121,20 @@
 
             let thisEssens = {
 
-                Entres,
-                Value,
-                Keys,
-                Self,
+                Entres: M.Entres,
+                Value: M.Value,
+                Keys: M.Keys,
+                Self: M.Self,
                 Type: str_type,
                 consruct: type,
-                Meth,
-                Prop,
-                Symb,
-                Enum,
-                isNan: IsNan,
+                Meth: M.Meth,
+                Prop: M.Prop,
+                Parent: M.Parent,
+                Symb: M.Symb,
+                Enum: M.Enum,
+                isNan: M.IsNan,
 
-                isEmpty: !Boolean(Entres.length),
+                isEmpty: !Boolean(M.Entres.length),
                 isSet: type == Set,
                 isMap: type == Map,
                 isObj: type == Object,
