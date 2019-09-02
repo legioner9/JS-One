@@ -22,6 +22,7 @@
             'Proxy',
             'RegExp',
             'Math',
+            'Intl',
 
         ]
 
@@ -64,7 +65,6 @@
             }
         }
 
-
         FNc['Number'] = function (A) {
             A.Entres = [A.Self];
             A.Value = A.Self;
@@ -73,7 +73,11 @@
                 A.IsNan = true;
             } else {
                 A.New = {
-                    _$new_(n_value) {
+                    _$new_Ret_obj() {
+                        return new Number(A.Self);
+                    },
+                    _$new_Ret_prim() {
+                        return Number(A.Self);
                     },
                 };
 
@@ -140,7 +144,6 @@
                 };
             }
         }
-
 
         FNc['Array'] = function (A) {
             let en = A.Self.entries();
@@ -356,34 +359,100 @@
             A.Prop = {};
 
             A.Meth = {
-                // _$copy_() {
-                //     let ar = [];
-                //     ar = A.Self.slice();
-                //     return ar;
-                // },
-                // _$copyWithin__$CIP(targ_pos, start_ins, end_ins) {
-                //     Self.copyWithin(targ_pos, start_ins, end_ins);
-                // },
-                // _$copyWithin__$RIL(targ_pos, start_ins, end_ins) {
-                //     let Self_ = A.Self._$().Meth._$copy_();
-                //     Self_.copyWithin(targ_pos, start_ins, end_ins);
-                //     return Self_;
-                // },
-                // _$clear_() {
-                //     Self.splice(0);
-                // },
-                //
-                // _$map_as_reduse_(callback, thisArg) {
-                //     return A.Self
-                //         .reduce(function (res, b, ind, arr) {
-                //             res[ind] = callback.call(thisArg, b, ind, arr);
-                //             return res;
-                //         }, [])
-                // },
-                //
-                // _$isArray_(arr) {
-                //     return Arr
-                // }
+                _$length_() {
+                    return A.Self.length
+                },
+                _$anchor_wrap(value_name) {
+                    return A.Self.anchor(value_name);
+                    // {value_name = 'name_rty'} ('anc' =>"<a name="name_rty">anc</a>")
+                },
+                _$big_wrap_() {
+                    return A.Self.big();
+                    // {} ('anc' =>"<big>anc</big>")
+                },
+                _$blink_wrap_() {
+                    return A.Self.blink();
+                    // {} ('anc' =>"<blink>anc</blink>")
+                },
+                _$bold_wrap_() {
+                    return A.Self.bold();
+                    // {} ('anc' =>"<b>anc</b>")
+                },
+                _$charAt_(index_for_search) {
+                    return A.Self.charAt(index_for_search);
+                    // {1 index_for_search} ('anc' =>"n")
+                },
+                _$charCodeAt_(index_for_search) {
+                    return A.Self.charCodeAt(index_for_search);
+                    // {0 index_for_search} ('anc' => 97)
+                },
+                _$codePointAt_(index_for_search) {
+                    return A.Self.codePointAt(index_for_search);
+                    // {0 index_for_search} ('☃★♲' =>9731)
+                },
+                _$concat_(arr_of_str) {
+                    return A.Self.concat(...arr_of_str);
+                    // {[0,' sdfg '] arr_of_str} ('anc' =>"anc0 sdfg "")
+                },
+                _$endsWith_(str_on_end, position_end_in_init) {
+                    return A.Self.endsWith(str_on_end, position_end_in_ini);
+                    // { 'c' , 3  ;  str_on_end, position_end_in_ini} ('ancvds' =>true)
+                },
+                _$fixed_() {
+                    return A.Self.fixed();
+                    // {} ('anc' =>"<ff>anc</ff>")
+                },
+                _$fontcolor_wrap_(str_color) {
+                    return A.Self.fontcolor(str_color);
+                    // {"#45f" str_color} ('anc' =>"<font color="#45f">anc</font>")
+                },
+                _$fontsize_wrap_(size) {
+                    return A.Self.fontsize(size);
+                    // {"30" size} ('anc' =>"<font size="30">anc</font>")
+                },
+                _$includes_(serch_simb, position_start_in_init) {
+                    return A.Self.includes(serch_simb, position_start_in_init);
+                    // { 'c' , 1  ;  serch_simb, position_start_in_init} ('ancvds' =>true)
+                },
+                _$indexOf_(serch_simb_from_start) {
+                    return A.Self.indexOf(serch_simb_from_start);
+                    // { 'c' serch_simb_from_start } ('anc' =>2)
+                },
+                _$italics_wrap_() {
+                    return A.Self.italics();
+                    // {} ('anc' =>"<i>anc</i>")
+                },
+                _$lastIndexOf_(serch_simb_from_end) {
+                    return A.Self.lastIndexOf(serch_simb_from_end);
+                    // { 'c' serch_simb_from_end } ('ancyuc' =>5)
+                },
+                _$link_wrap_(value_link) {
+                    return A.Self.link(value_link);
+                    // {alue_link = "cdf"} ('anc' =>"<a href="cdf">ancrtc</a>")
+                },
+                _$localeCompare_(str_comp, locales, options) {
+                    return A.Self.link(str_comp, locales, options);
+                    // { 'z', 'de' ;  str_comp, locales} ('ä' => >0 ) & z after ä
+                },
+                _$match_(regexp) {
+                    return A.Self.match(regexp);
+                    // { /c/gi ;  regexp } ('anCrtc' => ["C", "c"] ) & g ret array
+                },
+                _$matchAll_RArrRes_(regexp) {
+                    let RegExpStringIterator = A.Self.matchAll(regexp);//& return iterator of All maches
+                    let res = [];
+                    for (item of RegExpStringIterator) {
+                        res.push(item);
+                    }
+                    return res;
+                    // { /c/gi ;  regexp } ('anCrtc'=>0: ["C", index: 2, input: "anCrtc", groups: undefined]
+                    //                                                           1: ["c", index: 5, input: "anCrtc", groups: undefined]
+                },
+
+
+                _$matchAll_RRegExpStringIterator_(regexp) {
+                    return A.Self.matchAll(regexp); //& return iterator of All maches RegExpStringIterator
+                },
             };
 
             A.Parent = {
@@ -1072,6 +1141,81 @@
             };
         }
 
+        FNc['Intl'] = function (A) {
+
+            let en = Object.entries(A.Self);
+            for (let item of en) {
+                A.Entres.push(item);
+            }
+            let va = Object.values(A.Self);
+            for (let item of va) {
+                A.Value.push(item);
+            }
+            let ke = Object.keys(A.Self);
+            for (let item of ke) {
+                A.Keys.push(item);
+            }
+
+            A.New = {
+                // _$new_arr_length_(n_valume) {
+                //     return new Array(n_valume);
+                // },
+                // _$new_arr_from_(like_arr) {
+                //     return Array.from(like_arr);
+                // },
+                // _$new_arr_of_(any_elem_1, any_elem_n) {
+                //     return Array.of(any_elem_1, any_elem_n)
+                // }
+            };
+
+            A.Enum = {
+                // _$entries_() {
+                //     return A.Self.entries();
+                // }
+            };
+
+            A.Symb = {};
+
+            A.Prop = {};
+
+            A.Meth = {
+                // _$copy_() {
+                //     let ar = [];
+                //     ar = A.Self.slice();
+                //     return ar;
+                // },
+                // _$copyWithin__$CIP(targ_pos, start_ins, end_ins) {
+                //     Self.copyWithin(targ_pos, start_ins, end_ins);
+                // },
+                // _$copyWithin__$RIL(targ_pos, start_ins, end_ins) {
+                //     let Self_ = A.Self._$().Meth._$copy_();
+                //     Self_.copyWithin(targ_pos, start_ins, end_ins);
+                //     return Self_;
+                // },
+                // _$clear_() {
+                //     Self.splice(0);
+                // },
+                //
+                // _$map_as_reduse_(callback, thisArg) {
+                //     return A.Self
+                //         .reduce(function (res, b, ind, arr) {
+                //             res[ind] = callback.call(thisArg, b, ind, arr);
+                //             return res;
+                //         }, [])
+                // },
+                //
+                // _$isArray_(arr) {
+                //     return Arr
+                // }
+            };
+
+            A.Parent = {
+                _$par_() {
+
+                }
+            };
+        }
+
 
         Object.prototype._$_REss = function () {
             let Keys = [],
@@ -1127,11 +1271,12 @@
                 Self: M.Self,
                 Type: str_type,
                 consruct: type,
-                Meth: M.Meth,
-                Prop: M.Prop,
-                Parent: M.Parent,
-                Symb: M.Symb,
-                Enum: M.Enum,
+                New: M.New._$_proxUndef(),
+                Meth: M.Meth._$_proxUndef(),
+                Prop: M.Prop._$_proxUndef(),
+                Parent: M.Parent._$_proxUndef(),
+                Symb: M.Symb._$_proxUndef(),
+                Enum: M.Enum._$_proxUndef(),
                 isNan: M.IsNan,
 
                 isEmpty: !Boolean(M.Entres.length),
@@ -1149,7 +1294,8 @@
                 isMath: type == Math,
 
                 toStringTag: 'Essens',
-            }
+            };
+
             return thisEssens;
 
 

@@ -963,9 +963,9 @@
     }
 
     /* TODO: Prox Get to undef prop _$_proxUndef  */
-    Object.prototype._$_proxUndef = function () {
+    Object.prototype._$_proxUndef = function (f) {
         return new Proxy(this, {
-                get: function (target, name) {
+                get: function (target, name, f) {
                     if (name in target) {
                         return target[name]
                     } else {

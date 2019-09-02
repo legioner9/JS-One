@@ -6,12 +6,15 @@ let a = new Number(123);
 let b = Number('csa');
 let c = Number(23);
 let d = Number('3562');
-let e = "1.6h124";
+let e = 1.78;
 let f = NaN;
 let arr = [a, c, d, e, f];
 
-let $e = e._$_REss();
 debugger;
+let $e = e._$_REss();
+
+let yi_0 = $e.New._$new_Ret_obj()
+let yi_00 = $e.New._$new_Ret_prim()
 let yi = $e.Parent._$isFinite_()
 let yi_7 = $e.Parent._$isNaN_()
 let yi_8 = $e.Parent._$isInteger_()
