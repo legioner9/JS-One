@@ -448,22 +448,136 @@
                     // { /c/gi ;  regexp } ('anCrtc'=>0: ["C", index: 2, input: "anCrtc", groups: undefined]
                     //                                                           1: ["c", index: 5, input: "anCrtc", groups: undefined]
                 },
-
-
                 _$matchAll_RRegExpStringIterator_(regexp) {
                     return A.Self.matchAll(regexp); //& return iterator of All maches RegExpStringIterator
                 },
+                _$normalize_() {// Any forms {‘NFC’, ‘NFKC’, ‘NFD’, ‘NFKD’}
+                    return A.Self.normalize();
+                    // {} ("S\u0307\u0323" =>"\u1e68") & both Ṩ bat \u1e68 norm
+                },
+                _$padEnd_(langth_str_after, padding_str) {
+                    return A.Self.padEnd(langth_str_after, padding_str);
+                    // {10 , '.' ;  langth_str_after, padding_str } ('anCrtc' =>"anCrtc....")
+                },
+                _$padStart_(langth_str_after, padding_str) {
+                    return A.Self.padStart(langth_str_after, padding_str);
+                    // {10 , '.' ;  langth_str_after, padding_str } ('anCrtc' =>"....anCrtc")
+                },
+                _$repeat_(n_value) {
+                    return A.Self.repeat(n_value);
+                    // {3 ; n_value} (' anCrtc ' =>" anCrtc  anCrtc  anCrtc ")
+                },
+                _$replace_(regex, inner_str) {
+                    return A.Self.replace(regex, inner_str);
+                    // {/c/ig,'b'} ('anCrtc' =>"anbrtb")
+                },
+                _$search_(regex) {
+                    return A.Self.search(regex);
+                    // {/c/ig} ('anCrtc' =>2)& firsi serch case
+                },
+                _$slice_(index_start_copy, index_end_copy) {
+                    return A.Self.slice(index_start_copy, index_end_copy);
+                    // { 1,4 ; index_start_copy,index_end_copy} ('anCrtc' =>"nCr")
+                },
+                _$small_wrap_() {
+                    return A.Self.small();
+                    // {} ('anc' =>"<small>anc</small>")
+                },
+                _$split_(separator, max_length_res_arr) {
+                    return A.Self.split(separator, max_length_res_arr);
+                    // {'',4 ; separator, max_length_res_arr} ('anCrtc' =>["a", "n", "C", "r"])
+                },
+                _$startsWith_(str_for_serch, index_from_serch) {
+                    return A.Self.startsWith(str_for_serch, index_from_serch);
+                    // {'n',1 ; str_for_serch, index_from_serch} ('anCrtc' =>true)
+                },
+                _$strike_wrap_() {
+                    return A.Self.strike();
+                    // {} ('anc' =>"<strike>anc</strike>")&Чебурашка зачеркнутый текст
+                },
+                _$sub_wrap_() {
+                    return A.Self.sub();
+                    // {} ('anc' =>"<sub>anc</sub>")&Н2O
+                },
+                _$substr_(start_index, length_substr) {
+                    return A.Self.substr(start_index, length_substr);
+                    // {1,5 ; start_index , length_substr} ('anc' =>"<b>anc</b>")
+                },
+                _$sup_wrap_() {
+                    return A.Self.sup();
+                    // {} ('anc' =>"<sup>anc</sup>")&PiR2
+                },
+                _$toLocaleLowerCase_() {
+                    return A.Self.toLocaleLowerCase();
+                    // {} ('anCrtc' =>"ancrtc")
+                },
+                _$toLocaleUpperCase_() {
+                    return A.Self.toLocaleUpperCase();
+                    // {} ('anCrtc' =>"ANCRTC")
+                },
+                _$toLowerCase_() {
+                    return A.Self.toLowerCase();
+                    // {} ('anCrtc' =>"ancrtc")
+                },
+                _$toUpperCase_() {
+                    return A.Self.toUpperCase();
+                    // {} ('anCrtc' =>"ANCRTC")
+                },
+                _$toString_() {
+                    return A.Self.toString();
+                    // {} ({"anCrtc"} =>"anCrtc"") & new String ("anCrtc")  =  {"anCrtc"}
+                },
+                _$trim_() {
+                    return A.Self.trim();
+                    // {} (' anc   ' =>"anc")
+                },
+                _$trimLeft_() {
+                    return A.Self.trimLeft();
+                    // {} ('  anc   ' =>"anc  ")
+                },
+                _$trimRight_() {
+                    return A.Self.trimRight();
+                    // {} (' anc   ' =>"  anc")
+                },
+                _$trimStart_() {
+                    return A.Self.trim();
+                    // {} (' anc   ' =>"anc  ")
+                },
+                _$trimEnd_() {
+                    return A.Self.trim();
+                    // {} ('  anc   ' =>"  anc")
+                },
+                _$valueOf_() {
+                    return A.Self.valueOf();
+                    // {} ({"anCrtc"} =>"anCrtc"") & new String ("anCrtc")  =  {"anCrtc"}
+                },
+                _$analysis_OfTemplString_() {
+                    // function tsf(strings, ...values) {
+                    //     return {
+                    //         strings,
+                    //         values,
+                    //     }
+                    // }
+                    //
+                    // return tsf'A.Self';
+                }
             };
 
             A.Parent = {
-                _$par_() {
-
+                _$fromCharCode_() {
+                    return String.fromCharCode(A.Self.valueOf());//
+                    // {} (56,658,99998 =>"8ʒ蚞") & num_unicode  =>  simbols_string
+                },
+                _$fromCodePoint_() {
+                    return String.fromCodePoint(A.Self.valueOf());
+                    // {} (56,658,99998 =>"8ʒ𘚞") & point_unicode  =>  simbols_string
                 },
                 _$parseFloat_() {
-                    return Number.parseFloat(A.Self.valueOf());// first dig float from string
+                    return Number.parseFloat(A.Self.valueOf());// first dig float from begin string
                 },
-                _$parseInt_() {
-                    return Number.parseInt(A.Self.valueOf());// first dig float from string
+                _$parseInt_(radix) {
+                    return Number.parseInt(A.Self.valueOf(), radix);//ret first dig Int in radix notation from begin
+                    // string
                 },
             };
         }

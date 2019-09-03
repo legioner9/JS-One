@@ -977,6 +977,14 @@
         );
     }
 
+    Object.prototype._$analysis_OfTemplString_ = function (arr_sub_sting, ...arr_of_value) {
+        return {
+            arr_sub_sting,
+            arr_of_value,
+        }
+    }
+
+
     Object.prototype.constructor = Object;
     Function.prototype.constructor = Function;
     Map.prototype.constructor = Map;
