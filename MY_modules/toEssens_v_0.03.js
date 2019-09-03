@@ -158,6 +158,9 @@
             for (let item of ke) {
                 A.Keys.push(item);
             }
+
+            A.Webapi = {};
+
             A.New = {
                 _$new_arr_length_(n_valume) {
                     return new Array(n_valume);
@@ -261,6 +264,8 @@
                 A.Keys.push(item);
             }
 
+            A.Webapi = {};
+
             A.New = {
                 // _$new_arr_length_(n_valume) {
                 //     return new Array(n_valume);
@@ -335,6 +340,8 @@
             for (let item of ke) {
                 A.Keys.push(item);
             }
+
+            A.Webapi = {};
 
             A.New = {
                 // _$new_arr_length_(n_valume) {
@@ -597,6 +604,8 @@
                 A.Keys.push(item);
             }
 
+            A.Webapi = {};
+
             A.New = {
                 // _$new_arr_length_(n_valume) {
                 //     return new Array(n_valume);
@@ -669,6 +678,8 @@
             for (let item of ke) {
                 A.Keys.push(item);
             }
+
+            A.Webapi = {};
 
             A.New = {
                 // _$new_arr_length_(n_valume) {
@@ -745,6 +756,8 @@
                 A.Keys.push(item);
             }
 
+            A.Webapi = {};
+
             A.New = {
                 // _$new_arr_length_(n_valume) {
                 //     return new Array(n_valume);
@@ -819,6 +832,8 @@
             for (let item of ke) {
                 A.Keys.push(item);
             }
+
+            A.Webapi = {};
 
             A.New = {
                 // _$new_arr_length_(n_valume) {
@@ -895,6 +910,8 @@
                 A.Keys.push(item);
             }
 
+            A.Webapi = {};
+
             A.New = {
                 // _$new_arr_length_(n_valume) {
                 //     return new Array(n_valume);
@@ -969,6 +986,8 @@
             for (let item of ke) {
                 A.Keys.push(item);
             }
+
+            A.Webapi = {};
 
             A.New = {
                 // _$new_arr_length_(n_valume) {
@@ -1045,6 +1064,8 @@
                 A.Keys.push(item);
             }
 
+            A.Webapi = {};
+
             A.New = {
                 // _$new_arr_length_(n_valume) {
                 //     return new Array(n_valume);
@@ -1119,6 +1140,8 @@
             for (let item of ke) {
                 A.Keys.push(item);
             }
+
+            A.Webapi = {};
 
             A.New = {
                 // _$new_arr_length_(n_valume) {
@@ -1195,6 +1218,8 @@
                 A.Keys.push(item);
             }
 
+            A.Webapi = {};
+
             A.New = {
                 // _$new_arr_length_(n_valume) {
                 //     return new Array(n_valume);
@@ -1270,6 +1295,8 @@
                 A.Keys.push(item);
             }
 
+            A.Webapi = {};
+
             A.New = {
                 // _$new_arr_length_(n_valume) {
                 //     return new Array(n_valume);
@@ -1339,7 +1366,7 @@
                 IsNan = false,
                 isEmpty = false;
 
-            let Meth, Prop, Parent, Symb, Enum, New, str_type, type;
+            let Meth, Prop, Parent, Symb, Enum, New, Webapi, str_type, type;
 
             let M = {
                 Entres,
@@ -1352,6 +1379,7 @@
                 Enum,
                 Parent,
                 New,
+                Webapi,
                 isEmpty,
                 IsNan,
             }
@@ -1385,6 +1413,7 @@
                 Self: M.Self,
                 Type: str_type,
                 consruct: type,
+                Webapi: M.Webapi._$_proxUndef(),
                 New: M.New._$_proxUndef(),
                 Meth: M.Meth._$_proxUndef(),
                 Prop: M.Prop._$_proxUndef(),
