@@ -174,9 +174,15 @@
             };
 
             A.Enum = {
-                _$entries_() {
+                _$entries_Array_Iterator_() {
                     return A.Self.entries();
-                }
+                },
+                _$values_Array_Iterator_() {
+                    return A.Self.values();
+                },
+                _$keys_Array_Iterator_() {
+                    return A.Self.keys();
+                },
             };
 
             A.Symb = {};
@@ -185,48 +191,81 @@
 
             A.Meth = {
                 _$copy_() {
-                    let ar = [];
-                    ar = A.Self.slice();
-                    return ar;
+                    return [].slice(A.Self);
                 },
                 _$copyWithin__$CIP(targ_pos, start_ins, end_ins) {
                     Self.copyWithin(targ_pos, start_ins, end_ins);
                 },
                 _$copyWithin__$RIL(targ_pos, start_ins, end_ins) {
-                    let Self_ = A.Self._$().Meth._$copy_();
+                    let Self_ = A.Self._$_REss().Meth._$copy_();
                     Self_.copyWithin(targ_pos, start_ins, end_ins);
                     return Self_;
                 },
                 _$clear_() {
-                    Self.splice(0);
+                    A.Self.splice(0);
                 },
-                _$map_(callback, thisArg) {
-                    Self.map(callback, thisArg);
+                _$length_() {
+                    return A.Self.length;
+                },
+                _$concat_(inserted) {
+                    return A.Self.concat(inserted);
+                },
+
+                _$fill_(value, start_ins, end_ins_includ) {
+                    return A.Self.fill(value, start_ins, end_ins_includ);
+                    // {value, start_ins, end_ins_ins_includ ; 95 , 1 , 2 } ([0,4,3,5]  =>[0,95,3,5] ) &
+                },
+
+                _$filter_(callback, thisArg) {
+                    return A.Self.filter(callback, thisArg);
+                    // {callback = a=> a>5'} ([3,6,7] =>[6,7]) & all callback => true
+                },
+                _$find_(callback, thisArg) {
+                    return A.Self.find(callback, thisArg);
+                    // {callback = a=> a>5'} ([3,7] =>7)& first of find item callback => true
+                },
+                _$findIndex_(callback, thisArg) {
+                    return A.Self.findIndex(callback, thisArg);
+                    // {callback = a=> a>5'} ([3,2,7] =>2)& first of find index of item callback => true
+                },
+                _$every_(callback, thisArg) {
+                    return A.Self.every(callback, thisArg);
+                    // {callback = a=> a>5'} ([3,7] =>false)& because callback 3 => false
                 },
                 _$forEach_(item, index, thisArray) {
-                    Self.forEach(item, index, thisArr);
+                    A.Self.forEach(item, index, thisArray);//iterating method
                 },
                 _$push_(...item_arr) {
-                    Self.push(...item_arr);//add to end arr; RET undefine
+                    A.Self.push(...item_arr);//add to end arr; RET undefine
+                },
+                _$flat_() {
+                    A.Self.flat();//subarray UP from first deep level
+                    // {} ([0,[4,[3,6]],5] =>[0,4,[3,6],5])& because [3,6] in second deep level
                 },
                 _$pop_() {
-                    Self.pop();//remove from end arr; RET
+                    A.Self.pop();//remove from end arr; RET
                 },
                 _$shift_() {
-                    Self.shift();//remove from head arr
+                    A.Self.shift();//remove from head arr
                 },
                 _$unshift_(...item_arr) {
-                    Self.unshift(...item_arr);//add to head arr
+                    A.Self.unshift(...item_arr);//add to head arr
                 },
                 _$indexOf_(item) {
-                    Self.indexOf(item);//RET index position of item
+                    return A.Self.indexOf(item);//RET first index position of item
+                    // {item = 4} ([0,4,3,5,4] =>1)& because first index positin 4 is 1
+                },
+                _$lastIndexOf_(item) {
+                    return A.Self.lastIndexOf(item);//RET last index position of item
+                    // {item = 4} ([0,4,3,5,4] =>4)& because last index positin 4 is 4
                 },
                 _$splice_$CIP(st_ind_del, qantity_del, ...ins_arr) {
-                    Self.splice(st_ind_del, qantity_del, ...ins_arr);
+                    A.Self.splice(st_ind_del, qantity_del, ...ins_arr);
                 },
                 _$splice_$RIL(st_ind_del, qantity_del, ...ins_arr) {
-                    let Self_ = A.Self._$().Meth._$copy_()
+                    let Self_ = A.Self._$_REss().Meth._$copy_()
                     Self_.splice(st_ind_del, qantity_del, ...ins_arr);
+                    return Self_;
                 },
                 _$map_as_reduse_(callback, thisArg) {
                     return A.Self
@@ -235,10 +274,37 @@
                             return res;
                         }, [])
                 },
+                _$join_(separator) {
+                    return A.Self.join(separator);
+                    // {separator ; ','} ([0,4,3,5] =>"0,4,3,5")& join() == join(',')
+                },
 
-                _$isArray_(arr) {
-                    return Arr
-                }
+                _$isArray_() {
+                    return A.Self.isArray();
+                },
+                _$flatMap_(callback, thisArg) {
+                    return A.Self.flatMap(callback, thisArg);
+                    // {callback = a=> a*2'} ([[2], [4], [6], [8]] =>[4, 8, 12, 16]) & fist map then flat
+                },
+                _$include_(value, from_index) {
+                    return A.Self.include(value, from_index);
+                    // {value, from_index ;  'a' ,1 } ([1, 3 , 'a'] =>true) & 3 is present in
+                },
+                _$reduce_(callback, init_value) {
+                    //callback = (accumuator, current , index , init_arr) =>()
+                    return A.Self.reduce(callback, init_value);
+                },
+                _$reduceRight_(callback, init_value) {
+                    //callback = (accumuator, current , index , init_arr) =>()
+                    return A.Self.reduceRight(callback, init_value);
+                },
+                _$reverse_() {
+                    //callback = (accumuator, current , index , init_arr) =>()
+                    return A.Self.reverse();
+                    // {} ( [0,4,3,5,4] => [4, 5, 3, 4, 0] ) &
+                },
+
+
             };
 
             A.Parent = {
@@ -582,7 +648,7 @@
                 _$parseFloat_() {
                     return Number.parseFloat(A.Self.valueOf());// first dig float from begin string
                 },
-                _$parseInt_(radix) {
+                _$parseInt_radix_(radix) {
                     return Number.parseInt(A.Self.valueOf(), radix);//ret first dig Int in radix notation from begin
                     // string
                 },
@@ -604,7 +670,26 @@
                 A.Keys.push(item);
             }
 
-            A.Webapi = {};
+            A.Webapi = {
+                _$_get_localStorage_as_arr_() {
+                    let res = [];
+                    for (key in localStorage) {
+                        if (localStorage.hasOwnProperty(key)) {
+                            let r_i = {
+                                volume: JSON.parse(localStorage.getItem(key)),
+                                key,
+                            }
+                            res.push(r_i);
+                        }
+                    }
+                    return res;
+                },
+
+                _$_set_item_localStorage_(name_item) {
+                    localStorage.setItem(name_item, JSON.stringify(A.Self));
+                    return JSON.parse(localStorage.getItem(name_item));
+                }
+            };
 
             A.New = {
                 // _$new_arr_length_(n_valume) {

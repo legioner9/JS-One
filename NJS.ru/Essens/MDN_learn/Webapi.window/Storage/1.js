@@ -2,7 +2,7 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 
-debugger;
+
 // Создаём некоторый объект
 let session = {
     'screens': [],
@@ -18,7 +18,6 @@ session.screens.push({'name': 'экранЕ', 'width': 1240, 'height': 650});
 // Преобразуем его в строку JSON с помощью метода JSON.stringify(),
 // затем сохраняем его в localStorage под именем session
 localStorage.setItem('session', JSON.stringify(session));
-debugger;
 // Пример того, как можно преобразовать строку, полученную с помощью метода
 // JSON.stringify() и сохранённую в localStorage обратно в объект
 let restoredSession = JSON.parse(localStorage.getItem('session'));
@@ -26,3 +25,28 @@ let restoredSession = JSON.parse(localStorage.getItem('session'));
 // Переменная restoredSession содержит объект, который был сохранён
 // в localStorage
 console.log(restoredSession);
+let rr = [];
+let kf = function () {
+    let r = [].slice.call(arguments);
+    return r;
+}
+let ss = kf(3, 'bf');
+debugger;
+
+
+col(localStorage);
+// let re = [];
+// for (let key in localStorage) {
+//     let h = localStorage.hasOwnProperty(key);
+//     let l = localStorage.getItem(key)
+//     if (localStorage.hasOwnProperty(key)) {
+//         re.push(JSON.parse(localStorage.getItem(key)));
+//     }
+// }
+let z = {s: 'ss'};
+z._$_REss().Webapi._$_set_item_localStorage_('sss');
+let re_1 = Object()._$_REss().Webapi._$_get_localStorage_as_arr_();
+
+(function () {
+    col([].includes.call(arguments, 'a'))
+})('a')

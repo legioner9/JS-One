@@ -5,6 +5,7 @@
 let a = 'anCrtc';
 let res_m = 'anCrtc'._$_REss().Meth._$matchAll_RArrRes_(/c/gi);
 let $a = a._$_REss();
+debugger;
 let gen = a.matchAll(/c/gi);
 let tt = String.raw`Привет\n${2 + 3}!`;
 let d = new String('anCrtc');
