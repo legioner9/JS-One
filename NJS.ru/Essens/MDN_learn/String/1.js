@@ -41,16 +41,23 @@ let str = _$analysis_OfTemplString_`Sum of ${apples} + ${oranges} =\n ${apples +
 let str_1 = f`Fdfc t 78 sv 
 dfvv 990 
 dfvv  dfsa 0`;
-debugger;
+
 
 class Str_repl {
     constructor(value) {
         this.value = value;
     }
 
-    [Symbol.replace](sting) {
-        return `s/${string}/${this.value}/g`;
+    [Symbol.replace](string) {
+        return `s/${string}/gi`;
     }
 }
 
-let rep = new Str_repl('Mu');
+let rep = new Str_repl('p');
+let res_st_rep = 'fyui pp'.replace(rep);
+
+'fyui pp'.replace(/p/ig, 'ooo');
+
+debugger;
+let str_ = "Mr Blue has a blue house and a blue car";
+let res_ = str_.replace(/blue|house|car/gi, x => x.toUpperCase());
