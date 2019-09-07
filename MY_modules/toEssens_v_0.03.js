@@ -185,13 +185,51 @@
                 },
             };
 
-            A.Symb = {};
+            A.Symb = {
+                _$Symbol_iterator() {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.iterator] = function () {
+                        let this_ = this;
+                        let i = 0;
+                        return {
+                            next() {
+                                if (i < this_.length) {
+                                    return {
+                                        done: false,
+                                        value: this_[i++] + 1,
+                                    }
+                                } else {
+                                    return {
+                                        done: true,
+                                        value: undefined,
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                _$Symbol_toPrimitive() {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.toPrimitive] = function (hint) {
+                        if (hint == 'number') {
+                            return 0;
+                        }
+                        if (hint == 'string') {
+                            return '';
+                        }
+                        return true;
+                    }
+                },
 
+            }
             A.Prop = {};
 
             A.Meth = {
                 _$copy_() {
                     return [].slice(A.Self);
+                },
+                _$copy_from_() {
+                    return Array.from(A.Self.values());
                 },
                 _$copyWithin__$CIP(targ_pos, start_ins, end_ins) {
                     Self.copyWithin(targ_pos, start_ins, end_ins);
@@ -210,12 +248,10 @@
                 _$concat_(inserted) {
                     return A.Self.concat(inserted);
                 },
-
                 _$fill_(value, start_ins, end_ins_includ) {
                     return A.Self.fill(value, start_ins, end_ins_includ);
                     // {value, start_ins, end_ins_ins_includ ; 95 , 1 , 2 } ([0,4,3,5]  =>[0,95,3,5] ) &
                 },
-
                 _$filter_(callback, thisArg) {
                     return A.Self.filter(callback, thisArg);
                     // {callback = a=> a>5'} ([3,6,7] =>[6,7]) & all callback => true
@@ -229,11 +265,17 @@
                     // {callback = a=> a>5'} ([3,2,7] =>2)& first of find index of item callback => true
                 },
                 _$every_(callback, thisArg) {
+                    //callback = (current , index , init_arr) =>(Boolean)
                     return A.Self.every(callback, thisArg);
                     // {callback = a=> a>5'} ([3,7] =>false)& because callback 3 => false
                 },
-                _$forEach_(item, index, thisArray) {
-                    A.Self.forEach(item, index, thisArray);//iterating method
+                _$some(callback, thisArg) {
+                    //callback = (current , index , init_arr) =>(Boolean)
+                    return A.Self.some(callback, thisArg)
+                },
+                _$forEach_(callback, thisArray) {
+                    //callback = (current , index , init_arr) =>()
+                    A.Self.forEach(callback, thisArray);//iterating method
                 },
                 _$push_(...item_arr) {
                     A.Self.push(...item_arr);//add to end arr; RET undefine
@@ -278,7 +320,11 @@
                     return A.Self.join(separator);
                     // {separator ; ','} ([0,4,3,5] =>"0,4,3,5")& join() == join(',')
                 },
-
+                _$sort_(compareFunction) {
+                    //compareFunction = (previus , current ) =>(Boolean)
+                    return A.Self.sort(callback);
+                    // {compareFunction ; (a,b) => a-b} ([0,4,3,5,4]=>[0, 3, 4, 4, 5])& if a<b => a before b
+                },
                 _$isArray_() {
                     return A.Self.isArray();
                 },
@@ -286,8 +332,8 @@
                     return A.Self.flatMap(callback, thisArg);
                     // {callback = a=> a*2'} ([[2], [4], [6], [8]] =>[4, 8, 12, 16]) & fist map then flat
                 },
-                _$include_(value, from_index) {
-                    return A.Self.include(value, from_index);
+                _$includes_(value, from_index) {
+                    return A.Self.includes(value, from_index);
                     // {value, from_index ;  'a' ,1 } ([1, 3 , 'a'] =>true) & 3 is present in
                 },
                 _$reduce_(callback, init_value) {
@@ -299,11 +345,13 @@
                     return A.Self.reduceRight(callback, init_value);
                 },
                 _$reverse_() {
-                    //callback = (accumuator, current , index , init_arr) =>()
                     return A.Self.reverse();
                     // {} ( [0,4,3,5,4] => [4, 5, 3, 4, 0] ) &
                 },
-
+                _$slice_() {
+                    return A.Self.slice(start_index, end_index);
+                    // {start_index, end_index;1,4} ( [0,4,3,5,4] => [4, 3, 5] ) &
+                },
 
             };
 

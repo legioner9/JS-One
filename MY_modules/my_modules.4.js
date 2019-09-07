@@ -8,6 +8,42 @@
  * @type {void}
  */
 (function () {
+    let p = {
+        writable: true,
+    };
+
+    Object.defineProperties(Object.prototype,
+        {
+            '__my_ms': p,
+            '__my_trigger': p,
+            '__my_toEveryPropFunc': p,
+            '__my_on': p,
+            '__my_off': p,
+            '__my_ProtoPropObject': p,
+            '__my_OwnPropObject': p,
+            '__my_MapToArr': p,
+            '__my_ArrOwnValueOfObject': p,
+            '__my_ArrOwnPropsOfObject': p,
+            '__my_AllPropObject': p,
+            '_$type_': p,
+            '_$analysis_OfTemplString_': p,
+            '_$_proxUndef': p,
+            '_$_REss': p,
+            '_$_CIP_add_Ess': p,
+            '__my_trigger': p,
+
+        }
+    );
+    // Object.defineProperties(Array.prototype,
+    //     {
+    //         'indexOf_': p,
+    //         'map_$_RR': p,
+    //         'reduce_': p,
+    //
+    //     }
+    // );
+
+
     /**
      *  console.log(volume)
      * @param volume

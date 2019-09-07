@@ -5,7 +5,7 @@
 let a = 'anCrtc';
 let res_m = 'anCrtc'._$_REss().Meth._$matchAll_RArrRes_(/c/gi);
 let $a = a._$_REss();
-debugger;
+
 let gen = a.matchAll(/c/gi);
 let tt = String.raw`Привет\n${2 + 3}!`;
 let d = new String('anCrtc');
@@ -33,7 +33,7 @@ function f(strings, ...values) {
 
 let apples = 3;
 let oranges = 5;
-debugger;
+
 // let y = `bg ${apples}`._$_REss().Meth._$analysis_OfTemplString_()
 
 //          |  s[0] | v[0] |s[1]| v[1]  |s[2]  |      v[2]      |s[3]
@@ -41,3 +41,16 @@ let str = _$analysis_OfTemplString_`Sum of ${apples} + ${oranges} =\n ${apples +
 let str_1 = f`Fdfc t 78 sv 
 dfvv 990 
 dfvv  dfsa 0`;
+debugger;
+
+class Str_repl {
+    constructor(value) {
+        this.value = value;
+    }
+
+    [Symbol.replace](sting) {
+        return `s/${string}/${this.value}/g`;
+    }
+}
+
+let rep = new Str_repl('Mu');

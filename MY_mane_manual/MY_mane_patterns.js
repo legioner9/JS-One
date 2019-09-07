@@ -917,3 +917,31 @@ rande[Symbol.iterator] = function () {
 let getObjClass = function (obj_ini) {
     return {}.toString.call(obj_ini).slice(8, -1).toLowerCase();
 }
+
+/* TODO: Pattern IIFE + Return func ; "Modul Pattern" */
+let Modul_ = (function () {
+    let privateMethod = function () {
+        col('privat');
+    }
+    return {
+        publicMethod() {
+            privateMethod();
+        }
+    }
+})();
+
+let hf_1 = (a) => a + 1;
+let arr_ = [2];
+
+let hf_2 = (function () {
+    col(arguments);
+    let h = hf_1;
+    let af = arr_;
+    return function (a, b) {
+        let aaf = af;
+        return h(a) + b;
+    };
+})(5);
+
+let e = hf_2(1, 2);
+
