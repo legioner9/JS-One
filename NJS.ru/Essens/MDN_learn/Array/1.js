@@ -110,12 +110,12 @@ let arr_entries = Array.from(arr.values());
 let if_en = arr_ == arr_entries;
 let obj = {w: 'ee ', o: [2]}
 let obj_entries = Object.fromEntries(Object.entries(obj));
-debugger;
+
 for (const eKey in obj) {
     let prop = eKey;
     let p = obj.propertyIsEnumerable(eKey);
     let h = obj.hasOwnProperty(eKey);
 }
-
+debugger;
 
 
