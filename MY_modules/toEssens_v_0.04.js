@@ -1218,7 +1218,28 @@
                 // }
             };
 
-            A.Symb = {};
+            A.Symb = {
+                _$Symbol_matchAll() {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.matchAll] = function (str) {
+                        let result = RegExp.prototype[Symbol.matchAll].call(this, str);
+                        if (!result) {
+                            return null;
+                        }
+                        return Array.from(result);// Array instead RegExpStringIterator
+                    }
+                },
+                _$Symbol_match() {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.match] = function (str) {
+                        let result = RegExp.prototype[Symbol.match].call(this, str);
+                        if (result) {
+                            return 'VALID';
+                        }
+                        return 'INVALID';
+                    }
+                },
+            };
 
             A.Prop = {};
 
@@ -1236,10 +1257,43 @@
                     return A.Self.compile(regExp_str, flags); //& A.Self is regExp!
                     //(regExp_str, flags ; '[\\w]+', 'gi'){ => /[\w]+/ig}
                 },
-                //
-                // _$isArray_(arr) {
-                //     return Arr
-                // }
+                
+                _$exec_(sring_for_serch) {
+                    return A.Self.exec(sring_for_serch); //& flag g ignored - first
+                    //( sring_for_serch = u.str)
+                    // { A.Self = u.regexp }
+                    /*
+                    Array(4)
+                    0: "<span class="my_1">"
+                    1: "span class="my_1""
+                    2: "span"
+                    3: "class="my_1""
+                    groups: {teg: "span", volume: "class="my_1"", result: "span class="my_1""}
+                    index: 0
+                    input: "<span class="my_1">↵<span class="my_2">"
+                    length: 4
+                    */
+                    let u = {
+                        str: `<span class="my_1">
+<span class="my_2">`,
+                        regexp: /<(?<result>(?<teg>[a-z]+)\s*(?<volume>[^>]*))>/g,
+                    }
+                },
+
+                _$test_(sring_for_serch) {
+                    return A.Self.test(sring_for_serch); //& is present => true
+                    //( sring_for_serch = u.str)
+                    // { A.Self = u.regexp }
+                    /*
+                    true
+                    */
+                    let u = {
+                        str: `<span class="my_1">
+<span class="my_2">`,
+                        regexp: /<(?<result>(?<teg>[a-z]+)\s*(?<volume>[^>]*))>/g,
+                    }
+                },
+
             };
 
             A.Parent = {

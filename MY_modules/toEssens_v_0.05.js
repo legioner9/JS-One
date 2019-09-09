@@ -2,7 +2,7 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 ;(function () {
-        Object.prototype._$type_ = function () {
+        let _$type_ = function () {
             return this.__proto__.constructor.name;
         }
 
@@ -188,6 +188,7 @@
             A.Symb = {
                 _$Symbol_iterator() {
                     let A_Self = A.Self;
+//return item+1 iterator instead standart
                     return A_Self[Symbol.iterator] = function () {
                         let this_ = this;
                         let i = 0;
@@ -1218,7 +1219,28 @@
                 // }
             };
 
-            A.Symb = {};
+            A.Symb = {
+                _$Symbol_matchAll() {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.matchAll] = function (str) {
+                        let result = RegExp.prototype[Symbol.matchAll].call(this, str);
+                        if (!result) {
+                            return null;
+                        }
+                        return Array.from(result);// Array instead RegExpStringIterator
+                    }
+                },
+                _$Symbol_match() {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.match] = function (str) {
+                        let result = RegExp.prototype[Symbol.match].call(this, str);
+                        if (result) {
+                            return 'VALID';
+                        }
+                        return 'INVALID';
+                    }
+                },
+            };
 
             A.Prop = {};
 
@@ -1236,10 +1258,41 @@
                     return A.Self.compile(regExp_str, flags); //& A.Self is regExp!
                     //(regExp_str, flags ; '[\\w]+', 'gi'){ => /[\w]+/ig}
                 },
-                //
-                // _$isArray_(arr) {
-                //     return Arr
-                // }
+                _$exec_(sring_for_serch) {
+                    return A.Self.exec(sring_for_serch); //& flag g ignored - first
+                    //( sring_for_serch = u.str)
+                    // { A.Self = u.regexp }
+                    /*
+                    Array(4)
+                    0: "<span class="my_1">"
+                    1: "span class="my_1""
+                    2: "span"
+                    3: "class="my_1""
+                    groups: {teg: "span", volume: "class="my_1"", result: "span class="my_1""}
+                    index: 0
+                    input: "<span class="my_1">↵<span class="my_2">"
+                    length: 4
+                    */
+                    let u = {
+                        str: `<span class="my_1">
+<span class="my_2">`,
+                        regexp: /<(?<result>(?<teg>[a-z]+)\s*(?<volume>[^>]*))>/g,
+                    }
+                },
+                _$test_(sring_for_serch) {
+                    return A.Self.test(sring_for_serch); //& is present => true
+                    //( sring_for_serch = u.str)
+                    // { A.Self = u.regexp }
+                    /*
+                    true
+                    */
+                    let u = {
+                        str: `<span class="my_1">
+<span class="my_2">`,
+                        regexp: /<(?<result>(?<teg>[a-z]+)\s*(?<volume>[^>]*))>/g,
+                    }
+                },
+
             };
 
             A.Parent = {
@@ -1536,13 +1589,13 @@
                 Self: M.Self,
                 Type: str_type,
                 consruct: type,
-                Webapi: M.Webapi._$_proxUndef(),
-                New: M.New._$_proxUndef(),
-                Meth: M.Meth._$_proxUndef(),
-                Prop: M.Prop._$_proxUndef(),
-                Parent: M.Parent._$_proxUndef(),
-                Symb: M.Symb._$_proxUndef(),
-                Enum: M.Enum._$_proxUndef(),
+                Webapi: M.Webapi,
+                New: M.New,
+                Meth: M.Meth,
+                Prop: M.Prop,
+                Parent: M.Parent,
+                Symb: M.Symb,
+                Enum: M.Enum,
                 isNan: M.IsNan,
 
                 isEmpty: !Boolean(M.Entres.length),
@@ -1871,7 +1924,8 @@
 
         Object.prototype._$ = {
             Ess: _$_REss,
-            Status: {}
+            Status: {},
+            type: _$type_
         }
     }
 )
