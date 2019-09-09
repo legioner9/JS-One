@@ -1184,15 +1184,15 @@
 
         FNc['RegExp'] = function (A) {
 
-            let en = Object.entries(A.Self);
+            let en = Object.entries(A.Self.toString());
             for (let item of en) {
                 A.Entres.push(item);
             }
-            let va = Object.values(A.Self);
+            let va = Object.values(A.Self.toString());
             for (let item of va) {
                 A.Value.push(item);
             }
-            let ke = Object.keys(A.Self);
+            let ke = Object.keys(A.Self.toString());
             for (let item of ke) {
                 A.Keys.push(item);
             }
@@ -1200,9 +1200,10 @@
             A.Webapi = {};
 
             A.New = {
-                // _$new_arr_length_(n_valume) {
-                //     return new Array(n_valume);
-                // },
+                _$new_RegExp_(regExp_str, flags) {
+                    return new RegExp(regExp_str, flags);
+                    //(regExp_str, flags ; '[\\w]+', 'gi'){ => /[\w]+/ig}
+                },
                 // _$new_arr_from_(like_arr) {
                 //     return Array.from(like_arr);
                 // },
