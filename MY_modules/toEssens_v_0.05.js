@@ -1481,7 +1481,7 @@
         }
 
 
-        Object.prototype._$_REss = function () {
+        let _$_REss = function () {
             let Keys = [],
                 Value = [],
                 Entres = [],
@@ -1568,7 +1568,7 @@
         }
 
 
-        Object.prototype._$_CIP_add_Ess = function () {
+        let _$_CIP_add_Ess = function () {
             if (this['thisEssens']) {
                 return this;
             } else {
@@ -1867,6 +1867,11 @@
                 return this;
 
             }
+        }
+
+        Object.prototype._$ = {
+            Ess: _$_REss,
+            Status: {}
         }
     }
 )

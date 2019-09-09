@@ -31,6 +31,8 @@
             '_$_REss': p,
             '_$_CIP_add_Ess': p,
             '__my_trigger': p,
+            '_$': p,
+            
 
         }
     );
