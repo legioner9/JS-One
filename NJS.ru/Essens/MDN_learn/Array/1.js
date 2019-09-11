@@ -20,7 +20,7 @@ let thisArg = {
         return b > this.a + 1;
     }
 };
-debugger;
+
 [1, 5].reduce_((a, b) => a + b);
 
 
@@ -70,7 +70,7 @@ arr_it[Symbol.iterator] = function () {
             if (i < this_.length) {
                 return {
                     done: false,
-                    value: this_[i++] + 1,
+                    value: this_[i++],
                 }
             } else {
                 return {
@@ -116,6 +116,15 @@ for (const eKey in obj) {
     let p = obj.propertyIsEnumerable(eKey);
     let h = obj.hasOwnProperty(eKey);
 }
+
+
+let ar_start_end = [];
+ar_start_end.start = 0;
+ar_start_end.end = 3;
+ar_start_end._$_REss().Symb._$Symbol_iterator_StartEnd();
 debugger;
+for (const uElement of ar_start_end) {
+    col(uElement);
+}
 
 

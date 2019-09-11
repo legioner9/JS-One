@@ -58,6 +58,29 @@ let res_st_rep = 'fyui pp'.replace(rep);
 
 'fyui pp'.replace(/p/ig, 'ooo');
 
-debugger;
 let str_ = "Mr Blue has a blue house and a blue car";
 let res_ = str_.replace(/blue|house|car/gi, x => x.toUpperCase());
+
+
+let stt = new String('xwe');
+let gsp = Object.getOwnPropertySymbols(stt)
+stt._$_REss().Symb._$Symbol_iterator_CamelTwist();
+debugger;
+delete stt[Symbol.iterator];
+let arrr = [];
+for (const sttElement of stt) {
+    arrr.push(sttElement);
+}
+stt._$_REss().Symb._$Symbol_iterator_CamelTwist();
+
+let stt_iter = stt[Symbol.iterator]();
+col(stt_iter.next());
+col(stt_iter.next());
+col(stt_iter.next());
+col(stt_iter.next());
+
+arrr = [];
+for (const sttElement of stt) {
+    arrr.push(sttElement);
+}
+let str_aa = arrr.join('');

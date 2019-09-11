@@ -186,7 +186,7 @@
             };
 
             A.Symb = {
-                _$Symbol_iterator() {
+                _$Symbol_iterator_sameness() {
                     let A_Self = A.Self;
                     return A_Self[Symbol.iterator] = function () {
                         let this_ = this;
@@ -196,7 +196,7 @@
                                 if (i < this_.length) {
                                     return {
                                         done: false,
-                                        value: this_[i++] + 1,
+                                        value: this_[i++],
                                     }
                                 } else {
                                     return {
@@ -208,6 +208,30 @@
                         }
                     }
                 },
+
+                _$Symbol_iterator_StartEnd() {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.iterator] = function () {
+                        let this_ = this;
+                        let i = this_.start;
+                        return {
+                            next() {
+                                if (i < this_.end) {
+                                    return {
+                                        done: false,
+                                        value: i++,
+                                    }
+                                } else {
+                                    return {
+                                        done: true,
+                                        value: undefined,
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+
                 _$Symbol_toPrimitive() {
                     let A_Self = A.Self;
                     return A_Self[Symbol.toPrimitive] = function (hint) {
@@ -381,9 +405,9 @@
             A.Webapi = {};
 
             A.New = {
-                // _$new_arr_length_(n_valume) {
-                //     return new Array(n_valume);
-                // },
+                _$new_func_(args, functionBody) {
+                    return new Function(args, functionBody);
+                },
                 // _$new_arr_from_(like_arr) {
                 //     return Array.from(like_arr);
                 // },
@@ -475,7 +499,62 @@
                 // }
             };
 
-            A.Symb = {};
+            A.Symb = {
+                _$Symbol_iterator_sameness() {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.iterator] = function () {
+                        let this_ = A_Self;
+                        let i = 0;
+
+                        return next = function () {
+                            if (i < this_.length) {
+                                return {
+                                    done: false,
+                                    value: this_[i++],
+                                }
+                            } else {
+                                return {
+                                    done: true,
+                                    value: undefined,
+                                }
+                            }
+                        }
+
+                    }
+                },
+
+                _$Symbol_iterator_CamelTwist() {
+                    let A_Self = A.Self;
+                    let gsp = Object.getOwnPropertySymbols(A_Self);
+
+                    return A_Self[Symbol.iterator] = function () {
+                        let this_ = A_Self.split('');
+                        let i = 0;
+                        return {
+                            next() {
+                                let a;
+                                if (i < this_.length) {
+                                    if (i % 2) {
+                                        a = this_[i++].toLowerCase();
+                                    } else {
+                                        a = this_[i++].toUpperCase();
+                                    }
+                                    return {
+                                        done: false,
+                                        value: a,
+                                    }
+                                } else {
+                                    return {
+                                        done: true,
+                                        value: undefined,
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                },
+            };
 
             A.Prop = {};
 
@@ -764,6 +843,12 @@
             A.Meth = {
                 _$copy_() {
                     return Object.assign({}, A.Self);
+                },
+                _$assign_() {
+                    return Object.assign({}, A.Self);
+                },
+                _$create_(Parent_class) {
+                    A.Self.prototype = Object.create(Parent_class.prototype);
                 },
                 // _$copyWithin__$CIP(targ_pos, start_ins, end_ins) {
                 //     Self.copyWithin(targ_pos, start_ins, end_ins);
@@ -1219,7 +1304,7 @@
             };
 
             A.Symb = {
-                _$Symbol_matchAll() {
+                _$Symbol_matchAll_RetArr() {
                     let A_Self = A.Self;
                     return A_Self[Symbol.matchAll] = function (str) {
                         let result = RegExp.prototype[Symbol.matchAll].call(this, str);
@@ -1229,15 +1314,52 @@
                         return Array.from(result);// Array instead RegExpStringIterator
                     }
                 },
-                _$Symbol_match() {
+                _$Symbol_match_ArrObj() {
                     let A_Self = A.Self;
                     return A_Self[Symbol.match] = function (str) {
                         let result = RegExp.prototype[Symbol.match].call(this, str);
                         if (result) {
-                            return 'VALID';
+                            // return 'VALID';
+                            return {
+                                arr_res: Array.from(result),
+                                index: result.index,
+                                input: result.input,
+                                groups: result.groups,
+                            };
                         }
-                        return 'INVALID';
+                        return null;
                     }
+                },
+                _$Symbol_replace_brackets(arr_brackets) {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.replace] = function (str, replace) {
+                        let replace_ = `${arr_brackets[1]} ${replace} ${arr_brackets[2]}`
+                        return RegExp.prototype[Symbol.replace].call(this, str, replace_);
+                    };
+                },
+
+                _$Symbol_search_LeftRightCont() {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.search] = function (str) {
+
+                        let serch_index = RegExp.prototype[Symbol.search].call(this, str);
+                        let contextLeft = str.slice(0, serch_index);
+                        let contextLRight = str.slice(serch_index + 1);
+
+                        return {
+                            serch_index,
+                            contextLeft,
+                            contextLRight,
+                        };
+                    };
+                },
+                _$Symbol_split_brackets_RetJoin(arr_brackets) {
+                    let A_Self = A.Self;
+                    return A_Self[Symbol.split] = function (str, limit) {
+                        let result_ = RegExp.prototype[Symbol.split].call(this, str, limit);
+                        let res_ = result_.map(x => `${arr_brackets[0]} ${x} ${arr_brackets[1]}`);
+                        return res_.join('');
+                    };
                 },
             };
 
@@ -1257,7 +1379,7 @@
                     return A.Self.compile(regExp_str, flags); //& A.Self is regExp!
                     //(regExp_str, flags ; '[\\w]+', 'gi'){ => /[\w]+/ig}
                 },
-                
+
                 _$exec_(sring_for_serch) {
                     return A.Self.exec(sring_for_serch); //& flag g ignored - first
                     //( sring_for_serch = u.str)
@@ -1590,13 +1712,13 @@
                 Self: M.Self,
                 Type: str_type,
                 consruct: type,
-                Webapi: M.Webapi._$_proxUndef(),
-                New: M.New._$_proxUndef(),
-                Meth: M.Meth._$_proxUndef(),
-                Prop: M.Prop._$_proxUndef(),
-                Parent: M.Parent._$_proxUndef(),
-                Symb: M.Symb._$_proxUndef(),
-                Enum: M.Enum._$_proxUndef(),
+                Webapi: M.Webapi,
+                New: M.New,
+                Meth: M.Meth,
+                Prop: M.Prop,
+                Parent: M.Parent,
+                Symb: M.Symb,
+                Enum: M.Enum,
                 isNan: M.IsNan,
 
                 isEmpty: !Boolean(M.Entres.length),
