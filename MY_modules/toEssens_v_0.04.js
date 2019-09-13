@@ -427,6 +427,9 @@
             A.Prop = {};
 
             A.Meth = {
+                _$create_add_Parent_Class(Parent_class) {
+                    A.Self.prototype = Object.create(Parent_class.prototype);
+                },
                 // _$copy_() {
                 //     let ar = [];
                 //     ar = A.Self.slice();
@@ -847,8 +850,8 @@
                 _$assign_() {
                     return Object.assign({}, A.Self);
                 },
-                _$create_(Parent_class) {
-                    A.Self.prototype = Object.create(Parent_class.prototype);
+                _$create_NewWithprotoFromIntObj(init_props) {
+                    return Object.create(A.Self, init_props);
                 },
                 // _$copyWithin__$CIP(targ_pos, start_ins, end_ins) {
                 //     Self.copyWithin(targ_pos, start_ins, end_ins);
