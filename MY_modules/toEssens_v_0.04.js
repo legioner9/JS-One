@@ -964,8 +964,14 @@
                 _$getOwnPropertyDescriptors_() {
                     let A_Self = A.Self
                     return Object.getOwnPropertyDescriptors(A_Self)
-
-
+                },
+                _$getOwnPropertyNames_AllKeys_() {
+                    let A_Self = A.Self
+                    return Object.getOwnPropertyNames(A_Self)
+                },
+                _$getOwnPropertySymbols_() {
+                    let A_Self = A.Self
+                    return Object.getOwnPropertySymbols(A_Self)
                 },
             };
 
