@@ -973,6 +973,32 @@
                     let A_Self = A.Self
                     return Object.getOwnPropertySymbols(A_Self)
                 },
+                _$is_(any) {
+                    let A_Self = A.Self;
+                    return Object.is(A_Self, any);
+                },
+                _$isExtensible_() {
+                    let A_Self = A.Self;
+                    return Object.isExtensible(A_Self);
+                },
+                _$isFrozen_() {
+                    let A_Self = A.Self;
+                    return Object.isFrozen(A_Self);
+                },
+                _$isSealed_() {
+                    let A_Self = A.Self;
+                    return Object.isSealed(A_Self);
+                },
+                _$preventExtensions_() {
+                    let A_Self = A.Self;
+                    Object.preventExtensions(A_Self);
+                    return A_Self;
+                },
+                _$isPrototypeOf_(obj) {
+                    let A_Self = A.Self;
+                    return A_Self.isPrototypeOf(obj);
+                },
+
             };
 
             A.Parent = {

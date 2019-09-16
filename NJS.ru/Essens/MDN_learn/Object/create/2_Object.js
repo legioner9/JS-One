@@ -11,18 +11,19 @@
 // MyClass.prototype = Object.create(SuperClass.prototype); // наследование
 // mixin(MyClass.prototype, OtherSuperClass.prototype); // примешивание
 let ini = {a: 'a'};
-let cr_ = ini._$_REss().Meth._$create_NewWithprotoFromIntObj({
+debugger;
+let cr_ = ini._$_REss().Meth._$create_NewWithprotoFromIntObj_({
     pp: {
-      value: 2,
-      enumerable: false,
-      configurable: false,
-      // writable:false,
-      // get:function () {
-      //
-      // },
-      // set:function () {
-      //
-      // },
+        value: 2,
+        enumerable: false,
+        configurable: false,
+        // writable:false,
+        // get:function () {
+        //
+        // },
+        // set:function () {
+        //
+        // },
     }
 })
 let cr = Object.create({a: 'a'}, {
@@ -37,8 +38,8 @@ let cr_1 = Object.create(cr, {
 });
 debugger;
 let aa = {};
-aa._$_REss().Meth._$defineProperties_Value(
-  {
-    props: 'ee',
-    value: 9,
-  });
+aa._$_REss().Meth._$defineProperties_Value_(
+    {
+        props: 'ee',
+        value: 9,
+    });
