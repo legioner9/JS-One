@@ -11,7 +11,7 @@
 // MyClass.prototype = Object.create(SuperClass.prototype); // наследование
 // mixin(MyClass.prototype, OtherSuperClass.prototype); // примешивание
 let ini = {a: 'a'};
-debugger;
+
 let cr_ = ini._$_REss().Meth._$create_NewWithprotoFromIntObj_({
     pp: {
         value: 2,
