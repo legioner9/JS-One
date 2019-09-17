@@ -6,6 +6,11 @@ let ob = {};
 Object.defineProperty(ob,
     'not_enumerrable',
     {
-        volume: 'not'
+        value: 'not'
     }
 );
+ob.enumer = 'yes';
+debugger;
+let c_1 = ob.propertyIsEnumerable_('enumer');
+let c_2 = ({}).propertyIsEnumerable.call(ob, 'not_enumerrable');
+let js = JSON.stringify(ob);

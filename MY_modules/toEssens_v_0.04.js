@@ -2,9 +2,34 @@
  * Copyright (c) 2019. Legioner9@inbox.ru
  */
 ;(function () {
+
+        let p = {
+            writable: true,
+        };
+
+        Object.defineProperties(Object.prototype,
+            {
+
+                '_$type_': p,
+                'hasOwnProperty_': p,
+                'propertyIsEnumerable_': p,
+
+
+            }
+        )
+
         Object.prototype._$type_ = function () {
             return this.__proto__.constructor.name;
         }
+
+        Object.prototype.hasOwnProperty_ = function (prop) {
+            return ({}).hasOwnProperty.call(this, prop)
+        }
+
+        Object.prototype.propertyIsEnumerable_ = function (prop) {
+            return ({}).propertyIsEnumerable.call(this, prop)
+        }
+
 
         let FNc = {}
 
@@ -23,6 +48,7 @@
             'RegExp',
             'Math',
             'Intl',
+            'Date',
 
         ]
 
@@ -381,6 +407,10 @@
                 _$slice_() {
                     return A.Self.slice(start_index, end_index);
                     // {start_index, end_index;1,4} ( [0,4,3,5,4] => [4, 3, 5] ) &
+                },
+                _$toLocaleString_join_(separator) {
+                    let A_Self = A.Self;
+                    return A_Self.join(separator);
                 },
 
             };
@@ -1016,7 +1046,29 @@
                     let obj_fn = new fn();
                     let copare_new = (obj_fn instanceof fn);//true
                 },
-
+                _$hasOwnProperty_(prop) {
+                    let A_Self = A.Self;
+                    return ({}).hasOwnProperty.call(A_Self, prop);
+                },
+                _$propertyIsEnumerable_(prop) {
+                    let A_Self = A.Self;
+                    return ({}).propertyIsEnumerable.call(A_Self, prop);
+                },
+                _$toString_myJson() {
+                    let A_Self = A.Self;
+                    let ob_entr = Object.entries(A_Self);
+                    let ar = [];
+                    for (let i = 0; i < ob_entr.length; i++) {
+                        let item = `(${ob_entr[i][0]} : ${ob_entr[i][1]})`;
+                        ar.push(item);
+                    }
+                    let res_str = ar.join(',');
+                    return res_str;
+                },
+                _$toLocaleString_JSON_() {
+                    let A_Self = A.Self;
+                    return JSON.stringify(A_Self);
+                },
             };
 
             A.Parent = {
@@ -1723,6 +1775,83 @@
             };
         }
 
+        FNc['Date'] = function (A) {
+
+            let en = Object.entries(A.Self);
+            for (let item of en) {
+                A.Entres.push(item);
+            }
+            let va = Object.values(A.Self);
+            for (let item of va) {
+                A.Value.push(item);
+            }
+            let ke = Object.keys(A.Self);
+            for (let item of ke) {
+                A.Keys.push(item);
+            }
+
+            A.Webapi = {};
+
+            A.New = {
+                // _$new_arr_length_(n_valume) {
+                //     return new Array(n_valume);
+                // },
+                // _$new_arr_from_(like_arr) {
+                //     return Array.from(like_arr);
+                // },
+                // _$new_arr_of_(any_elem_1, any_elem_n) {
+                //     return Array.of(any_elem_1, any_elem_n)
+                // }
+            };
+
+            A.Enum = {
+                // _$entries_() {
+                //     return A.Self.entries();
+                // }
+            };
+
+            A.Symb = {};
+
+            A.Prop = {};
+
+            A.Meth = {
+                // _$copy_() {
+                //     let ar = [];
+                //     ar = A.Self.slice();
+                //     return ar;
+                // },
+                // _$copyWithin__$CIP(targ_pos, start_ins, end_ins) {
+                //     Self.copyWithin(targ_pos, start_ins, end_ins);
+                // },
+                // _$copyWithin__$RIL(targ_pos, start_ins, end_ins) {
+                //     let Self_ = A.Self._$().Meth._$copy_();
+                //     Self_.copyWithin(targ_pos, start_ins, end_ins);
+                //     return Self_;
+                // },
+                // _$clear_() {
+                //     Self.splice(0);
+                // },
+                //
+                // _$map_as_reduse_(callback, thisArg) {
+                //     return A.Self
+                //         .reduce(function (res, b, ind, arr) {
+                //             res[ind] = callback.call(thisArg, b, ind, arr);
+                //             return res;
+                //         }, [])
+                // },
+                //
+                // _$isArray_(arr) {
+                //     return Arr
+                // }
+            };
+
+            A.Parent = {
+                _$par_() {
+
+                }
+            };
+        }
+
         FNc['Intl'] = function (A) {
 
             let en = Object.entries(A.Self);
@@ -2180,6 +2309,7 @@
                     isArr: type == Array,
                     isStr: type == String,
                     isNumber: type == Number,
+                    isDate: type == Date,
 
                     toStringTag: 'Essens',
                 }

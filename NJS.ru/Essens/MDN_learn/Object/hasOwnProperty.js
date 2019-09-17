@@ -11,5 +11,6 @@ let ob = {
     b: 4,
 }
 col(ob.hasOwnProperty('a'));// always false!!!
+col(ob.hasOwnProperty_('a'));// rigth truly
 debugger;
 col(({}).hasOwnProperty.call(ob, 'a'));

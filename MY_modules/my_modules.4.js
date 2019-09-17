@@ -31,8 +31,11 @@
             '_$_REss': p,
             '_$_CIP_add_Ess': p,
             '__my_trigger': p,
+            'hasOwnProperty_': p,
+            'propertyIsEnumerable_': p,
             '_$': p,
-            
+            '_$': p,
+
 
         }
     );
