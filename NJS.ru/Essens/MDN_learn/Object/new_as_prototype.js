@@ -22,8 +22,16 @@ let o_rf = {};
 
 on_rf.__proto__ = rf.prototype
 // on_rf.__proto__.__proto__ = Object
-debugger;
+
 n_rf.col_a();
 on_rf.col_a();
 col(on_rf instanceof rf);//true
 col(on_rf instanceof Object);//true
+debugger;
+let fn = new Function();
+let obj = new Object({});
+obj.__proto__ = fn.prototype;
+let copare_proto = (obj instanceof fn);//true
+
+let obj_fn = new fn();
+let copare_new = (obj_fn instanceof fn);//true

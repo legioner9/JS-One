@@ -994,9 +994,27 @@
                     Object.preventExtensions(A_Self);
                     return A_Self;
                 },
-                _$isPrototypeOf_(obj) {
+                _$isPrototypeOf_(parent_obj) {
                     let A_Self = A.Self;
-                    return A_Self.isPrototypeOf(obj);
+                    return A_Self.isPrototypeOf(parent_obj);
+                    //PF Object.create
+                    let proto = {a: {value: 'aa'}};
+                    let ob = Object.create(proto);
+                    let compare = proto.isPrototypeOf(ob);//true
+                },
+                _$instanseof_(parent_obj) {
+                    let A_Self = A.Self;
+                    return (A_Self instanceof parent_obj);
+
+                    //PF prototype
+                    let fn = new Function();
+                    let obj = new Object({});
+                    obj.__proto__ = fn.prototype;
+                    let copare_proto = (obj instanceof fn);//true
+
+                    //PF new
+                    let obj_fn = new fn();
+                    let copare_new = (obj_fn instanceof fn);//true
                 },
 
             };
